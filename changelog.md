@@ -1,3 +1,16 @@
+# 25
+
+* Merge with dux.
+* Make new logo (based on dux_boxes).
+* Merge maths facilities and sequence facilities.
+* Implement alternatives for stdlib.
+* Use new header structure
+* Make thread API cleaner.
+* Make windowing API cleaner.
+* ...
+
+**TO-DO: Expand and improve the changelog for this version.**
+
 # 24
 
 * Remove constructor taking a single value for `u8c::arr`.
@@ -6,6 +19,7 @@
 * Remove `u8c::trunc`.
 * Initialise memory allocated by `u8c::arr`.
 * Add overload taking value used for memory-initialisation for `u8c::arr::alloc`.
+* Update code formatting.
 
 # 23
 

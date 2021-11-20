@@ -3,13 +3,13 @@ cmake_minimum_required(
 	3.20
 )
 project(
-	u8c
+	dux
 	VERSION
-	27
+	29
 	DESCRIPTION
-	"Unicode manipulation library."
+	"General purpose library."
 	HOMEPAGE_URL
-	"https://mandelbrot.dk/delta/u8c"
+	"https://mandelbrot.dk/delta/dux"
 	LANGUAGES
 	CXX
 )
@@ -17,16 +17,23 @@ set(
 	CMAKE_CXX_STANDARD
 	23
 )
-set(
-	CMAKE_CXX_EXTENSIONS
-	OFF
-)
 
 # Options:
 option(
-	U8C_TEST
-	"Build test program."
-	OFF
+	DUX_ENABLE_DEMO
+	"Build the demo program."
+)
+option(
+	DUX_ENABLE_SYS
+	"Enable the system extensions."
+)
+option(
+	DUX_GFXPROTO
+	"Set the graphics protocol: \"windx\" (WinAPI/DirectX), \"wlgl\" (Wayland/OpenGL), \"wlvk\" (Wayland/Vulkan), \"xgl\" (X/OpenGL), \"xvk\" (X/Vulkan)"
+)
+option(
+	DUX_SFXPROTO
+	"Set the sound protocol: \"dx\" (DirectX), \"pa\" (PulseAudio), \"pw\" (PipeWire)"
 )
 
 # Disable in-souce builds:
@@ -76,13 +83,24 @@ if(
 	)
 else()
 	add_compile_options(
+		"-pedantic-errors"
 		"-Wfatal-errors"
 		"-Wall"
+		"-Wconversion"
 		"-Werror"
 		"-Wextra"
-		"-Wno-attributes"
-		"-pedantic-errors"
+		"-Wunreachable-code"
+		"-Wunused"
 	)
+	if(
+		"${CMAKE_CXX_COMPILER_ID}"
+		STREQUAL
+		"Clang"
+	)
+		add_compile_options(
+			"-Wnewline-eof"
+		)
+	endif()
 endif()
 if(
 	CMAKE_BUILD_TYPE
@@ -105,34 +123,177 @@ if(
 		)
 	endif()
 endif()
+
+# Include directories:
 include_directories(
-	"${PROJECT_SOURCE_DIR}/u8c/include"
+	"${PROJECT_SOURCE_DIR}/include"
 )
 
-# u8c settings:
+# dux settings:
 add_library(
-	u8c
+	dux
 	SHARED
-	"u8c/src/operator.cc"
-	"u8c/src/u8c/fmt.cc"
-	"u8c/src/u8c/print.cc"
-	"u8c/src/u8c/println.cc"
+	"src/dux/_setsiginthandl.cc"
+	"src/dux/_siginthandl.cc"
+	"src/dux/_sigtocsig.cc"
+	"src/dux/abrt.cc"
+	"src/dux/endgfx.cc"
+	"src/dux/exit.cc"
+	"src/dux/getenv.cc"
+	"src/dux/goatmaster.cc"
+	"src/dux/initgfx.cc"
+	"src/dux/qexit.cc"
+	"src/dux/raise.cc"
+	"src/dux/sighandl.cc"
+	"src/dux/sleep.cc"
+	"src/dux/trap.cc"
+	"src/dux/unreach.cc"
+	"src/dux/win.cc"
 )
-
-# Test settings:
 if(
-	U8C_TEST
+	UNIX
+)
+	set_property(
+		TARGET
+		dux
+		APPEND
+		PROPERTY
+		SOURCES
+		"src/dux/_freepthrdhandl.cc"
+		"src/dux/_getpthrdhandl.cc"
+		"src/dux/_pthrdcrt.cc"
+		"src/dux/_pthrdjoin.cc"
+	)
+endif()
+target_compile_definitions(
+	dux
+	PRIVATE
+	_XOPEN_SOURCE=700
+)
+if(
+	DUX_GFXPROTO
+	STREQUAL
+	"wlgl"
+)
+	message(
+		STATUS
+		"Using Wayland/OpenGL for graphics."
+	)
+	target_compile_definitions(
+		dux
+		PRIVATE
+		dux_gfxproto_wlgl
+	)
+elseif(
+	DUX_GFXPROTO
+	STREQUAL
+	"wlvk"
+)
+	message(
+		STATUS
+		"Using Wayland/Vulkan for graphics."
+	)
+	target_compile_definitions(
+		dux
+		PRIVATE
+		dux_gfxproto_wlvk
+	)
+elseif(
+	DUX_GFXPROTO
+	STREQUAL
+	"xgl"
+)
+	message(
+		STATUS
+		"Using X/OpenGL for graphics."
+	)
+	target_compile_definitions(
+		dux
+		PRIVATE
+		dux_gfxproto_xgl
+	)
+elseif(
+	DUX_GFXPROTO
+	STREQUAL
+	"xvk"
+)
+	message(
+		STATUS
+		"Using X/Vulkan for graphics."
+	)
+	target_compile_definitions(
+		dux
+		PRIVATE
+		dux_gfxproto_xvk
+	)
+else()
+	message(
+		FATAL_ERROR
+		"Graphics system undefined (or invalid)! Set option \"DUX_GFXPROTO\" to: \"wlgl\" (Wayland/OpenGL), \"wlvk\" (Wayland/Vulkan), \"xgl\" (X/OpenGL), or \"xvk\" (X/Vulkan)!"
+	)
+endif()
+if(
+	DUX_GFXPROTO
+	STREQUAL
+	"wlgl"
+	OR
+	DUX_GFXPROTO
+	STREQUAL
+	"wlvk"
+)
+	target_link_libraries(
+		dux
+		wayland-client
+	)
+elseif(
+	DUX_GFXPROTO
+	STREQUAL
+	"xgl"
+	OR
+	DUX_GFXPROTO
+	STREQUAL
+	"xvk"
+)
+	target_link_libraries(
+		dux
+		xcb
+	)
+	if(
+		DUX_GFXPROTO
+		STREQUAL
+		"xgl"
+	)
+		target_link_libraries(
+			dux
+			X11-xcb
+		)
+	endif()
+endif()
+if(
+	NOT
+	WIN32
+)
+	target_link_libraries(
+		dux
+		dl
+		pthread
+	)
+endif()
+
+# Demo settings:
+if(
+	DUX_ENABLE_DEMO
 )
 	add_executable(
-		test
-		"u8c-check/src/test.cc"
+		demo
+		"dux-demo/main.cc"
 	)
 	add_dependencies(
-		test
-		u8c
+		demo
+		dux
 	)
 	target_link_libraries(
-		test
-		u8c
+		demo
+		dux
 	)
 endif()

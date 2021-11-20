@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg height="96" version="1.1" width="256" xmlns="http://www.w3.org/2000/svg">
+	<clipPath id="clipPath99">
+		<polygon points="189.656854249,24 226.343145751,24 232,29.656854249 232,66.343145751 226.343145751,72 189.656854249,72 184,66.343145751 184,29.656854249" />
+	</clipPath>
+	<clipPath id="clipPath236">
+		<rect height="48" width="24" x="44" y="24" />
+	</clipPath>
+	<!-- Box #0 -->
+	<rect fill="#444747" height="64" rx="8" ry="8" width="64" x="24" y="24" />
+	<rect fill="#E1A93D" height="64" rx="8" ry="8" width="64" x="16" y="16" />
+	<rect fill="#F8F8F1" height="48" width="16" x="28" y="24" />
+	<rect fill="#E1A93D" height="32" width="8" x="36" y="32" />
+	<circle clip-path="url(#clipPath236)" cx="44" cy="48" fill="#F8F8F1" r="24" />
+	<circle clip-path="url(#clipPath236)" cx="44" cy="48" fill="#E1A93D" r="16" />
+	<!-- Box #1 -->
+	<rect fill="#444747" height="64" rx="8" ry="8" width="64" x="104" y="24" />
+	<rect fill="#3DE1A9" height="64" rx="8" ry="8" width="64" x="96" y="16" />
+	<rect fill="#F8F8F1" height="32" width="32" x="112" y="24" />
+	<circle cx="128" cy="56" fill="#F8F8F1"  r="16"/>
+	<rect fill="#3DE1A9" height="36" width="16" x="120" y="20" />
+	<circle fill="#3DE1A9" cx="128" cy="56" r="8"/>
+	<!-- Box #2 -->
+	<rect fill="#444747" height="64" rx="8" ry="8" width="64" x="184" y="24" />
+	<rect fill="#A93DE1" height="64" rx="8" ry="8" width="64" x="176" y="16" />
+	<polyline clip-path="url(#clipPath99)" stroke="#F8F8F1" points="240,16 176,80" stroke-width="8" />
+	<polyline clip-path="url(#clipPath99)" stroke="#F8F8F1" points="176,16 240,80" stroke-width="8" />
+</svg>
