@@ -28,7 +28,7 @@
 
 auto ::dux::exit(::dux::stat const _stat) noexcept -> void {
 # if defined(dux_os_linux)
-	if (::dux_priv_posix_getpid() != static_cast<::pid_t>(::dux::syscall(__NR_gettid))) [[unlikely]] { /* Check if calling thread is also the main thread. Only thread exit is allowed outside the main thread. */
+	if (::dux_priv_posix_getpid() != static_cast<::pid_t>(::dux::syscall(__NR_gettid))) [[unlikely]] { /* Check if calling thread is also the main thread. Only thread exit and quick exit are allowed outside the main thread. */
 		::dux::dbglog("dux :: \x1B[91mexit\x1B[0m :: Standard exit invoked outside main thread!\n");
 		::dux::abrt();
 	}

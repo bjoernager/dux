@@ -52,4 +52,4 @@ ret:;
 
 # pragma GCC diagnostic ignored "-Wmissing-declarations"
 
-extern "C" dux_attr_cold auto dux_onexit(::dux::priv::onexitfn const _fn) {::dux::onexit(_fn);}
+extern "C" dux_attr_cold auto dux_onexit(::dux::priv::onexitfn const _fn) -> void {::dux::onexit(_fn);}

@@ -37,27 +37,27 @@ namespace dux {
 	using nullptrtyp = decltype (nullptr);
 }
 
-namespace dux { /* Clang (13.0.1) complains about multiple definitions here. Clang is retarded. */
-	template<typename T> constexpr auto maxval                     {T {0x0}};
-	template<>           constexpr auto maxval<bool>               {static_cast<bool>(              true)};
-	template<>           constexpr auto maxval<char>               {static_cast<char>(              dux_chrmax)};
-	template<>           constexpr auto maxval<char16_t>           {static_cast<char16_t>(          dux_chr16max)};
-	template<>           constexpr auto maxval<char32_t>           {static_cast<char32_t>(          dux_chr32max)};
-	template<>           constexpr auto maxval<char8_t>            {static_cast<char8_t>(           dux_chr8max)};
-	template<>           constexpr auto maxval<double>             {static_cast<double>(            dux_dblmax)};
-	template<>           constexpr auto maxval<int>                {static_cast<int>(               dux_intmax)};
-	template<>           constexpr auto maxval<long>               {static_cast<long>(              dux_lngmax)};
-	template<>           constexpr auto maxval<long double>        {static_cast<long double>(       dux_ldblmax)};
-	template<>           constexpr auto maxval<long long>          {static_cast<long long>(         dux_llngmax)};
-	template<>           constexpr auto maxval<::dux::nullptrtyp>  {                                nullptr};
-	template<>           constexpr auto maxval<short>              {static_cast<short>(             dux_shrtmax)};
-	template<>           constexpr auto maxval<signed char>        {static_cast<signed char>(       dux_schrmax)};
-	template<>           constexpr auto maxval<unsigned char>      {static_cast<unsigned char>(     dux_uchrmax)};
-	template<>           constexpr auto maxval<unsigned int>       {static_cast<unsigned int>(      dux_uintmax)};
-	template<>           constexpr auto maxval<unsigned long>      {static_cast<unsigned long>(     dux_ulngmax)};
-	template<>           constexpr auto maxval<unsigned long long> {static_cast<unsigned long long>(dux_ullngmax)};
-	template<>           constexpr auto maxval<unsigned short>     {static_cast<unsigned short>(    dux_ushrtmax)};
-	template<>           constexpr auto maxval<wchar_t>            {static_cast<wchar_t>(           dux_wchrmax)};
+namespace dux { /* Clang may not be retarted. */
+	template<typename T> constexpr auto static maxval                     {T {0x0}};
+	template<>           constexpr auto static maxval<bool>               {static_cast<bool>(              true)};
+	template<>           constexpr auto static maxval<char>               {static_cast<char>(              dux_chrmax)};
+	template<>           constexpr auto static maxval<char16_t>           {static_cast<char16_t>(          dux_chr16max)};
+	template<>           constexpr auto static maxval<char32_t>           {static_cast<char32_t>(          dux_chr32max)};
+	template<>           constexpr auto static maxval<char8_t>            {static_cast<char8_t>(           dux_chr8max)};
+	template<>           constexpr auto static maxval<double>             {static_cast<double>(            dux_dblmax)};
+	template<>           constexpr auto static maxval<int>                {static_cast<int>(               dux_intmax)};
+	template<>           constexpr auto static maxval<long>               {static_cast<long>(              dux_lngmax)};
+	template<>           constexpr auto static maxval<long double>        {static_cast<long double>(       dux_ldblmax)};
+	template<>           constexpr auto static maxval<long long>          {static_cast<long long>(         dux_llngmax)};
+	template<>           constexpr auto static maxval<::dux::nullptrtyp>  {                                nullptr};
+	template<>           constexpr auto static maxval<short>              {static_cast<short>(             dux_shrtmax)};
+	template<>           constexpr auto static maxval<signed char>        {static_cast<signed char>(       dux_schrmax)};
+	template<>           constexpr auto static maxval<unsigned char>      {static_cast<unsigned char>(     dux_uchrmax)};
+	template<>           constexpr auto static maxval<unsigned int>       {static_cast<unsigned int>(      dux_uintmax)};
+	template<>           constexpr auto static maxval<unsigned long>      {static_cast<unsigned long>(     dux_ulngmax)};
+	template<>           constexpr auto static maxval<unsigned long long> {static_cast<unsigned long long>(dux_ullngmax)};
+	template<>           constexpr auto static maxval<unsigned short>     {static_cast<unsigned short>(    dux_ushrtmax)};
+	template<>           constexpr auto static maxval<wchar_t>            {static_cast<wchar_t>(           dux_wchrmax)};
 }
 
 namespace dux::priv {

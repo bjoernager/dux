@@ -30,6 +30,8 @@ project(
 	ASM # CMake recommends placing assembly as the last entry in the list of languages.
 	VERSION
 	${DUX_VERSION}
+	DESCRIPTION
+	"General purpose library."
 )
 
 # Target:

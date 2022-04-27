@@ -24,7 +24,7 @@
 # include <dux/thrd>
 
 auto ::dux::abrt() noexcept -> void {
-	static ::std::atomic_flag lock {ATOMIC_FLAG_INIT};
+	static ::std::atomic_flag lock;
 	while (lock.test_and_set()) {} /* We make sure we don't abort from multiple threads. */
 	::dux::dbglog("dux :: abrt :: Aborting!\n");
 	if (::dux::haserr()) {::dux::dbglog("dux :: abrt :: Last error: %s\n",::dux::errcdnm(::dux::geterr()));}

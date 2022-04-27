@@ -18,29 +18,29 @@
 */
 
 namespace dux::num {
-	constexpr auto e   {dux_priv_num_e};
-	constexpr auto phi {dux_priv_num_phi};
-	constexpr auto pi  {dux_priv_num_pi};
+	constexpr static auto e   {dux_priv_num_e};
+	constexpr static auto phi {dux_priv_num_phi};
+	constexpr static auto pi  {dux_priv_num_pi};
 }
 
 namespace dux::priv {
-	template<::dux::arithtyp T> constexpr auto inf              {::dux::maxval<T>};
-	template<>                  constexpr auto inf<double>      {dux_priv_infd};
-	template<>                  constexpr auto inf<float>       {dux_priv_inff};
-	template<>                  constexpr auto inf<long double> {dux_priv_infld};
+	template<::dux::arithtyp T> constexpr static auto inf              {::dux::maxval<T>};
+	template<>                  constexpr static auto inf<double>      {dux_priv_infd};
+	template<>                  constexpr static auto inf<float>       {dux_priv_inff};
+	template<>                  constexpr static auto inf<long double> {dux_priv_infld};
 }
 namespace dux {
-	template<::dux::arithtyp T> constexpr auto inf {::dux::priv::inf<T>};
+	template<::dux::arithtyp T> constexpr static auto inf {::dux::priv::inf<T>};
 }
 
 namespace dux::priv {
-	template<::dux::arithtyp T> constexpr auto nan              {T {0x0}};
-	template<>                  constexpr auto nan<double>      {dux_priv_nand};
-	template<>                  constexpr auto nan<float>       {dux_priv_nanf};
-	template<>                  constexpr auto nan<long double> {dux_priv_nanld};
+	template<::dux::arithtyp T> constexpr static auto nan              {T {0x0}};
+	template<>                  constexpr static auto nan<double>      {dux_priv_nand};
+	template<>                  constexpr static auto nan<float>       {dux_priv_nanf};
+	template<>                  constexpr static auto nan<long double> {dux_priv_nanld};
 }
 namespace dux {
-	template<::dux::arithtyp T> constexpr auto nan {::dux::priv::nan<T>};
+	template<::dux::arithtyp T> constexpr static auto nan {::dux::priv::nan<T>};
 }
 
 namespace dux {

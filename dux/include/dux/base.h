@@ -48,7 +48,6 @@
 # error Header must be included from C or C++!
 # endif
 
-
 # if defined(dux_lang_c)
 # include <stdbool.h> /* We really want the bool macros. We can't define them ourselves, as that would be UB (note: read next line), as we may not declare nor define anything the standard library defines. */
 # undef false /* NOT UB: cppreference: "A program may undefine and perhaps then redefine the macros bool, true and false." (cppreference) */
@@ -67,7 +66,7 @@
 # endif
 # endif
 
-# define dux_priv_ver 0x1E
+# define dux_priv_ver 0x1F
 
 # if !defined(dux_dbg)
 # if defined(_DEBUG) || !defined(NDEBUG)
@@ -220,8 +219,8 @@
 # endif
 
 # if defined(dux_lang_c)
-# define dux_nullptr      ((void *)0x0)
-# define dux_priv_nullptr dux_nullptr
+# define dux_priv_nullptr ((void *)0x0)
+# define dux_nullptr      dux_priv_nullptr
 # elif defined(dux_lang_cxx)
 # define dux_priv_nullptr nullptr
 # endif

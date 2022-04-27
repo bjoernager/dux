@@ -1,3 +1,11 @@
+| 27
+
+- Correct comment in "/dux/src/exit.cc";
+- Add project description to CMake;
+- Remove initialisation for the lock in dux.abrt as it's deprecated in C++20;
+- Fix return type not being specified in the C-implementation for dux.onexit;
+- Fix ld complaining about multiple definitions of compile-time objects when the project is compiled with Clang;
+
 | 26
 
 - Rewrite and restructure project;
