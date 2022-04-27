@@ -1,0 +1,2717 @@
+/*
+	Copyright 2021, 2022 Gabriel Jensen.
+
+	This file is part of dux.
+
+	dux is free software: you can redistribute it and/or modify it under the
+	terms of the GNU Affero General Public License as published by the Free
+	Software Foundation, either version 3 of the License, or (at your
+	option) any later version.
+
+	dux is distributed in the hope that it will be useful, but WITHOUT ANY
+	WARRANTY; without even the implied warranty of MERCHANTABILITY or
+	FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+	License for more details.
+
+	You should have received a copy of the GNU Affero General Public License
+	along with dux. If not, see <https://www.gnu.org/licenses/>.
+*/
+
+[[nodiscard]] dux_attr_const constexpr auto uninm(char32_t const _chr) -> char const * {
+	switch (_chr) {
+	[[unlikely]] default:
+		return "UNDEFINED IN UNICODE";
+	/* BASIC LATIN: */
+	case U'\u0000':
+		return "NULL";
+	case U'\u0001':
+		return "START OF HEADING";
+	case U'\u0002':
+		return "START OF TEXT";
+	case U'\u0003':
+		return "END OF TEXT";
+	case U'\u0004':
+		return "END OF TRANSMISSION";
+	case U'\u0005':
+		return "ENQUIRY";
+	case U'\u0006':
+		return "ACKNOWLEDGE";
+	case U'\u0007':
+		return "BELL";
+	case U'\u0008':
+		return "BACKSPACE";
+	case U'\u0009':
+		return "HORIZONTAL TABULATION";
+	case U'\u000A':
+		return "::new LINE";
+	case U'\u000B':
+		return "VERTICAL TABULATION";
+	case U'\u000C':
+		return "FORM FEED";
+	case U'\u000D':
+		return "CARRIAGE RETURN";
+	case U'\u000E':
+		return "SHIFT OUT";
+	case U'\u000F':
+		return "SHIFT IN";
+	case U'\u0010':
+		return "DATA LINK ESCAPE";
+	case U'\u0011':
+		return "DEVICE CONTROL ONE";
+	case U'\u0012':
+		return "DEVICE CONTROL TWO";
+	case U'\u0013':
+		return "DEVICE CONTROL THREE";
+	case U'\u0014':
+		return "DEVICE CONTROL FOUR";
+	case U'\u0015':
+		return "NEGATIVE ACKNOWLEDGE";
+	case U'\u0016':
+		return "SYNCHRONOUS IDLE";
+	case U'\u0017':
+		return "END OF TRANSMISSION BLOCk";
+	case U'\u0018':
+		return "CANCEL";
+	case U'\u0019':
+		return "END OF MEDIUM";
+	case U'\u001A':
+		return "SUBSTITUTE";
+	case U'\u001B':
+		return "ESCAPE";
+	case U'\u001C':
+		return "FILE SEPERATOR";
+	case U'\u001D':
+		return "GROUP SEPERATOR";
+	case U'\u001E':
+		return "RECORD SEPERATOR";
+	case U'\u001F':
+		return "UNIT SEPERATOR";
+	case U'\u0020':
+		return "SPACE";
+	case U'\u0021':
+		return "EXCLAMATION MARK";
+	case U'\u0022':
+		return "QUOTATION MARK";
+	case U'\u0023':
+		return "NUMBER SIGN";
+	case U'\u0024':
+		return "DOLLAR SIGN";
+	case U'\u0025':
+		return "PERCENT SIGN";
+	case U'\u0026':
+		return "AMPERSAND";
+	case U'\u0027':
+		return "APOSTROPHE";
+	case U'\u0028':
+		return "LEFT PARANTHESIS";
+	case U'\u0029':
+		return "RIGHT PARANTHESIS";
+	case U'\u002A':
+		return "ASTERISK";
+	case U'\u002B':
+		return "PLUS SIGN";
+	case U'\u002C':
+		return "COMMA";
+	case U'\u002D':
+		return "HYPHEN-MINUS";
+	case U'\u002E':
+		return "FULL STOP";
+	case U'\u002F':
+		return "SOLIDUS";
+	case U'\u0030':
+		return "DIGIT ZERO";
+	case U'\u0031':
+		return "DIGIT ONE";
+	case U'\u0032':
+		return "DIGIT TWO";
+	case U'\u0033':
+		return "DIGIT THREE";
+	case U'\u0034':
+		return "DIGIT FOUR";
+	case U'\u0035':
+		return "DIGIT FIVE";
+	case U'\u0036':
+		return "DIGIT SIX";
+	case U'\u0037':
+		return "DIGIT SEVEN";
+	case U'\u0038':
+		return "DIGIT EIGHT";
+	case U'\u0039':
+		return "DIGIT NINE";
+	case U'\u003A':
+		return "COLON";
+	case U'\u003B':
+		return "SEMICOLON";
+	case U'\u003C':
+		return "LESS-THAN SIGN";
+	case U'\u003D':
+		return "EQUALS SIGN";
+	case U'\u003E':
+		return "GREATER-THAN SIGN";
+	case U'\u003F':
+		return "QUESTION MARK";
+	case U'\u0040':
+		return "COMMERCIAL AT";
+	case U'\u0041':
+		return "LATIN CAPITAL LETTER A";
+	case U'\u0042':
+		return "LATIN CAPITAL LETTER B";
+	case U'\u0043':
+		return "LATIN CAPITAL LETTER C";
+	case U'\u0044':
+		return "LATIN CAPITAL LETTER D";
+	case U'\u0045':
+		return "LATIN CAPITAL LETTER E";
+	case U'\u0046':
+		return "LATIN CAPITAL LETTER F";
+	case U'\u0047':
+		return "LATIN CAPITAL LETTER G";
+	case U'\u0048':
+		return "LATIN CAPITAL LETTER H";
+	case U'\u0049':
+		return "LATIN CAPITAL LETTER I";
+	case U'\u004A':
+		return "LATIN CAPITAL LETTER J";
+	case U'\u004B':
+		return "LATIN CAPITAL LETTER K";
+	case U'\u004C':
+		return "LATIN CAPITAL LETTER L";
+	case U'\u004D':
+		return "LATIN CAPITAL LETTER M";
+	case U'\u004E':
+		return "LATIN CAPITAL LETTER N";
+	case U'\u004F':
+		return "LATIN CAPITAL LETTER O";
+	case U'\u0050':
+		return "LATIN CAPITAL LETTER P";
+	case U'\u0051':
+		return "LATIN CAPITAL LETTER Q";
+	case U'\u0052':
+		return "LATIN CAPITAL LETTER R";
+	case U'\u0053':
+		return "LATIN CAPITAL LETTER S";
+	case U'\u0054':
+		return "LATIN CAPITAL LETTER T";
+	case U'\u0055':
+		return "LATIN CAPITAL LETTER ";
+	case U'\u0056':
+		return "LATIN CAPITAL LETTER V";
+	case U'\u0057':
+		return "LATIN CAPITAL LETTER W";
+	case U'\u0058':
+		return "LATIN CAPITAL LETTER X";
+	case U'\u0059':
+		return "LATIN CAPITAL LETTER Y";
+	case U'\u005A':
+		return "LATIN CAPITAL LETTER Z";
+	case U'\u005B':
+		return "LEFT SQUARE BRACKET";
+	case U'\u005C':
+		return "REVERSE SOLIDUS";
+	case U'\u005D':
+		return "RIGHT SQUARE BRACKET";
+	case U'\u005E':
+		return "CIRCUMFLEX ACCENT";
+	case U'\u005F':
+		return "LOW LINE";
+	case U'\u0060':
+		return "GRAVE ACCENT";
+	case U'\u0061':
+		return "LATIN SMALL LETTER A";
+	case U'\u0062':
+		return "LATIN SMALL LETTER B";
+	case U'\u0063':
+		return "LATIN SMALL LETTER C";
+	case U'\u0064':
+		return "LATIN SMALL LETTER D";
+	case U'\u0065':
+		return "LATIN SMALL LETTER E";
+	case U'\u0066':
+		return "LATIN SMALL LETTER F";
+	case U'\u0067':
+		return "LATIN SMALL LETTER G";
+	case U'\u0068':
+		return "LATIN SMALL LETTER H";
+	case U'\u0069':
+		return "LATIN SMALL LETTER I";
+	case U'\u006A':
+		return "LATIN SMALL LETTER J";
+	case U'\u006B':
+		return "LATIN SMALL LETTER K";
+	case U'\u006C':
+		return "LATIN SMALL LETTER L";
+	case U'\u006D':
+		return "LATIN SMALL LETTER M";
+	case U'\u006E':
+		return "LATIN SMALL LETTER N";
+	case U'\u006F':
+		return "LATIN SMALL LETTER O";
+	case U'\u0070':
+		return "LATIN SMALL LETTER P";
+	case U'\u0071':
+		return "LATIN SMALL LETTER Q";
+	case U'\u0072':
+		return "LATIN SMALL LETTER R";
+	case U'\u0073':
+		return "LATIN SMALL LETTER S";
+	case U'\u0074':
+		return "LATIN SMALL LETTER T";
+	case U'\u0075':
+		return "LATIN SMALL LETTER ";
+	case U'\u0076':
+		return "LATIN SMALL LETTER V";
+	case U'\u0077':
+		return "LATIN SMALL LETTER W";
+	case U'\u0078':
+		return "LATIN SMALL LETTER X";
+	case U'\u0079':
+		return "LATIN SMALL LETTER Y";
+	case U'\u007A':
+		return "LATIN SMALL LETTER Z";
+	case U'\u007B':
+		return "LEFT CURLY BRACKET";
+	case U'\u007C':
+		return "VERTICAL LINE";
+	case U'\u007D':
+		return "RIGHT CURLY BRACKET";
+	case U'\u007E':
+		return "TILDE";
+	case U'\u007F':
+		return "::delete";
+	/* LATIN-1 SUPPLEMENT: */
+	case U'\u0080':
+		return "PADDING CHARACTER";
+	case U'\u0081':
+		return "HIGH OCTET PRESET";
+	case U'\u0082':
+		return "BREAK PERMITTED HERE";
+	case U'\u0083':
+		return "NO BREAK HERE";
+	case U'\u0084':
+		return "INDEX";
+	case U'\u0085':
+		return "NEXT LINE";
+	case U'\u0086':
+		return "START OF SELECTED AREA";
+	case U'\u0087':
+		return "END OF SELECTED AREA";
+	case U'\u0088':
+		return "CHARACTER TABULATION SET";
+	case U'\u0089':
+		return "CHARACTER TABULATION WITH JUSTIFICATION";
+	case U'\u008A':
+		return "LINE TABULATION SET";
+	case U'\u008B':
+		return "PARTIAL LINE FORWARD";
+	case U'\u008C':
+		return "PARTIAL LINE BACKWARD";
+	case U'\u008D':
+		return "REVERSE LINE FEED";
+	case U'\u008E':
+		return "SINGLE SHIFT TWO";
+	case U'\u008F':
+		return "SINGLE SHIFT THREE";
+	case U'\u0090':
+		return "DEVICE CONTROL STRING";
+	case U'\u0091':
+		return "PRIVATE USE ONE";
+	case U'\u0092':
+		return "PRIVATE USE TWO";
+	case U'\u0093':
+		return "SET TRANSMIT STATE";
+	case U'\u0094':
+		return "CANCEL CHARACTER";
+	case U'\u0095':
+		return "MESSAGE WAITING";
+	case U'\u0096':
+		return "START OF GUARDED AREA";
+	case U'\u0097':
+		return "END OF GUARDED AREA";
+	case U'\u0098':
+		return "START OF STRING";
+	case U'\u0099':
+		return "SINGLE GRAPHIC CHARACTER INTRODUCER";
+	case U'\u009A':
+		return "SINGLE CHARACTER INTRODUCER";
+	case U'\u009B':
+		return "CONTROL SEQUENCE INTRODUCER";
+	case U'\u009C':
+		return "STRING TERMINATOR";
+	case U'\u009D':
+		return "OPERATING SYSTEM COMMAND";
+	case U'\u009E':
+		return "PRIVACY MESSAGE";
+	case U'\u009F':
+		return "APPLICATION PROGRAM COMMAND";
+	case U'\u00A0':
+		return "NO-BREAK SPACE";
+	case U'\u00A1':
+		return "INVERTED EXCLAMATION MARK";
+	case U'\u00A2':
+		return "CENT SIGN";
+	case U'\u00A3':
+		return "POUND SIGN";
+	case U'\u00A4':
+		return "CURRENCY SIGN";
+	case U'\u00A5':
+		return "YEN SIGN";
+	case U'\u00A6':
+		return "BROKEN BAR";
+	case U'\u00A7':
+		return "SECTION SIGN";
+	case U'\u00A8':
+		return "DIAERESIS";
+	case U'\u00A9':
+		return "COPYRIGHT SIGN";
+	case U'\u00AA':
+		return "FEMININE ORDINAL INDICATOR";
+	case U'\u00AB':
+		return "LEFT-POINTING DOUBLE ANGLE QUOTATION MARK";
+	case U'\u00AC':
+		return "NOT SIGN";
+	case U'\u00AD':
+		return "SOFT HYPHEN";
+	case U'\u00AE':
+		return "REGISTERED SIGN";
+	case U'\u00AF':
+		return "MACRON";
+	case U'\u00B0':
+		return "DEGREE SIGN";
+	case U'\u00B1':
+		return "PLUS MINUS SYMBOL";
+	case U'\u00B2':
+		return "SUPERSCRIPT TWO";
+	case U'\u00B3':
+		return "SUPERSCRIPT THREE";
+	case U'\u00B4':
+		return "ACUTE ACCENT";
+	case U'\u00B5':
+		return "MICRO SIGN";
+	case U'\u00B6':
+		return "PILCROW SIGN";
+	case U'\u00B7':
+		return "MIDDLE DOT";
+	case U'\u00B8':
+		return "CEDILLA";
+	case U'\u00B9':
+		return "SUPERSCRIPT ONE";
+	case U'\u00BA':
+		return "MASCULINE ORDINAL INDICATOR";
+	case U'\u00BB':
+		return "RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK";
+	case U'\u00BC':
+		return "VULGAR FRACTION ONE QUARTER";
+	case U'\u00BD':
+		return "VULGAR FRACTION ONE HALF";
+	case U'\u00BE':
+		return "VULGAR FRACTION THREE QUARTERS";
+	case U'\u00BF':
+		return "INVERTED QUESTION MARK";
+	case U'\u00C0':
+		return "LATIN CAPITAL LETTER A WITH GRAVE";
+	case U'\u00C1':
+		return "LATIN CAPITAL LETTER A WITH ACUTE";
+	case U'\u00C2':
+		return "LATIN CAPITAL LETTER A WITH CIRCUMFLEX";
+	case U'\u00C3':
+		return "LATIN CAPITAL LETTER A WITH TILDE";
+	case U'\u00C4':
+		return "LATIN CAPITAL LETTER A WITH DIAERESIS";
+	case U'\u00C5':
+		return "LATIN CAPITAL LETTER A WITH RING ABOVE";
+	case U'\u00C6':
+		return "LATIN CAPITAL LETTER AE";
+	case U'\u00C7':
+		return "LATIN CAPITAL LETTER C WITH CEDILLA";
+	case U'\u00C8':
+		return "LATIN CAPITAL LETTER E WITH GRAVE";
+	case U'\u00C9':
+		return "LATIN CAPITAL LETTER E WITH ACUTE";
+	case U'\u00CA':
+		return "LATIN CAPITAL LETTER E WITH CIRCUMFLEX";
+	case U'\u00CB':
+		return "LATIN CAPITAL LETTER E WITH DIAERESIS";
+	case U'\u00CC':
+		return "LATIN CAPITAL LETTER I WITH GRAVE";
+	case U'\u00CD':
+		return "LATIN CAPITAL LETTER I WITH ACUTE";
+	case U'\u00CE':
+		return "LATIN CAPITAL LETTER I WITH CIRCUMFLEX";
+	case U'\u00CF':
+		return "LATIN CAPITAL LETTER I WITH DIAERESIS";
+	case U'\u00D0':
+		return "LATIN CAPITAL LETTER ETH";
+	case U'\u00D1':
+		return "LATIN CAPITAL LETTER N WITH TILDE";
+	case U'\u00D2':
+		return "LATIN CAPITAL LETTER O WITH GRAVE";
+	case U'\u00D3':
+		return "LATIN CAPITAL LETTER O WITH ACUTE";
+	case U'\u00D4':
+		return "LATIN CAPITAL LETTER O WITH CIRCUMFLEX";
+	case U'\u00D5':
+		return "LATIN CAPITAL LETTER O WITH TILDE";
+	case U'\u00D6':
+		return "LATIN CAPITAL LETTER O WITH DIAERESIS";
+	case U'\u00D7':
+		return "MULTIPLICATION SIGN";
+	case U'\u00D8':
+		return "LATIN CAPITAL LETTER O WITH STROKE";
+	case U'\u00D9':
+		return "LATIN CAPITAL LETTER U WITH GRAVE";
+	case U'\u00DA':
+		return "LATIN CAPITAL LETTER U WITH ACUTE";
+	case U'\u00DB':
+		return "LATIN CAPITAL LETTER U WITH CIRCUMFLEX";
+	case U'\u00DC':
+		return "LATIN CAPITAL LETTER U WITH DIAERESIS";
+	case U'\u00DD':
+		return "LATIN CAPITAL LETTER Y WITH ACUTE";
+	case U'\u00DE':
+		return "LATIN CAPITAL LETTER THORN";
+	case U'\u00DF':
+		return "LATIN SMALL LETTER SHARP S";
+	case U'\u00E0':
+		return "LATIN SMALL LETTER A WITH GRAVE";
+	case U'\u00E1':
+		return "LATIN SMALL LETTER A WITH ACUTE";
+	case U'\u00E2':
+		return "LATIN SMALL LETTER A WITH CIRCUMFLEX";
+	case U'\u00E3':
+		return "LATIN SMALL LETTER A WITH TILDE";
+	case U'\u00E4':
+		return "LATIN SMALL LETTER A WITH DIAERESIS";
+	case U'\u00E5':
+		return "LATIN SMALL LETTER A WITH RING ABOVE";
+	case U'\u00E6':
+		return "LATIN SMALL LETTER AE";
+	case U'\u00E7':
+		return "LATIN SMALL LETTER C WITH CEDILLA";
+	case U'\u00E8':
+		return "LATIN SMALL LETTER E WITH GRAVE";
+	case U'\u00E9':
+		return "LATIN SMALL LETTER E WITH ACUTE";
+	case U'\u00EA':
+		return "LATIN SMALL LETTER E WITH CIRCUMFLEX";
+	case U'\u00EB':
+		return "LATIN SMALL LETTER E WITH DIAERESIS";
+	case U'\u00EC':
+		return "LATIN SMALL LETTER I WITH GRAVE";
+	case U'\u00ED':
+		return "LATIN SMALL LETTER I WITH ACUTE";
+	case U'\u00EE':
+		return "LATIN SMALL LETTER I WITH CIRCUMFLEX";
+	case U'\u00EF':
+		return "LATIN SMALL LETTER I WITH DIAERESIS";
+	case U'\u00F0':
+		return "LATIN SMALL LETTER ETH";
+	case U'\u00F1':
+		return "LATIN SMALL LETTER N WITH TILDE";
+	case U'\u00F2':
+		return "LATIN SMALL LETTER O WITH GRAVE";
+	case U'\u00F3':
+		return "LATIN SMALL LETTER O WITH ACUTE";
+	case U'\u00F4':
+		return "LATIN SMALL LETTER O WITH CIRCUMFLEX";
+	case U'\u00F5':
+		return "LATIN SMALL LETTER O WITH TILDE";
+	case U'\u00F6':
+		return "LATIN SMALL LETTER O WITH DIAERESIS";
+	case U'\u00F7':
+		return "DIVISION SIGN";
+	case U'\u00F8':
+		return "LATIN SMALL LETTER O WITH STROKE";
+	case U'\u00F9':
+		return "LATIN SMALL LETTER U WITH GRAVE";
+	case U'\u00FA':
+		return "LATIN SMALL LETTER U WITH ACUTE";
+	case U'\u00FB':
+		return "LATIN SMALL LETTER U WITH CIRCUMFLEX";
+	case U'\u00FC':
+		return "U WITH TWO DOTS";
+	case U'\u00FD':
+		return "LATIN SMALL LETTER Y WITH ACUTE";
+	case U'\u00FE':
+		return "LATIN SMALL LETTER THORN";
+	case U'\u00FF':
+		return "LATIN SMALL LETTER Y WITH DIAERESIS";
+	/* LATIN EXTENDED-A: */
+	case U'\u0100':
+		return "LATIN CAPITAL LETTER A WITH MACRON";
+	case U'\u0101':
+		return "LATIN SMALL LETTER A WITH MACRON";
+	case U'\u0102':
+		return "LATIN CAPITAL LETTER A WITH BREVE";
+	case U'\u0103':
+		return "LATIN SMALL LETTER A WITH BREVE";
+	case U'\u0104':
+		return "LATIN CAPITAL LETTER A WITH OGONEK";
+	case U'\u0105':
+		return "LATIN SMALL LETTER A WITH OGONEK";
+	case U'\u0106':
+		return "LATIN CAPITAL LETTER C WITH ACUTE";
+	case U'\u0107':
+		return "LATIN SMALL LETTER C WITH ACUTE";
+	case U'\u0108':
+		return "LATIN CAPITAL LETTER C WITH CIRCUMFLEX";
+	case U'\u0109':
+		return "LATIN SMALL LETTER C WITH CIRCUMFLEX";
+	case U'\u010A':
+		return "LATIN CAPITAL LETTER C WITH DOT ABOVE";
+	case U'\u010B':
+		return "LATIN SMALL LETTER C WITH DOT ABOVE";
+	case U'\u010C':
+		return "LATIN CAPITAL LETTER C WITH CARON";
+	case U'\u010D':
+		return "LATIN SMALL LETTER C WITH CARON";
+	case U'\u010E':
+		return "LATIN CAPITAL LETTER D WITH CARON";
+	case U'\u010F':
+		return "LATIN SMALL LETTER D WITH CARON";
+	case U'\u0110':
+		return "LATIN CAPITAL LETTER D WITH STROKE";
+	case U'\u0111':
+		return "LATIN SMALL LETTER D WITH STROKE";
+	case U'\u0112':
+		return "LATIN CAPITAL LETTER E WITH MACRON";
+	case U'\u0113':
+		return "LATIN SMALL LETTER E WITH MACRON";
+	case U'\u0114':
+		return "LATIN CAPITAL LETTER E WITH BREVE";
+	case U'\u0115':
+		return "LATIN SMALL LETTER E WITH BREVE";
+	case U'\u0116':
+		return "LATIN CAPITAL LETTER E WITH DOT ABOVE";
+	case U'\u0117':
+		return "LATIN SMALL LETTER E WITH DOT ABOVE";
+	case U'\u0118':
+		return "LATIN CAPITAL LETTER E WITH OGONEK";
+	case U'\u0119':
+		return "LATIN SMALL LETTER E WITH OGONEK";
+	case U'\u011A':
+		return "LATIN CAPITAL LETTER E WITH CARON";
+	case U'\u011B':
+		return "LATIN SMALL LETTER E WITH CARON";
+	case U'\u011C':
+		return "LATIN CAPITAL LETTER G WITH CIRCUMFLEX";
+	case U'\u011D':
+		return "LATIN SMALL LETTER G WITH CIRCUMFLEX";
+	case U'\u011E':
+		return "LATIN CAPITAL LETTER G WITH BREVE";
+	case U'\u011F':
+		return "LATIN SMALL LETTER G WITH BREVE";
+	case U'\u0120':
+		return "LATIN CAPITAL LETTER G WITH DOT ABOVE";
+	case U'\u0121':
+		return "LATIN SMALL LETTER G WITH DOT ABOVE";
+	case U'\u0122':
+		return "LATIN CAPITAL LETTER G WITH CEDILLA";
+	case U'\u0123':
+		return "LATIN SMALL LETTER G WITH CEDILLA";
+	case U'\u0124':
+		return "LATIN CAPITAL LETTER H WITH CIRCUMFLEX";
+	case U'\u0125':
+		return "LATIN SMALL LETTER H WITH CIRCUMFLEX";
+	case U'\u0126':
+		return "LATIN CAPITAL LETTER H WITH STROKE";
+	case U'\u0127':
+		return "LATIN SMALL LETTER H WITH STROKE";
+	case U'\u0128':
+		return "LATIN CAPITAL LETTER I WITH TILDE";
+	case U'\u0129':
+		return "LATIN SMALL LETTER I WITH TILDE";
+	case U'\u012A':
+		return "LATIN CAPITAL LETTER I WITH MACRON";
+	case U'\u012B':
+		return "LATIN SMALL LETTER I WITH MACRON";
+	case U'\u012C':
+		return "LATIN CAPITAL LETTER I WITH BREVE";
+	case U'\u012D':
+		return "LATIN SMALL LETTER I WITH BREVE";
+	case U'\u012E':
+		return "LATIN CAPITAL LETTER I WITH OGONEK";
+	case U'\u012F':
+		return "LATIN SMALL LETTER I WITH OGONEK";
+	case U'\u0130':
+		return "LATIN CAPITAL LETTER I WITH DOT ABOVE";
+	case U'\u0131':
+		return "LATIN SMALL LETTER DOTLESS I";
+	case U'\u0132':
+		return "LATIN CAPITAL LIGATURE IJ";
+	case U'\u0133':
+		return "LATIN SMALL LIGATURE IJ";
+	case U'\u0134':
+		return "LATIN CAPITAL LETTER J WITH CIRCUMFLEX";
+	case U'\u0135':
+		return "LATIN SMALL LETTER J WITH CIRCUMFLEX";
+	case U'\u0136':
+		return "LATIN CAPITAL LETTER K WITH CEDILLA";
+	case U'\u0137':
+		return "LATIN SMALL LETTER K WITH CEDILLA";
+	case U'\u0138':
+		return "LATIN SMALL LETTER KRA";
+	case U'\u0139':
+		return "LATIN CAPITAL LETTER L WITH ACUTE";
+	case U'\u013A':
+		return "LATIN SMALL LETTER L WITH ACUTE";
+	case U'\u013B':
+		return "LATIN CAPITAL LETTER L WITH CEDILLA";
+	case U'\u013C':
+		return "LATIN SMALL LETTER L WITH CEDILLA";
+	case U'\u013D':
+		return "LATIN CAPITAL LETTER L WITH CARON";
+	case U'\u013E':
+		return "LATIN SMALL LETTER L WITH CARON";
+	case U'\u013F':
+		return "LATIN CAPITAL LETTER L WITH MDDLE DOT";
+	case U'\u0140':
+		return "LATIN SMALL LETTER L WITH MIDDLE DOT";
+	case U'\u0141':
+		return "LATIN CAPITAL LETTER L WITH STROKE";
+	case U'\u0142':
+		return "LATIN SMALL LETTER L WITH STROKE";
+	case U'\u0143':
+		return "LATIN CAPITAL LETTER N WITH ACUTE";
+	case U'\u0144':
+		return "LATIN SMALL LETTER N WITH ACUTE";
+	case U'\u0145':
+		return "LATIN CAPITAL LETTER N WITH CEDILLA";
+	case U'\u0146':
+		return "LATIN SMALL LETTER N WITH CEDILLA";
+	case U'\u0147':
+		return "LATIN CAPITAL LETTER N WITH CARON";
+	case U'\u0148':
+		return "LATIN SMALL LETTER N WITH CARON";
+	case U'\u0149':
+		return "LATIN SMALL LETTER N PRECEDED BY APOSTROPHE";
+	case U'\u014A':
+		return "LATIN CAPITAL LETTER ENG";
+	case U'\u014B':
+		return "LATIN SMALL LETTER ENG";
+	case U'\u014C':
+		return "LATIN CAPITAL LETTER O WITH MACRON";
+	case U'\u014D':
+		return "LATIN SMALL LETTER O WITH MACRON";
+	case U'\u014E':
+		return "LATIN CAPITAL LETTER O WITH BREVE";
+	case U'\u014F':
+		return "LATIN SMALL LETTER O WITH BREVE";
+	case U'\u0150':
+		return "LATIN CAPITAL LETTER O WITH DOUBLE ACUTE";
+	case U'\u0160':
+		return "LATIN CAPITAL LETTER S WITH CARON";
+	case U'\u0170':
+		return "LATIN CAPITAL LETTER U WITH DOUBLE ACUTE";
+	/* LATIN EXTENDED-B: */
+	case U'\u0180':
+		return "LATIN SMALL LETTER B WITH STROKE";
+	case U'\u0190':
+		return "LATIN CAPITAL LETTER OPEN E";
+	case U'\u01A0':
+		return "LATIN CAPITAL LETTER O WITH HORN";
+	case U'\u01B0':
+		return "LATIN SMALL LETTER U WITH HORN";
+	case U'\u01C0':
+		return "LATIN LETTER DENTAL CLICK";
+	case U'\u01D0':
+		return "LATIN SMALL LETTER I WITH CARON";
+	case U'\u01E0':
+		return "LATIN CAPITAL LETTER A WITH DOT ABOVE AND MACRON";
+	case U'\u01F0':
+		return "LATIN SMALL LETTER J WITH CARON";
+	case U'\u0200':
+		return "LATIN CAPITAL LETTER A WITH DOUBLE GRAVE";
+	case U'\u0210':
+		return "LATIN CAPITAL LETTER R WITH DOUBLE GRAVE";
+	case U'\u0220':
+		return "LATIN CAPITAL LETTER N WITH LONG RIGHT LEG";
+	case U'\u0230':
+		return "LATIN CAPITAL LETTER O WITH DOT ABOVE AND MACRON";
+	case U'\u0240':
+		return "LATIN SMALL LETTER Z WITH SWASH TAIL";
+	/* IPA EXTENSIONS: */
+	case U'\u0250':
+		return "LATIN SMALL LETTER TURNED A";
+	case U'\u0251':
+		return "LATIN SMALL LETTER ALPHA";
+	case U'\u0252':
+		return "LATIN SMALL LETTER TURNED ALPHA";
+	case U'\u0253':
+		return "LATIN SMALL LETTER B WITH HOOK";
+	case U'\u0254':
+		return "LATIN SMALL LETTER OPEN O";
+	case U'\u0255':
+		return "LATIN SMALL LETTER C WITH CURL";
+	case U'\u0256':
+		return "LATIN SMALL LETTER D WITH TAIL";
+	case U'\u0257':
+		return "LATIN SMALL LETTER D WITH HOOK";
+	case U'\u0258':
+		return "LATIN SMALL LETTER REVERSED E";
+	case U'\u0259':
+		return "LATIN SMALL LETTER SCHWA";
+	case U'\u025A':
+		return "LATIN SMALL LETTER SCHWA WITH HOOK";
+	case U'\u025B':
+		return "LATIN SMALL LETTER OPEN E";
+	case U'\u025C':
+		return "LATIN SMALL LETTER REVERSED OPEN E";
+	case U'\u025D':
+		return "LATIN SMALL LETTER REVERSED OPEN E WITH HOOK";
+	case U'\u025E':
+		return "LATIN SMALL LETTER CLOSED REVERSED OPEN E";
+	case U'\u025F':
+		return "LATIN SMALL LETTER DOTLESS J WITH STROKE";
+	case U'\u0260':
+		return "LATIN SMALL LETTER G WITH HOOK";
+	case U'\u0261':
+		return "LATIN SMALL LETTER SCRIPT G";
+	case U'\u0262':
+		return "LATIN LETTER SMALL CAPITAL G";
+	case U'\u0263':
+		return "LATIN SMALL LETTER GAMMA";
+	case U'\u0264':
+		return "LATIN SMALL LETTER RAMS HORN";
+	case U'\u0265':
+		return "LATIN SMALL LETTER TURNED H";
+	case U'\u0266':
+		return "LATIN SMALL LETTER H WITH HOOK";
+	case U'\u0267':
+		return "LATIN SMALL LETTER HENG WITH HOOK";
+	case U'\u0268':
+		return "LATIN SMALL LETTER I WITH STROKE";
+	case U'\u0269':
+		return "LATIN SMALL LETTER IOTA";
+	case U'\u026A':
+		return "LATIN LETTER SMALL CAPITAL I";
+	case U'\u026B':
+		return "LATIN SMALL LETTER L WITH MIDDLE TILDE";
+	case U'\u026C':
+		return "LATIN SMALL LETTER L WITH BELT";
+	case U'\u026D':
+		return "LATIN SMALL LETTER L WITH RETROFLEX HOOK";
+	case U'\u026E':
+		return "LATIN SMALL LETTER LEZH";
+	case U'\u026F':
+		return "LATIN SMALL LETTER TURNED M";
+	case U'\u0270':
+		return "LATIN SMALL LETTER TURNED M WITH LONG LEG";
+	case U'\u0271':
+		return "LATIN SMALL LETTER M WITH HOOK";
+	case U'\u0272':
+		return "LATIN SMALL LETTER N WITH LEFT HOOK";
+	case U'\u0273':
+		return "LATIN SMALL LETTER N WITH RETROFLEX HOOK";
+	case U'\u0274':
+		return "LATIN LETTER SMALL CAPITAL N";
+	case U'\u0275':
+		return "LATIN SMALL LETTER BARRED O";
+	case U'\u0276':
+		return "LATIN LETTER SMALL CAPITAL OE";
+	case U'\u0277':
+		return "LATIN SMALL LETTER CLOSED OMEGA";
+	case U'\u0278':
+		return "LATIN SMALL LETTER PHI";
+	case U'\u0279':
+		return "LATIN SMALL LETTER TURNED R";
+	case U'\u027A':
+		return "LATIN SMALL LETTER TURNED R WITH LONG LEG";
+	case U'\u027B':
+		return "LATIN SMALL LETTER TURNED R WITH HOOK";
+	case U'\u027C':
+		return "LATIN SMALL LETTER R WITH LONG LEG";
+	case U'\u027D':
+		return "LATIN SMALL LETTER R WITH TAIL";
+	case U'\u027E':
+		return "LATIN SMALL LETTER R WITH FISHHOOK";
+	case U'\u027F':
+		return "LATIN SMALL LETTER REVERSED R WITH FISHHOOK";
+	case U'\u0280':
+		return "LATIN LETTER SMALL CAPITAL R";
+	case U'\u0281':
+		return "LATIN LETTER SMALL CAPITAL INVERTED R";
+	case U'\u0282':
+		return "LATIN SMALL LETTER S WITH HOOK";
+	case U'\u0283':
+		return "LATIN SMALL LETTER ESH";
+	case U'\u0284':
+		return "LATIN SMALL LETTER DOTLESS J WITH STROKE AND HOOK";
+	case U'\u0285':
+		return "LATIN SMALL LETTER SQUAT REVERSED ESH";
+	case U'\u0286':
+		return "LATIN SMALL LETTER SH WITH CURL";
+	case U'\u0287':
+		return "LATIN SMALL LETTER TURNED T";
+	case U'\u0288':
+		return "LATIN SMALL LETTER T WITH RETROFLEX HOOK";
+	case U'\u0289':
+		return "LATIN SMALL LETTER U BAR";
+	case U'\u028A':
+		return "LATIN SMALL LETTER UPSILON";
+	case U'\u028B':
+		return "LATIN SMALL LETTER V WTIH HOOK";
+	case U'\u028C':
+		return "LATIN SMALL LETTER TURNED V";
+	case U'\u028D':
+		return "LATIN SMALL LETTER TURNED W";
+	case U'\u028E':
+		return "LATIN SMALL LETTER TURNED Y";
+	case U'\u028F':
+		return "LATIN LETTER SMALL CAPITAL Y";
+	case U'\u0290':
+		return "LATIN SMALL LETTER Z WITH RETROFLEX HOOK";
+	case U'\u0291':
+		return "LATIN SMALL LETTER Z WITH RETROFLEX";
+	case U'\u0292':
+		return "LATIN SMALL LETTER EZH";
+	case U'\u0293':
+		return "LATIN SMALL LETTER EZH WITH CURL";
+	case U'\u0294':
+		return "LATIN LETTER GLOTTAL STOP";
+	case U'\u0295':
+		return "LATIN LETTER PHARYNGEAL VOICED FRICATIVE";
+	case U'\u0296':
+		return "LATIN LETTER INVERTED GLOTTAL STOP";
+	case U'\u0297':
+		return "LATIN LETTER STRETCHED C";
+	case U'\u0298':
+		return "LATIN LETTER BILABIAL CLICK";
+	case U'\u0299':
+		return "LATIN LETTER SMALL CAPITAL B";
+	case U'\u029A':
+		return "LATIN SMALL LETTER CLOSED OPEN E";
+	case U'\u029B':
+		return "LATIN LETTER SMALL CAPITAL G WITH HOOK";
+	case U'\u029C':
+		return "LATIN LETTER SMALL CAPITAL H";
+	case U'\u029D':
+		return "LATIN SMALL LETTER J WITH CROSSED-TAIL";
+	case U'\u029E':
+		return "LATIN SMALL LETTER TURNED K";
+	case U'\u029F':
+		return "LATIN LETTER SMALL CAPITAL L";
+	case U'\u02A0':
+		return "LATIN SMALL LETTER Q WITH HOOK";
+	case U'\u02A1':
+		return "LATIN LETTER GLOTTAL STOP WITH STROKE";
+	case U'\u02A2':
+		return "LATIN LETTER REVERSED GLOTTAL STOP WITH STROKE";
+	case U'\u02A3':
+		return "LATIN SMALL LETTER DZ DIGRAPH";
+	case U'\u02A4':
+		return "LATIN SMALL LETTER DEZH DIGRAPH";
+	case U'\u02A5':
+		return "LATIN SMALL LETTER DZ DIGRAPH WITH CURL";
+	case U'\u02A6':
+		return "LATIN SMALL LETTER TS DIGRAPH";
+	case U'\u02A7':
+		return "LATIN SMALL LETTER TESH DIGRAPH";
+	case U'\u02A8':
+		return "LATIN SMALL LETTER TC DIGRAPH WITH CURL";
+	case U'\u02A9':
+		return "LATIN SMALL LETTER FENG DIGRAPH";
+	case U'\u02AA':
+		return "LATIN SMALL LETTER LS DIGRAPH";
+	case U'\u02AB':
+		return "LATIN SMALL LETTER LZ DIGRAPH";
+	case U'\u02AC':
+		return "LATIN LETTER BILABIAL PERCUSSIVE";
+	case U'\u02AD':
+		return "LATIN LETTER BIDENTAL PERCUSSIVE";
+	case U'\u02AE':
+		return "LATIN SMALL LETTER TURNED H WITH FISHHOOK";
+	case U'\u02AF':
+		return "LATIN SMALL LETTER TURNED H WITH FISHHOOK AND TAIL";
+	/* SPACING MODIFIER LETTERS: */
+	case U'\u02B0':
+		return "MODIFIER LETTER SMALL H";
+	case U'\u02B1':
+		return "MODIFIER LETTER SMALL H WITH HOOK";
+	case U'\u02B2':
+		return "MODIFIER LETTER SMALL J";
+	case U'\u02B3':
+		return "MODIFIER LETTER SMALL R";
+	case U'\u02B4':
+		return "MODIFIER LETTER SMALL TURNED R";
+	case U'\u02B5':
+		return "MODIFIER LETTER SMALL TURNED R WITH HOOK";
+	case U'\u02B6':
+		return "MODIFIER LETTER SMALL CAPITAL INVERTED R";
+	case U'\u02B7':
+		return "MODIFIER LETTER SMALL W";
+	case U'\u02B8':
+		return "MODIFIER LETTER SMALL Y";
+	case U'\u02B9':
+		return "MODIFIER LETTER PRIME";
+	case U'\u02BA':
+		return "MODIFIER LETTER DOUBLE PRIME";
+	case U'\u02BB':
+		return "MODIFIER LETTER TURNED COMMA";
+	case U'\u02BC':
+		return "MODIFIER LETTER APOSTROPHE";
+	case U'\u02BD':
+		return "MODIFIER LETTER REVERSED COMMA";
+	case U'\u02BE':
+		return "MODIFIER LETTER RIGHT HALF RING";
+	case U'\u02BF':
+		return "MODIFIER LETTER LEFT HALF RING";
+	case U'\u02C0':
+		return "MODIFIER LETTER GLOTTAL STOP";
+	case U'\u02C1':
+		return "MODIFIER LETTER REVERSED GLOTTAL STOP";
+	case U'\u02C2':
+		return "MODIFIER LETTER LEFT ARROWHEAD";
+	case U'\u02C3':
+		return "MODIFIER LETTER RIGHT ARROWHEAD";
+	case U'\u02C4':
+		return "MODIFIER LETTER UP ARROWHEAD";
+	case U'\u02C5':
+		return "MODIFIER LETTER DOWN ARROWHEAD";
+	case U'\u02C6':
+		return "MODIFIER LETTER CIRCUMFLEX";
+	case U'\u02C7':
+		return "CARON";
+	case U'\u02C8':
+		return "MODIFIER LETTER VERTICAL LINE";
+	case U'\u02C9':
+		return "MODIFIER LETTER MACRON";
+	case U'\u02CA':
+		return "MODIFIER LETTER ACUTE ACCENT";
+	case U'\u02CB':
+		return "MODIFIER LETTER GRAVE ACCENT";
+	case U'\u02CC':
+		return "MODIFIER LETTER LOW VERTICAL LINE";
+	case U'\u02CD':
+		return "MODIFIER LETTER LOW MACRON";
+	case U'\u02CE':
+		return "MODIFIER LETTER LOW GRAVE ACCENT";
+	case U'\u02CF':
+		return "MODIFIER LETTER LOW ACUTE ACCENT";
+	case U'\u02D0':
+		return "MODIFIER LETTER TRIANGULAR COLON";
+	case U'\u02D1':
+		return "MODIFIER LETTER HALF TRIANGULAR COLON";
+	case U'\u02D2':
+		return "MODIFIER LETTER CENTRED RIGHT HALF RING";
+	case U'\u02D3':
+		return "MODIFIER LETTER CENTRED LEFT HALF RING";
+	case U'\u02D4':
+		return "MODIFIER LETTER UP TACK";
+	case U'\u02D5':
+		return "MODIFIER LETTER DOWN TACK";
+	case U'\u02D6':
+		return "MODIFIER LETTER PLUS SIGN";
+	case U'\u02D7':
+		return "MODIFIER LETTER MINUS SIGN";
+	case U'\u02D8':
+		return "BREVE";
+	case U'\u02D9':
+		return "DOT ABOVE";
+	case U'\u02DA':
+		return "RING ABOVE";
+	case U'\u02DB':
+		return "OGONEK";
+	case U'\u02DC':
+		return "SMALL TILDE";
+	case U'\u02DD':
+		return "DOUBLE ACUTE ACCENT";
+	case U'\u02DE':
+		return "MODIFIER LETTER RHOTIC HOOK";
+	case U'\u02DF':
+		return "MODIFIER LETTER CROSS ACCENT";
+	case U'\u02E0':
+		return "MODIFIER LETTER SMALL GAMMA";
+	case U'\u02E1':
+		return "MODIFIER LETTER SMALL L";
+	case U'\u02E2':
+		return "MODIFIER LETTER SMALL S";
+	case U'\u02E3':
+		return "MODIFIER LETTER SMALL X";
+	case U'\u02E4':
+		return "MODIFIER LETTER SMALL REVERSED GLOTTAL STOP";
+	case U'\u02E5':
+		return "MODIFIER LETTER EXTRA-HIGH TONE BAR";
+	case U'\u02E6':
+		return "MODIFIER LETTER HIGH TONE BAR";
+	case U'\u02E7':
+		return "MODIFIER LETTER MID TONE BAR";
+	case U'\u02E8':
+		return "MODIFIER LETTER LOW TONE BAR";
+	case U'\u02E9':
+		return "MODIFIER LETTER EXTRA-LOW TONE BAR";
+	case U'\u02EA':
+		return "MODIFIER LETTER YIN DEPARTING TONE MARK";
+	case U'\u02EB':
+		return "MODIFIER LETTER YANG DEPARTING TONE MARK";
+	case U'\u02EC':
+		return "MODIFIER LETTER VOICING";
+	case U'\u02ED':
+		return "MODIFIER LETTER UNASPIRATED";
+	case U'\u02EE':
+		return "MODIFIER LETTER DOUBLE APOSTROPHE";
+	case U'\u02EF':
+		return "MODIFIER LETTER LOW DOWN ARROWHEAD";
+	case U'\u02F0':
+		return "MODIFIER LETTER LOW UP ARROWHEAD";
+	case U'\u02F1':
+		return "MODIFIER LETTER LOW LEFT ARROWHEAD";
+	case U'\u02F2':
+		return "MODIFIER LETTER LOW RIGHT ARROWHEAD";
+	case U'\u02F3':
+		return "MODIFIER LETTER LOW RING";
+	case U'\u02F4':
+		return "MODIFIER LETTER MIDDLE GRAVE ACCENT";
+	case U'\u02F5':
+		return "MODIFIER LETTER MIDDLE DOUBLE GRAVE ACCENT";
+	case U'\u02F6':
+		return "MODIFIER LETTER MIDDLE DOUBLE ACUTE ACCENT";
+	case U'\u02F7':
+		return "MODIFIER LETTER LOW TILDE";
+	case U'\u02F8':
+		return "MODIFIER LETTER RAISED COLON";
+	case U'\u02F9':
+		return "MODIFIER LETTER BEGIN HIGH TONE";
+	case U'\u02FA':
+		return "MODIFIER LETTER END HIGH TONE";
+	case U'\u02FB':
+		return "MODIFIER LETTER BEGIN LOW TONE";
+	case U'\u02FC':
+		return "MODIFIER LETTER END LOW TONE";
+	case U'\u02FD':
+		return "MODIFIER LETTER SHELF";
+	case U'\u02FE':
+		return "MODIFIER LETTER OPEN SHELF";
+	case U'\u02FF':
+		return "MODIFIER LETTER LOW LEFT ARROWHEAD";
+	/* COMBINING DIACRITICAL MARKS: */
+	case U'\u0300':
+		return "COMBINING GRAVE ACCENT";
+	case U'\u0301':
+		return "COMBINING ACUTE ACCENT";
+	case U'\u0302':
+		return "COMBINING CIRCUMFLEX ACCENT";
+	case U'\u0303':
+		return "COMBINING TILDE";
+	case U'\u0304':
+		return "COMBINING MACRON";
+	case U'\u0305':
+		return "COMBINING OVERLINE";
+	case U'\u0306':
+		return "COMBINING BREVE";
+	case U'\u0307':
+		return "COMBINING DOT ABOVE";
+	case U'\u0308':
+		return "COMBINING DIAERESIS";
+	case U'\u0309':
+		return "COMBINING HOOK ABOVE";
+	case U'\u030A':
+		return "COMBINING RING ABOVE";
+	case U'\u030B':
+		return "COMBINING DOUBLE ACUTE ACCENT";
+	case U'\u030C':
+		return "COMBINING CARON";
+	case U'\u030D':
+		return "COMBINING VERTICAL LINE ABOVE";
+	case U'\u030E':
+		return "COMBINING DOUBLE VERTICAL LINE ABOVE";
+	case U'\u030F':
+		return "COMBINING DOUBLE GRAVE ACCENT";
+	case U'\u0310':
+		return "COMBINING CANDRABIND";
+	case U'\u0311':
+		return "COMBINING INVERTED BREVE";
+	case U'\u0312':
+		return "COMBINING TURNED COMMA ABOVE";
+	case U'\u0313':
+		return "COMBINING COMMA ABOVE";
+	case U'\u0314':
+		return "COMBINING REVERSED COMMA ABOVE";
+	case U'\u0315':
+		return "COMBINING COMMA ABOVE RIGHT";
+	case U'\u0316':
+		return "COMBINING GRAVE ACCENT BELOW";
+	case U'\u0317':
+		return "COMBINING ACUTE ACCENT BELOW";
+	case U'\u0318':
+		return "COMBINING LEFT TACK BELOW";
+	case U'\u0319':
+		return "COMBINING RIGHT TACK BELOW";
+	case U'\u031A':
+		return "COMBINING LEFT ANGLE ABOVE";
+	case U'\u031B':
+		return "COMBINING HORN";
+	case U'\u031C':
+		return "COMBINING LEFT HALF RING BELOW";
+	case U'\u031D':
+		return "COMBINING UP TACK BELOW";
+	case U'\u031E':
+		return "COMBINING DOWN TACK BELOW";
+	case U'\u031F':
+		return "COMBINING PLUS SIGN BELOW";
+	case U'\u0320':
+		return "COMBINING MINUS SIGN BELOW";
+	case U'\u0321':
+		return "COMBINING PALATALIZED HOOK BELOW";
+	case U'\u0322':
+		return "COMBINING RETROFLEX HOOK BELOW";
+	case U'\u0323':
+		return "COMBINING DOT BELOW";
+	case U'\u0324':
+		return "COMBINING DIAERESIS BELOW";
+	case U'\u0325':
+		return "COMBINING RING BELOW";
+	case U'\u0326':
+		return "COMBINING COMMA BELOW";
+	case U'\u0327':
+		return "COMBINING CEDILLA";
+	case U'\u0328':
+		return "COMBINING OGONEK";
+	case U'\u0329':
+		return "COMBINING VERTICAL LINE BELOW";
+	case U'\u032A':
+		return "COMBINING BRDIGE BELOW";
+	case U'\u032B':
+		return "COMBINING INVERTED DOUBLE ARCH BELOW";
+	case U'\u032C':
+		return "COMBINING CARON BELOW";
+	case U'\u032D':
+		return "COMBINING CIRCUMFLEX ACCENT BELOW";
+	case U'\u032E':
+		return "COMBINING BREVE BELOW";
+	case U'\u032F':
+		return "COMBINING INVERTED BREVE BELOW";
+	case U'\u0330':
+		return "COMBINING TILDE BELOW";
+	case U'\u0331':
+		return "COMBINING MACRON BELOW";
+	case U'\u0332':
+		return "COMBINING LOW LINE";
+	case U'\u0333':
+		return "COMBINING DOUBLE LOW LINE";
+	case U'\u0334':
+		return "COMBINING TILDE OVERLAY";
+	case U'\u0335':
+		return "COMBINING SHORT STROKE OVERLAY";
+	case U'\u0336':
+		return "COMBINING LONG STROKE OVERLAY";
+	case U'\u0337':
+		return "COMBINING SHORT SOLIDUS OVERLAY";
+	case U'\u0338':
+		return "COMBINING LONG SOLIDUS OVERLAY";
+	case U'\u0339':
+		return "COMBINING RIGHT HALF RING BELOW";
+	case U'\u033A':
+		return "COMBINING INVERTED BRIDGE BELOW";
+	case U'\u033B':
+		return "COMBINING SQUARE BELOW";
+	case U'\u033C':
+		return "COMBINING SEAGULL BELOW";
+	case U'\u033D':
+		return "COMBINING X ABOVE";
+	case U'\u033E':
+		return "COMBINING VERTICAL TILDE";
+	case U'\u033F':
+		return "COMBINING DOUBLE OVERLINE";
+	case U'\u0340':
+		return "COMBINING GRAVE TONE MARK";
+	case U'\u0341':
+		return "COMBINING ACUTE TONE MARK";
+	case U'\u0342':
+		return "COMBINING GREEK PERISPOMENI";
+	case U'\u0343':
+		return "COMBINING GREEK KORONIS";
+	case U'\u0344':
+		return "COMBINING GREEK DIALYTIKA TONOS";
+	case U'\u0345':
+		return "COMBINING GREEK YPOGEGRAMMENI";
+	case U'\u0346':
+		return "COMBINING BRIDGE ABOVE";
+	case U'\u0347':
+		return "COMBINING EQUALS SIGN BELOW";
+	case U'\u0348':
+		return "COMBINING DOUBLE VERTICAL LINE BELOW";
+	case U'\u0349':
+		return "COMBINING LEFT ANGLE BELOW";
+	case U'\u034A':
+		return "COMBINING NOT TILDE ABOVE";
+	case U'\u034B':
+		return "COMBINING HOMOTHETIC ABOVE";
+	case U'\u034C':
+		return "COMBINING ALMOST EQUAL TO ABOVE";
+	case U'\u034D':
+		return "COMBINING LEFT RIGHT ARROW BELOW";
+	case U'\u034E':
+		return "COMBINING UPWARDS ARROW BELOW";
+	case U'\u034F':
+		return "COMBINING GRAPHEME JOINER";
+	case U'\u0350':
+		return "COMBINING RIGHT ARROWHEAD ABOVE";
+	case U'\u0351':
+		return "COMBINING LEFT HALF RING ABOVE";
+	case U'\u0352':
+		return "COMBINING FERMATA";
+	case U'\u0353':
+		return "COMBINING X BELOW";
+	case U'\u0354':
+		return "COMBINING LEFT ARROWHEAD BELOW";
+	case U'\u0355':
+		return "COMBINING RIGHT ARROWHEAD BELOW";
+	case U'\u0356':
+		return "COMBINING RIGHT ARROWHEAD AND UP ARROWHEAD BELOW";
+	case U'\u0357':
+		return "COMBINING RIGHT HALF RING ABOVE";
+	case U'\u0358':
+		return "COMBINING DOT ABOVE RIGHT";
+	case U'\u0359':
+		return "COMBINING ASTERISK BELOW";
+	case U'\u035A':
+		return "COMBINING DOUBLE RING BELOW";
+	case U'\u035B':
+		return "COMBINING ZIGZAG ABOVE";
+	case U'\u035C':
+		return "COMBINING DOUBLE BREVE BELOW";
+	case U'\u035D':
+		return "COMBINING DOUBLE BREVE";
+	case U'\u035E':
+		return "COMBINING DOUBLE MACRON";
+	case U'\u035F':
+		return "COMBINING DOUBLE MACRON BELOW";
+	case U'\u0360':
+		return "COMBINING DOUBLE TILDE";
+	case U'\u0361':
+		return "COMBINING DOUBLE INVERTED BREVE";
+	case U'\u0362':
+		return "COMBINING DOUBLE RIGHTWARDS ARROW BELOW";
+	case U'\u0363':
+		return "COMBINING LATIN SMALL LETTER A";
+	case U'\u0364':
+		return "COMBINING LATIN SMALL LETTER E";
+	case U'\u0365':
+		return "COMBINING LATIN SMALL LETTER I";
+	case U'\u0366':
+		return "COMBINING LATIN SMALL LETTER O";
+	case U'\u0367':
+		return "COMBINING LATIN SMALL LETTER ";
+	case U'\u0368':
+		return "COMBINING LATIN SMALL LETTER C";
+	case U'\u0369':
+		return "COMBINING LATIN SMALL LETTER D";
+	case U'\u036A':
+		return "COMBINING LATIN SMALL LETTER H";
+	case U'\u036B':
+		return "COMBINING LATIN SMALL LETTER M";
+	case U'\u036C':
+		return "COMBINING LATIN SMALL LETTER R";
+	case U'\u036D':
+		return "COMBINING LATIN SMALL LETTER T";
+	case U'\u036E':
+		return "COMBINING LATIN SMALL LETTER V";
+	case U'\u036F':
+		return "COMBINING LATIN SMALL LETTER X";
+	/* GREEK AND COPTIC: */
+	case U'\u0370':
+		return "GREEK CAPITAL LETTER HETA";
+	case U'\u0371':
+		return "GREEK SMALL LETTER HETA";
+	case U'\u0372':
+		return "GREEK CAPITAL LETTER ARCHAIC SAMPI";
+	case U'\u0373':
+		return "GREEK SMALL LETTER ARCHAIC SAMPI";
+	case U'\u0374':
+		return "GREEK NUMERAL SIGN";
+	case U'\u0375':
+		return "GREEK LOWER NUMERAL SIGN";
+	case U'\u0376':
+		return "GREEK CAPITAL LETTER PAMPHYLIAN DIGAMMA";
+	case U'\u0377':
+		return "GREEK SMALL LETTER PAMPHYLIAN DIGAMMA";
+	case U'\u037A':
+		return "GREEK YPOGEGRAMMENI";
+	case U'\u037B':
+		return "GREEK SMALL REVERSED LUNATE SIGMA SYMBOL";
+	case U'\u037C':
+		return "GREEK SMALL DOTTED LUNATE SIGMA SYMBOL";
+	case U'\u037D':
+		return "GREEK SMALL REVERSED DOTTED LUNATE SIGMAL SYMBOL";
+	case U'\u037E':
+		return "GREEK QUESTION MARK";
+	case U'\u037F':
+		return "GREEK CAPITAL LETTER YOT";
+	case U'\u0384':
+		return "GREEK TONOS";
+	case U'\u0385':
+		return "GREEK DIALYTIKA TONOS";
+	case U'\u0386':
+		return "GREEK CAPITAL LETTER ALPHA WITH TONOS";
+	case U'\u0387':
+		return "GREEK ANO TELEIA";
+	case U'\u0388':
+		return "GREEK CAPITAL LETTER EPSILON WITH TONOS";
+	case U'\u0389':
+		return "GREEK CAPITAL LETTER ETA WITH TONOS";
+	case U'\u038A':
+		return "GREEK CAPITAL LETTER IOTA WITH TONOS";
+	case U'\u038C':
+		return "GREEK CAPITAL LETTER OMICRON WITH TONOS";
+	case U'\u038E':
+		return "GREEK CAPITAL LETTER USPILON WITH TONOS";
+	case U'\u038F':
+		return "GREEK CAPITAL LETTER OMEGA WITH TONOS";
+	case U'\u0390':
+		return "GREEK SMALL LETTER IOTA WITH DIALYTIKA AND TONOS";
+	case U'\u0391':
+		return "GREEK CAPITAL LETTER ALPHA";
+	case U'\u0392':
+		return "GREEK CAPITAL LETTER BETA";
+	case U'\u0393':
+		return "GREEK CAPITAL LETTER GAMMA";
+	case U'\u0394':
+		return "GREEK CAPITAL LETTER DELTA";
+	case U'\u0395':
+		return "GREEK CAPITAL LETTER EPSILON";
+	case U'\u0396':
+		return "GREEK CAPITAL LETTER ZETA";
+	case U'\u0397':
+		return "GREEK CAPITAL LETTER ETA";
+	case U'\u0398':
+		return "GREEK CAPITAL LETTER THETA";
+	case U'\u0399':
+		return "GREEK CAPITAL LETTER IOTA";
+	case U'\u039A':
+		return "GREEK CAPITAL LETTER KAPPA";
+	case U'\u039B':
+		return "GREEK CAPITAL LETTER LAMBDA";
+	case U'\u039C':
+		return "GREEK CAPITAL LETTER M";
+	case U'\u039D':
+		return "GREEK CAPITAL LETTER N";
+	case U'\u039E':
+		return "GREEK CAPITAL LETTER XI";
+	case U'\u039F':
+		return "GREEK CAPITAL LETTER OMICRON";
+	case U'\u03A0':
+		return "GREEK CAPITAL LETTER PI";
+	case U'\u03A1':
+		return "GREEK CAPITAL LETTER RHO";
+	case U'\u03A3':
+		return "GREEK CAPITAL LETTER SIGMA";
+	case U'\u03A4':
+		return "GREEK CAPITAL LETTER TA";
+	case U'\u03A5':
+		return "GREEK CAPITAL LETTER UPSILON";
+	case U'\u03A6':
+		return "GREEK CAPITAL LETTER PHI";
+	case U'\u03A7':
+		return "GREEK CAPITAL LETTER CHI";
+	case U'\u03A8':
+		return "GREEK CAPITAL LETTER PSI";
+	case U'\u03A9':
+		return "GREEK CAPITAL LETTER OMEGA";
+	case U'\u03AA':
+		return "GREEK CAPITAL LETTER IOTA WITH DIALYTIKA";
+	case U'\u03AB':
+		return "GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA";
+	case U'\u03AC':
+		return "GREEK SMALL LETTER ALPHA WITH TONOS";
+	case U'\u03AD':
+		return "GREEK SMALL LETTER EPSILON WITH TONOS";
+	case U'\u03AE':
+		return "GREEK SMALL LETTER ETA WITH TONOS";
+	case U'\u03AF':
+		return "GREEK SMALL LETTER IOTA WITH TONOS";
+	case U'\u03B0':
+		return "GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND TONOS";
+	case U'\u03B1':
+		return "GREEK SMALL LETTER ALPHA";
+	case U'\u03B2':
+		return "GREEK SMALL LETTER BETA";
+	case U'\u03B3':
+		return "GREEK SMALL LETTER GAMMA";
+	case U'\u03B4':
+		return "GREEK SMALL LETTER DELTA";
+	case U'\u03B5':
+		return "GREEK SMALL LETTER EPSILON";
+	case U'\u03B6':
+		return "GREEK SMALL LETTER ZETA";
+	case U'\u03B7':
+		return "GREEK SMALL LETTER ETA";
+	case U'\u03B8':
+		return "GREEK SMALL LETTER THETA";
+	case U'\u03B9':
+		return "GREEK SMALL LETTER IOTA";
+	case U'\u03BA':
+		return "GREEK SMALL LETTER KAPPA";
+	case U'\u03BB':
+		return "GREEK SMALL LETTER LAMBDA";
+	case U'\u03BC':
+		return "GREEK SMALL LETTER M";
+	case U'\u03BD':
+		return "GREEK SMALL LETTER N";
+	case U'\u03BE':
+		return "GREEK SMALL LETTER XI";
+	case U'\u03BF':
+		return "GREEK SMALL LETTER OMICRON";
+	case U'\u03C0':
+		return "GREEK SMALL LETTER PI";
+	case U'\u03C1':
+		return "GREEK SMALL LETTER RHO";
+	case U'\u03C2':
+		return "GREEK SMALL LETTER FINAL SIGMA";
+	case U'\u03C3':
+		return "GREEK SMALL LETTER SIGMA";
+	case U'\u03C4':
+		return "GREEK SMALL LETTER TA";
+	case U'\u03C5':
+		return "GREEK SMALL LETTER UPSILON";
+	case U'\u03C6':
+		return "GREEK SMALL LETTER PHI";
+	case U'\u03C7':
+		return "GREEK SMALL LETTER CHI";
+	case U'\u03C8':
+		return "GREEK SMALL LETTER PSI";
+	case U'\u03C9':
+		return "GREEK SMALL LETTER OMEGA";
+	case U'\u03CA':
+		return "GREEK SMALL LETTER IOTA WITH DIALYTIKA";
+	case U'\u03CB':
+		return "GREEK SMALL LETTER UPSILON WITH DIALYTIKA";
+	case U'\u03CC':
+		return "GREEK SMALL LETTER OMICRON WITH TONOS";
+	case U'\u03CD':
+		return "GREEK SMALL LETTER UPSILON WITH TONOS";
+	case U'\u03CE':
+		return "GREEK SMALL LETTER OMEGA WITH TONOS";
+	case U'\u03CF':
+		return "GREEK CAPITAL KAI SYMBOL";
+	case U'\u03D0':
+		return "GREEK BETA SYMBOL";
+	case U'\u03D1':
+		return "GREEK THETA SYMBOL";
+	case U'\u03D2':
+		return "GREEK UPSILON WITH HOOK SYMBOL";
+	case U'\u03D3':
+		return "GREEK UPSILON WITH ACUTE AND HOOK SYMBOL";
+	case U'\u03D4':
+		return "GREEK UPSILON WITH DIAERESIS AND HOOK SYMBOL";
+	case U'\u03D5':
+		return "GREEK PHI SYMBOL";
+	case U'\u03D6':
+		return "GREEK PI SYMBOL";
+	case U'\u03D7':
+		return "GREEK KAI SYMBOL";
+	case U'\u03D8':
+		return "GREEK LETTER ARCHAIC KOPPA";
+	case U'\u03D9':
+		return "GREEK SMALL LETTER ARCHAIC KOPPA";
+	case U'\u03DA':
+		return "GREEK LETTER STIGMA";
+	case U'\u03DB':
+		return "GREEK SMALL LETTER STIGMA";
+	case U'\u03DC':
+		return "GREEK LETTER DIGAMMA";
+	case U'\u03DD':
+		return "GREEK SMALL LETTER DIGAMMA";
+	case U'\u03DE':
+		return "GREEK LETTER KOPPA";
+	case U'\u03DF':
+		return "GREEK SMALL LETTER KOPPA";
+	case U'\u03E0':
+		return "GREEK LETTER SAMPI";
+	case U'\u03F0':
+		return "GREEK KAPPA SYMBOL";
+	/* HEBREW: */
+	case U'\u05D0':
+		return "HEBREW LETTER ALEF";
+	case U'\u05D1':
+		return "HEBREW LETTER BET";
+	case U'\u05D2':
+		return "HEBREW LETTER GIMEL";
+	case U'\u05D3':
+		return "HEBREW LETTER DALET";
+	case U'\u05D4':
+		return "HEBREW LETTER HE";
+	case U'\u05D5':
+		return "HEBREW LETTER VAV";
+	case U'\u05D6':
+		return "HEBREW LETTER ZAYIN";
+	case U'\u05D7':
+		return "HEBREW LETTER HET";
+	case U'\u05D8':
+		return "HEBREW LETTER TET";
+	case U'\u05D9':
+		return "HEBREW LETTER YOD";
+	case U'\u05DA':
+		return "HEBREW LETTER FINAL KAF";
+	case U'\u05DB':
+		return "HEBREW LETTER KAF";
+	case U'\u05DC':
+		return "HEBREW LETTER LAMED";
+	case U'\u05DD':
+		return "HEBREW LETTER FINAL MEM";
+	case U'\u05DE':
+		return "HEBREW LETTER MEM";
+	case U'\u05DF':
+		return "HEBREW LETTER FINAL NUN";
+	case U'\u05E0':
+		return "HEBREW LETTER NUN";
+	case U'\u05E1':
+		return "HEBREW LETTER SAMEKH";
+	case U'\u05E2':
+		return "HEBREW LETTER AYIN";
+	case U'\u05E3':
+		return "HEBREW LETTER FINAL PE";
+	case U'\u05E4':
+		return "HEBREW LETTER PE";
+	case U'\u05E5':
+		return "HEBREW LETTER FINAL TSADI";
+	case U'\u05E6':
+		return "HEBREW LETTER TSADI";
+	case U'\u05E7':
+		return "HEBREW LETTER QOF";
+	case U'\u05E8':
+		return "HEBREW LETTER RESH";
+	case U'\u05E9':
+		return "HEBREW LETTER SHIN";
+	case U'\u05EA':
+		return "HEBREW LETTER TAV";
+	case U'\u05EF':
+		return "HEBREW YOD TRIANGLE";
+	/* CYRILLIC: */
+	case U'\u0400':
+		return "CYRILLIC CAPITAL LETTER LE WITH GRAVE";
+	case U'\u0401':
+		return "CYRILLIC CAPITAL LETTER LO";
+	case U'\u0402':
+		return "CYRILLIC CAPITAL LETTER DJE";
+	case U'\u0403':
+		return "CYRILLIC CAPITAL LETTER GJE";
+	case U'\u0404':
+		return "CYRILLIC CAPITAL LETTER UKRAINIAN LE";
+	case U'\u0405':
+		return "CYRILLIC CAPITAL LETTER DZE";
+	case U'\u0406':
+		return "CYRILLIC CAPITAL LETTER BYELORUSSIAN-UKRAINIAN I";
+	case U'\u0407':
+		return "CYRILLIC CAPITAL LETTER YI";
+	case U'\u0408':
+		return "CYRILLIC CAPITAL LETTER JE";
+	case U'\u0409':
+		return "CYRILLIC CAPITAL LETTER LJE";
+	case U'\u040A':
+		return "CYRILLIC CAPITAL LETTER NJE";
+	case U'\u040B':
+		return "CYRILLIC CAPITAL LETTER TSHE";
+	case U'\u040C':
+		return "CYRILLIC CAPITAL LETTER KJE";
+	case U'\u040D':
+		return "CYRILLIC CAPITAL LETTER I WITH GRAVE";
+	case U'\u040E':
+		return "CYRILLIC CAPITAL LETTER SHORT ";
+	case U'\u040F':
+		return "CYRILLIC CAPITAL LETTER DZHE";
+	case U'\u0410':
+		return "CYRILLIC CAPITAL LETTER A";
+	case U'\u0420':
+		return "CYRILLIC CAPITAL LETTER ER";
+	case U'\u0430':
+		return "CYRILLIC SMALL LETTER A";
+	case U'\u0440':
+		return "CYRILLIC SMALL LETTER ER";
+	case U'\u0450':
+		return "CYRILLIC SMALL LETTER LE WITH GRAVE";
+	case U'\u0460':
+		return "CYRILLIC CAPITAL LETTER OMEGA";
+	case U'\u0470':
+		return "CYRILLIC CAPITAL LETTER PSI";
+	case U'\u0480':
+		return "CYRILLIC CAPITAL LETTER KOPPA";
+	case U'\u0490':
+		return "CYRILLIC CAPITAL LETTER GHE WITH UPTURN";
+	case U'\u04A0':
+		return "CYRILLIC CAPITAL LETTER BASHKIR KA";
+	case U'\u04B0':
+		return "CYRILLIC CAPITAL LETTER STRAIGHT U WITH STROKE";
+	case U'\u04C0':
+		return "CYRILLIC LETTER PALOCHKA";
+	case U'\u04D0':
+		return "CYRILLIC CAPITAL LETTER A WITH BREVE";
+	case U'\u04E0':
+		return "CYRILLIC CAPITAL LETTER ABKHASIAN DZE";
+	case U'\u04F0':
+		return "CYRILLIC CAPITAL LETTER U WITH DIAERESIS";
+	/* SYRIAC SUPPLEMENT: */
+	case U'\u0860':
+		return "SYRIAC LETTER MALAYALAM NGA";
+	case U'\u0861':
+		return "SYRIAC LETTER MALAYALAM JA";
+	case U'\u0862':
+		return "SYRIAC LETTER MALAYALAM NYA";
+	case U'\u0863':
+		return "SYRIAC LETTER MALAYALAM TTA";
+	case U'\u0864':
+		return "SYRIAC LETTER MALAYALAM NNA";
+	case U'\u0865':
+		return "SYRIAC LETTER MALAYALAM NNNA";
+	case U'\u0866':
+		return "SYRIAC LETTER MALAYALAM BHA";
+	case U'\u0867':
+		return "SYRIAC LETTER MALAYALAM RA";
+	case U'\u0868':
+		return "SYRIAC LETTER MALAYALAM LLA";
+	case U'\u0869':
+		return "SYRIAC LETTER MALAYALAM LLLA";
+	case U'\u086A':
+		return "SYRIAC LETTER MALAYALAM SSA";
+	/* RUNIC: */
+	case U'\u16A0':
+		return "RUNIC LETTER FEHU FEOH FE F";
+	case U'\u16A1':
+		return "RUNIC LETTER V";
+	case U'\u16A2':
+		return "RUNIC LETTER UR) UR ";
+	case U'\u16A3':
+		return "RUNIC LETTER YR";
+	case U'\u16A4':
+		return "RUNIC LETTER Y";
+	case U'\u16A5':
+		return "RUNIC LETTER W";
+	case U'\u16A6':
+		return "RUNIC LETTER THURISAZ THURS THORN";
+	case U'\u16A7':
+		return "RUNIC LETTER ETH";
+	case U'\u16A8':
+		return "RUNIC LETTER ANS) A";
+	case U'\u16A9':
+		return "RUNIC LETTER OS O";
+	case U'\u16AA':
+		return "RUNIC LETTER AC A";
+	case U'\u16AB':
+		return "RUNIC LETTER AESC";
+	case U'\u16AC':
+		return "RUNIC LETTER LONG-BRANCHED-OSS O";
+	case U'\u16AD':
+		return "RUNIC LETTER SHORT-TWIG-OSS O";
+	case U'\u16AE':
+		return "RUNIC LETTER O";
+	case U'\u16AF':
+		return "RUNIC LETTER OE";
+	case U'\u16B0':
+		return "RUNIC LETTER ON";
+	case U'\u16C0':
+		return "RUNIC LETTER DOTTED-N";
+	case U'\u16D0':
+		return "RUNIC LETTER SHORT-TWIG-TYR T";
+	case U'\u16E0':
+		return "RUNIC LETTER EAR";
+	case U'\u16F0':
+		return "RUNIC BELGTHOR SYMBOL";
+	/* CYRILLIC EXTENDED C: */
+	case U'\u1C80':
+		return "CYRILLIC SMALL LETTER ROUNDED VE";
+	case U'\u1C81':
+		return "CYRILLIC SMALL LETTER LONG-LEGGED DE";
+	case U'\u1C82':
+		return "CYRILLIC SMALL LETTER NARROW O";
+	case U'\u1C83':
+		return "CYRILLIC SMALL LETTER WIDE ES";
+	case U'\u1C84':
+		return "CYRILLIC SMALL LETTER TALL TE";
+	case U'\u1C85':
+		return "CYRILLIC SMALL LETTER THREE-LEGGED TE";
+	case U'\u1C86':
+		return "CYRILLIC SMALL LETTER TALL HARD SIGN";
+	case U'\u1C87':
+		return "CYRILLIC SMALL LETTER TALL YAT";
+	case U'\u1C88':
+		return "CYRILLIC SMALL LETTER UNBLENDED UK";
+	/* GENERAL PUNCTUATION: */
+	case U'\u2000':
+		return "EN QUAD";
+	case U'\u2001':
+		return "EM QUAD";
+	case U'\u2002':
+		return "EN SPACE";
+	case U'\u2003':
+		return "EM SPACE";
+	case U'\u2004':
+		return "THREE-PER-EM SPACE";
+	case U'\u2005':
+		return "FOUR-PER-EM SPACE";
+	case U'\u2006':
+		return "SIX-PER-EM SPACE";
+	case U'\u2007':
+		return "FIGURE SPACE";
+	case U'\u2008':
+		return "PUNCTUATION SPACE";
+	case U'\u2009':
+		return "THIN SPACE";
+	case U'\u200A':
+		return "HAIR SPACE";
+	case U'\u203C':
+		return "DOUBLE EXCLAMATION MARK";
+	case U'\u2047':
+		return "DOUBLE QUOTATION MARK";
+	case U'\u2048':
+		return "QUESTION EXCLAMATION MARK";
+	case U'\u2049':
+		return "EXCLAMATION QUESTION MARK";
+	/* CURRENCY SYMBOLS: */
+	case U'\u20A0':
+		return "EURO-CURRENCY SIGN";
+	case U'\u20A1':
+		return "COLON SIGN";
+	case U'\u20A2':
+		return "CR)EIRO SIGN";
+	case U'\u20A3':
+		return "FRENCH FRANC SIGN";
+	case U'\u20A4':
+		return "LIRA SIGN";
+	case U'\u20A5':
+		return "MILL SIGN";
+	case U'\u20A6':
+		return "NAIRA SIGN";
+	case U'\u20A7':
+		return "PESETA SIGN";
+	case U'\u20A8':
+		return "RUPEE SIGN";
+	case U'\u20A9':
+		return "WON SIGN";
+	case U'\u20AA':
+		return "::new SHEQEL SIGN";
+	case U'\u20AB':
+		return "DONG SIGN";
+	case U'\u20AC':
+		return "EURO SIGN";
+	case U'\u20AD':
+		return "KIP SIGN";
+	case U'\u20AE':
+		return "TUGRIK SIGN";
+	case U'\u20AF':
+		return "DRACHMA SIGN";
+	case U'\u20B0':
+		return "GERMAN PENNY SIGN";
+	case U'\u20B1':
+		return "PESO SIGN";
+	case U'\u20B2':
+		return "GUARANI SIGN";
+	case U'\u20B3':
+		return "AUSTRAL SIGN";
+	case U'\u20B4':
+		return "HRYVNIA SIGN";
+	case U'\u20B5':
+		return "CEDI SIGN";
+	case U'\u20B6':
+		return "LIVRE TOURNOIS SIGN";
+	case U'\u20B7':
+		return "SPESMILO SIGN";
+	case U'\u20B8':
+		return "TENGE SIGN";
+	case U'\u20BA':
+		return "TURKISH LIRA SIGN";
+	case U'\u20BB':
+		return "NORDIC MARK SIGN";
+	case U'\u20BC':
+		return "MANAT SIGN";
+	case U'\u20BD':
+		return "RUBLE SYMBOL";
+	case U'\u20BE':
+		return "LARI SIGN";
+	case U'\u20BF':
+		return "BITCOIN SIGN";
+	/* LETTERLIKE SYMBOLS: */
+	case U'\u2100':
+		return "ACCOUNT OF";
+	case U'\u2101':
+		return "ADRESSED TO THE SUBJECT";
+	case U'\u2102':
+		return "DOUBLE-STRUCK CAPITAL C";
+	case U'\u2103':
+		return "DEGREE CELSIUS";
+	case U'\u2104':
+		return "CENTRE LINE SYMBOL";
+	case U'\u2105':
+		return "CARE OF";
+	case U'\u2106':
+		return "CADA UNA";
+	case U'\u2107':
+		return "EULER CONSTANT";
+	case U'\u2108':
+		return "SCRUPLE";
+	case U'\u2109':
+		return "DEGREE FAHRENHEIT";
+	case U'\u210A':
+		return "SCRIPT SMALL G";
+	case U'\u210B':
+		return "SCRIPT CAPITAL H";
+	case U'\u210C':
+		return "BLACK-LETTER CAPITAL H";
+	case U'\u210D':
+		return "DOUBLE-STRUCK CAPITAL H";
+	case U'\u210E':
+		return "PLANCK CONSTANT";
+	case U'\u210F':
+		return "PLANCK CONSTANT OVER TWO PI";
+	case U'\u2110':
+		return "SCRIPT CAPITAL I";
+	case U'\u2111':
+		return "BLACK-LETTER CAPITAL I";
+	case U'\u2112':
+		return "SCRIPT CAPITAL L";
+	case U'\u2113':
+		return "SCRIPT SMALL L";
+	case U'\u2114':
+		return "L B BAR SYMBOL";
+	case U'\u2115':
+		return "DOUBLE-STRUCK CAPITAL N";
+	case U'\u2116':
+		return "NUMERO SIGN";
+	case U'\u2117':
+		return "SOUND RECORDING COPYRIGHT";
+	case U'\u2118':
+		return "SCRIPT CAPITAL P";
+	case U'\u2119':
+		return "DOUBLE-STRUCK CAPITAL P";
+	case U'\u211A':
+		return "DOUBLE-STRUCK CAPITAL Q";
+	case U'\u211B':
+		return "SCRIPT CAPITAL R";
+	case U'\u211C':
+		return "BLACK-LETTER CAPITAL R";
+	case U'\u211D':
+		return "DOUBLE-STRUCK CAPITAL R";
+	case U'\u211E':
+		return "PRESCRIPTION TAKE";
+	case U'\u211F':
+		return "RESPONSE";
+	case U'\u2120':
+		return "SERVICE MARK";
+	case U'\u2121':
+		return "TELEPHONE SIGN";
+	case U'\u2122':
+		return "TRADE MARK SIGN";
+	case U'\u2123':
+		return "VERSICLE";
+	case U'\u2124':
+		return "DOUBLE-STRUCK CAPITAL Z";
+	case U'\u2125':
+		return "OUNCE SIGN";
+	case U'\u2126':
+		return "OHM SIGN";
+	case U'\u2127':
+		return "INVERTED OHM SIGN";
+	case U'\u2128':
+		return "BLACK-LETTER CAPITAL Z";
+	case U'\u2129':
+		return "TURNED GREEK SMALL LETTER IOTA";
+	case U'\u212A':
+		return "KELVIN SIGN";
+	case U'\u212B':
+		return "ANGSTROM SIGN";
+	case U'\u212C':
+		return "SCRIPT CAPITAL B";
+	case U'\u212D':
+		return "BLACK-LETTER CAPITAL C";
+	case U'\u212E':
+		return "ESTIMATED SYMBOL";
+	case U'\u212F':
+		return "SCRIPT SMALL E";
+	case U'\u2130':
+		return "SCRIPT CAPITAL E";
+	case U'\u2131':
+		return "SCRIPT CAPITAL F";
+	case U'\u2132':
+		return "TURNED CAPITAL F";
+	case U'\u2133':
+		return "SCRIPT CAPITAL M";
+	case U'\u2134':
+		return "SCRIPT SMALL O";
+	case U'\u2135':
+		return "ALEF SYMBOL";
+	case U'\u2136':
+		return "BET SYMBOL";
+	case U'\u2137':
+		return "GIMEL SYMBOL";
+	case U'\u2138':
+		return "DALET SYMBOL";
+	case U'\u2139':
+		return "INFORMATION SOURCE";
+	case U'\u213A':
+		return "ROTATED CAPITAL Q";
+	case U'\u213B':
+		return "FACSIMILE SIGN";
+	case U'\u213C':
+		return "DOUBLE-STRUCK SMALL PI";
+	case U'\u213D':
+		return "DOUBLE-STRUCK SMALL GAMMA";
+	case U'\u213E':
+		return "DOUBLE-STRUCK CAPITAL GAMMA";
+	case U'\u213F':
+		return "DOUBLE-STRUCK CAPITAL PI";
+	case U'\u2140':
+		return "DOUBLE-STRUCK N-ARY SUMMATION";
+	case U'\u2141':
+		return "TURNED SANS-SERIF CAPITAL G";
+	case U'\u2142':
+		return "TURNED SANS-SERIF CAPITAL L";
+	case U'\u2143':
+		return "REVERSED SANS-SERIF CAPITAL L";
+	case U'\u2144':
+		return "TURNED SANS-SERIF CAPITAL Y";
+	case U'\u2145':
+		return "DOUBLE-STRUCK ITALIC CAPITAL D";
+	case U'\u2146':
+		return "DOUBLE-STRUCK ITALIC SMALL D";
+	case U'\u2147':
+		return "DOUBLE-STRUCK ITALIC SMALL E";
+	case U'\u2148':
+		return "DOUBLE-STRUCK ITALIC SMALL I";
+	case U'\u2149':
+		return "DOUBLE-STRUCK ITALIC SMALL J";
+	case U'\u214A':
+		return "PROPERTY LINE";
+	case U'\u214B':
+		return "TURNED AMPERSAND";
+	case U'\u214C':
+		return "PER SIGN";
+	case U'\u214D':
+		return "AKTIESELSKAB";
+	case U'\u214E':
+		return "TURNED SMALL F";
+	case U'\u214F':
+		return "SYMBOL FOR SAMARITAN SOURCE";
+	/* NUMBER FORMS: */
+	case U'\u2150':
+		return "VULGAR FRACTION ONE SEVENTH";
+	case U'\u2151':
+		return "VULGAR FRACTION ONE NINTH";
+	case U'\u2152':
+		return "VULGAR FRACTION ONE TENTH";
+	case U'\u2153':
+		return "VULGAR FRACTION ONE THIRD";
+	case U'\u2154':
+		return "VULGAR FRACTION TWO THIRDS";
+	case U'\u2155':
+		return "VULGAR FRACTION ONE FIFTH";
+	case U'\u2156':
+		return "VULGAR FRACTION TWO FIFTHS";
+	case U'\u2157':
+		return "VULGAR FRACTION THREE FIFTHS";
+	case U'\u2158':
+		return "VULGAR FRACTION FOUR FIFTHS";
+	case U'\u2159':
+		return "VULGAR FRACTION ONE SIXTH";
+	case U'\u215A':
+		return "VULGAR FRACTION FIVE SIXTHS";
+	case U'\u215B':
+		return "VULGAR FRACTION ONE EIGTH";
+	case U'\u215C':
+		return "VULGAR FRACTION THREE EIGTHS";
+	case U'\u215D':
+		return "VULGAR FRACTION FIVE EIGHTS";
+	case U'\u215E':
+		return "VULGAR FRACTION SEVEN EIGTHS";
+	case U'\u215F':
+		return "FRACTION NUMERATOR ONE";
+	case U'\u2160':
+		return "ROMAN NUMERAL ONE";
+	case U'\u2161':
+		return "ROMAN NUMERAL TWO";
+	case U'\u2162':
+		return "ROMAN NUMERAL THREE";
+	case U'\u2163':
+		return "ROMAN NUMERAL FOUR";
+	case U'\u2164':
+		return "ROMAN NUMERAL FIVE";
+	case U'\u2165':
+		return "ROMAN NUMERAL SIX";
+	case U'\u2166':
+		return "ROMAN NUMERAL SEVEN";
+	case U'\u2167':
+		return "ROMAN NUMERAL EIGHT";
+	case U'\u2168':
+		return "ROMAN NUMERAL NINE";
+	case U'\u2169':
+		return "ROMAN NUMERAL TEN";
+	case U'\u216A':
+		return "ROMAN NUMERAL ELEVEN";
+	case U'\u216B':
+		return "ROMAN NUMERAL TWELVE";
+	case U'\u216C':
+		return "ROMAN NUMERAL FIFTY";
+	case U'\u216D':
+		return "ROMAN NUMERAL ONE HUNDRED";
+	case U'\u216E':
+		return "ROMAN NUMERAL FIVE HUNDRED";
+	case U'\u216F':
+		return "ROMAN NUMERAL ONE THOUSAND";
+	case U'\u2170':
+		return "SMALL ROMAN NUMERAL ONE";
+	case U'\u2171':
+		return "SMALL ROMAN NUMERAL TWO";
+	case U'\u2172':
+		return "SMALL ROMAN NUMERAL THREE";
+	case U'\u2173':
+		return "SMALL ROMAN NUMERAL FOUR";
+	case U'\u2174':
+		return "SMALL ROMAN NUMERAL FIVE";
+	case U'\u2175':
+		return "SMALL ROMAN NUMERAL SIX";
+	case U'\u2176':
+		return "SMALL ROMAN NUMERAL SEVEN";
+	case U'\u2177':
+		return "SMALL ROMAN NUMERAL EIGHT";
+	case U'\u2178':
+		return "SMALL ROMAN NUMERAL NINE";
+	case U'\u2179':
+		return "SMALL ROMAN NUMERAL TEN";
+	case U'\u217A':
+		return "SMALL ROMAN NUMERAL ELEVEN";
+	case U'\u217B':
+		return "SMALL ROMAN NUMERAL TWELVE";
+	case U'\u217C':
+		return "SMALL ROMAN NUMERAL FIFTY";
+	case U'\u217D':
+		return "SMALL ROMAN NUMERAL ONE HUNDRED";
+	case U'\u217E':
+		return "SMALL ROMAN NUMERAL FIVE HUNDRED";
+	case U'\u217F':
+		return "SMALL ROMAN NUMERAL ONE THOUSAND";
+	case U'\u2180':
+		return "ROMAN NUMERAL ONE THOUSAND C D";
+	case U'\u2181':
+		return "ROMAN NUMERAL FIVE THOUSAND";
+	case U'\u2182':
+		return "ROMAN NUMERAL TEN THOUSAND";
+	case U'\u2183':
+		return "ROMAN NUMERAL REVERSED ONE HUNDRED";
+	case U'\u2184':
+		return "LATIN SMALL LETTER REVERSED C";
+	case U'\u2185':
+		return "ROMAN NUMERAL SIX LATE FORM";
+	case U'\u2186':
+		return "ROMAN NUMERAL FIFTY EARLY FORM";
+	case U'\u2187':
+		return "ROMAN NUMERAL FIFTY THOUSAND";
+	case U'\u2188':
+		return "ROMAN NUMERAL ONE HUNDRED THOUSAND";
+	case U'\u2189':
+		return "VULGAR FRACTION ZERO THIRDS";
+	case U'\u218A':
+		return "TURNED DIGIT TWO";
+	case U'\u218B':
+		return "TURNED DIGIT THREE";
+	/* MISCELLANEOUS SYMBOLS: */
+	case U'\u2630':
+		return "TRIGRAM FOR HEAVEN";
+	case U'\u2631':
+		return "TRIGRAM FOR LAKE";
+	case U'\u2632':
+		return "TRIGRAM FOR FIRE";
+	case U'\u2633':
+		return "TRIGRAM FOR THUNDER";
+	case U'\u2634':
+		return "TRIGRAM FOR WIND";
+	case U'\u2635':
+		return "TRIGRAM FOR WATER";
+	case U'\u2636':
+		return "TRIGRAM FOR MOUNTAIN";
+	case U'\u2637':
+		return "TRIGRAM FOR EARTH";
+	case U'\u2638':
+		return "WHEEL OF DHARMA";
+	case U'\u2639':
+		return "WHITE FROWNING FACE";
+	case U'\u263A':
+		return "WHITE SMILING FACE";
+	case U'\u263B':
+		return "BLACK SMILING FACE";
+	case U'\u263C':
+		return "WHITE SUN WITH RAYS";
+	case U'\u263D':
+		return "FIRST QUARTER MOON";
+	case U'\u263E':
+		return "LAST QUARTER MOON";
+	case U'\u263F':
+		return "MERCURY";
+	case U'\u2640':
+		return "FEMALE SIGN";
+	case U'\u2641':
+		return "EARTH";
+	case U'\u2642':
+		return "MALE SIGN";
+	case U'\u2643':
+		return "JUPITER";
+	case U'\u2644':
+		return "SATURN";
+	case U'\u2645':
+		return "URANUS";
+	case U'\u2646':
+		return "NEPTUNE";
+	case U'\u2647':
+		return "PLUTO";
+	case U'\u2648':
+		return "ARIES";
+	case U'\u2649':
+		return "TAURUS";
+	case U'\u264A':
+		return "GEMNINI";
+	case U'\u264B':
+		return "CANCER";
+	case U'\u264C':
+		return "LEO";
+	case U'\u264D':
+		return "VIRGO";
+	case U'\u264E':
+		return "LIBRA";
+	case U'\u264F':
+		return "SCORPIUS";
+	case U'\u2650':
+		return "SAGITTARIUS";
+	case U'\u2651':
+		return "CAPRICORN";
+	case U'\u2652':
+		return "AQUARIUS";
+	case U'\u2653':
+		return "PISCES";
+	case U'\u2654':
+		return "WHITE CHESS KING";
+	case U'\u2655':
+		return "WHITE CHESS QUEEN";
+	case U'\u2656':
+		return "WHITE CHESS ROOK";
+	case U'\u2657':
+		return "WHITE CHESS BISHOP";
+	case U'\u2658':
+		return "WHITE CHESS KNIGHT";
+	case U'\u2659':
+		return "WHITE CHESS PAWN";
+	case U'\u265A':
+		return "BLACK CHESS KING";
+	case U'\u265B':
+		return "BLACK CHESS QUEEN";
+	case U'\u265C':
+		return "BLACK CHESS ROOK";
+	case U'\u265D':
+		return "BLACK CHESS BISHOP";
+	case U'\u265E':
+		return "BLACK CHESS KNIGHT";
+	case U'\u265F':
+		return "BLACK CHESS PAWN";
+	case U'\u2660':
+		return "BLACK SPADE SUIT";
+	case U'\u2661':
+		return "WHITE HEART SUIT";
+	case U'\u2662':
+		return "WHITE DIAMOND SUIT";
+	case U'\u2663':
+		return "BLACK CLUB SUIT";
+	case U'\u2664':
+		return "WHITE SPADE SUIT";
+	case U'\u2665':
+		return "BLACK HEART SUIT";
+	case U'\u2666':
+		return "BLACK DIAMOND SUIT";
+	case U'\u2667':
+		return "WHITE CLUB SUIT";
+	case U'\u2668':
+		return "HOT SPRINGS";
+	case U'\u2669':
+		return "QUARTER NOTE";
+	case U'\u266A':
+		return "EIGHT NOTE";
+	case U'\u266B':
+		return "BEAMED EIGTH NOTES";
+	case U'\u266C':
+		return "BEAMED SIXTEENTH NOTES";
+	case U'\u266D':
+		return "MUSIC FLAT SIGN";
+	case U'\u266E':
+		return "MUSIC NEUTRAL SIGN";
+	case U'\u266F':
+		return "MUSIC SHARP SIGN";
+	case U'\u2670':
+		return "WEST SYRIAC CROSS";
+	case U'\u2671':
+		return "EAST SYRIAC CROSS";
+	case U'\u2672':
+		return "UNIVERSAL RECYCLING SYMBOL";
+	case U'\u2673':
+		return "RECYCLING SYMBOL FOR TYPE-1 PLASTICS";
+	case U'\u2674':
+		return "RECYCLING SYMBOL FOR TYPE-2 PLASTICS";
+	case U'\u2675':
+		return "RECYCLING SYMBOL FOR TYPE-3 PLASTICS";
+	case U'\u2676':
+		return "RECYCLING SYMBOL FOR TYPE-4 PLASTICS";
+	case U'\u2677':
+		return "RECYCLING SYMBOL FOR TYPE-5 PLASTICS";
+	case U'\u2678':
+		return "RECYCLING SYMBOL FOR TYPE-6 PLASTICS";
+	case U'\u2679':
+		return "RECYCLING SYMBOL FOR TYPE-7 PLASTICS";
+	case U'\u267A':
+		return "RECYCLING SYMBOL FOR GENERIC MATERIALS";
+	case U'\u267B':
+		return "BLACK UNIVERSAL RECYCLING SYMBOL";
+	case U'\u267C':
+		return "RECYCLED PAPER SYMBOL";
+	case U'\u267D':
+		return "PARTIALLY-RECYCLED PAPER SYMBOL";
+	case U'\u267E':
+		return "PERMANENT PAPER SIGN";
+	case U'\u267F':
+		return "WHEELCHAIR SYMBOL";
+	case U'\u26B9':
+		return "SEXTILE";
+	/* DINGBATS: */
+	case U'\u271D':
+		return "LATIN CROSS";
+	case U'\u2721':
+		return "STAR OF DAVID";
+	/* SUPPLEMENTAL PUNCTUATION: */
+	case U'\u2E3B':
+		return "THREE-EM DASH";
+	/* ARABIC PRESENTATION FORMS-A: */
+	case U'\uFDFD':
+		return "ARABIC LIGATURE BISMILLAH AL-RAHMAN AR-RAHEEM";
+	/* ANCIENT SYMBOLS: */
+	case U'\U00010190':
+		return "ROMAN SEXTANS SIGN";
+	case U'\U00010191':
+		return "ROMAN UNCIA SIGN";
+	case U'\U00010192':
+		return "ROMAN SEMUNCIA SIGN";
+	case U'\U00010193':
+		return "ROMAN SEXTULA SIGN";
+	case U'\U00010194':
+		return "ROMAN DIMIDIA SEXTULA SIGN";
+	case U'\U00010195':
+		return "ROMAN SILIQUA SIGN";
+	case U'\U00010196':
+		return "ROMAN DENARIUS SIGN";
+	case U'\U00010197':
+		return "ROMAN QUINARIUS SIGN";
+	case U'\U00010198':
+		return "ROMAN SESTERTIUS SIGN";
+	case U'\U00010199':
+		return "ROMAN DUPONDIUS SIGN";
+	case U'\U0001019A':
+		return "ROMAN AS SIGN";
+	case U'\U0001019B':
+		return "ROMAN CENTURIAL SIGN";
+	case U'\U0001019C':
+		return "ASCIA SIGN";
+	/* BRAHMI: */
+	case U'\U00011066':
+		return "BRAHMI DIGIT ZERO";
+	case U'\U00011067':
+		return "BRAHMI DIGIT ONE";
+	case U'\U00011068':
+		return "BRAHMI DIGIT TWO";
+	case U'\U00011069':
+		return "BRAHMI DIGIT THREE";
+	case U'\U0001106A':
+		return "BRAHMI DIGIT FOUR";
+	case U'\U0001106B':
+		return "BRAHMI DIGIT FIVE";
+	case U'\U0001106C':
+		return "BRAHMI DIGIT SIX";
+	case U'\U0001106D':
+		return "BRAHMI DIGIT SEVEN";
+	case U'\U0001106E':
+		return "BRAHMI DIGIT EIGHT";
+	case U'\U0001106F':
+		return "BRAHMI DIGIT NINE";
+	/* CUNEIFORM: */
+	case U'\U00012031':
+		return "CUNEIFORM SIGN AN PLUS NAGA SQUARED";
+	/* CUNEIFORM NUMBERS AND PUNCTUATION: */
+	case U'\U0001242B':
+		return "CUNEIFORM NUMERIC SIGN NINE SHAR2";
+	/* EGYPTIAN HIEROGLYPHS: */
+	case U'\U000130B8':
+		return "EGYPTIAN HIEROGLYPH D052";
+	/* COUNTING ROD NUMERALS: */
+	case U'\U0001D372':
+		return "IDEOGRAPHIC TALLY MARK ONE";
+	case U'\U0001D373':
+		return "IDEOGRAPHIC TALLY MARK TWO";
+	case U'\U0001D374':
+		return "IDEOGRAPHIC TALLY MARK THREE";
+	case U'\U0001D375':
+		return "IDEOGRAPHIC TALLY MARK FOUR";
+	case U'\U0001D376':
+		return "IDEOGRAPHIC TALLY MARK FIVE";
+	case U'\U0001D377':
+		return "TALLY MARK ONE";
+	case U'\U0001D378':
+		return "TALLY MARK FIVE";
+	/* ENCLOSED ALPHANUMERIC SUPPLEMENT: */
+	case U'\U0001F10D':
+		return "CIRCLED ZERO WITH SLASH";
+	case U'\U0001F10E':
+		return "CIRCLED ANTICKLOCKWISE ARROW";
+	case U'\U0001F10F':
+		return "CIRCLED DOLLAR SIGN WITH OVERLAID BACKSLASH";
+	case U'\U0001F12F':
+		return "COPYLEFT SYMBOL";
+	case U'\U0001F16D':
+		return "CIRCLED CC";
+	case U'\U0001F16E':
+		return "CIRCLED C WITH OVERLAID BACKSLASH";
+	case U'\U0001F16F':
+		return "CIRCLED HUMAN FIGURE";
+	/* EMOTICONS: */
+	case U'\U0001F600':
+		return "GRINNING FACE";
+	case U'\U0001F601':
+		return "GRINNING FACE WITH SMIRKING EYES";
+	case U'\U0001F602':
+		return "FACE WITH TEARS OF JOY";
+	case U'\U0001F603':
+		return "SMILING FACE WITH OPEN MOUTH";
+	case U'\U0001F604':
+		return "SMILING FACE WITH OPEN MOUTH AND SMILING EYES";
+	case U'\U0001F605':
+		return "SMILING FACE WITH OPEN MOUTH AND COULD SWEAT";
+	case U'\U0001F606':
+		return "SMILING FACE WITH OPEN MOUTH AND TIGHTLY-CLOSED EYES";
+	case U'\U0001F607':
+		return "SMILING FACE WITH HALO";
+	case U'\U0001F608':
+		return "SMILING FACE WITH HORNS";
+	case U'\U0001F609':
+		return "WINKING FACE";
+	case U'\U0001F60A':
+		return "SMILING FACE WITH SMILING EYES";
+	case U'\U0001F60B':
+		return "FACE SAVOURING DELICIOUS FOOD";
+	case U'\U0001F60C':
+		return "RELIEVED FACE";
+	case U'\U0001F60D':
+		return "SMILLING FACE HEART-SHAPED EYES";
+	case U'\U0001F60E':
+		return "SMILLING FACE WITH SUNGLASSES";
+	case U'\U0001F60F':
+		return "SMIRKING FACE";
+	case U'\U0001F610':
+		return "NEUTRAL FACE";
+	case U'\U0001F611':
+		return "EXPRESSIONLESS FACE";
+	case U'\U0001F612':
+		return "UNAMUSED FACE";
+	case U'\U0001F613':
+		return "FACE WITH COLD SWEAT";
+	case U'\U0001F614':
+		return "PENSIVE FACE";
+	case U'\U0001F615':
+		return "CONFUSED FACE";
+	case U'\U0001F616':
+		return "CONFOUNDED FACE";
+	case U'\U0001F617':
+		return "KISSING FACE";
+	case U'\U0001F618':
+		return "FACE THROWING A KISS";
+	case U'\U0001F619':
+		return "KISSING FACE WITH SMILLING EYES";
+	case U'\U0001F61A':
+		return "KISSING FACE WITH CLOSED EYES";
+	case U'\U0001F61B':
+		return "FACE WITH STUCK-OUT TONGUE";
+	case U'\U0001F61C':
+		return "FACE WITH STUCK-OUT TONGUE AND WINKING EYE";
+	case U'\U0001F61D':
+		return "FACE WITH STUCK-OUT TONGUE AND TIGHTLY-CLOSED EYES";
+	case U'\U0001F61E':
+		return "DISSAPOINTED FACE";
+	case U'\U0001F61F':
+		return "WORRIED FACE";
+	case U'\U0001F620':
+		return "ANGRY FACE";
+	case U'\U0001F621':
+		return "POUTING FACE";
+	case U'\U0001F622':
+		return "CRYING FACE";
+	case U'\U0001F623':
+		return "PERSEVERING FACE";
+	case U'\U0001F624':
+		return "FACE WITH LOOK OF TRIUMPH";
+	case U'\U0001F625':
+		return "DISSAPOINTED BUT RELIEVED FACE";
+	case U'\U0001F626':
+		return "FROWNING FACE WITH OPEN MOUTH";
+	case U'\U0001F627':
+		return "ANGUISHED FACE";
+	case U'\U0001F628':
+		return "FEARFUL FACE";
+	case U'\U0001F629':
+		return "WEARY FACE";
+	case U'\U0001F62A':
+		return "SLEEPY FACE";
+	case U'\U0001F62B':
+		return "TIRED FACE";
+	case U'\U0001F62C':
+		return "GRIMACING FACE";
+	case U'\U0001F62D':
+		return "LOUDLY CRYING FACE";
+	case U'\U0001F62E':
+		return "FACE WITH OPEN MOUTH";
+	case U'\U0001F62F':
+		return "HUSHED FACE";
+	case U'\U0001F630':
+		return "FACE WITH OPEN MOUTH AND COLD SWEAT";
+	case U'\U0001F631':
+		return "FACE SCREAMING IN FEAR";
+	case U'\U0001F632':
+		return "ASTONISHED FACE";
+	case U'\U0001F633':
+		return "FLUSHED FACE";
+	case U'\U0001F634':
+		return "SLEEPING FACE";
+	case U'\U0001F635':
+		return "DIZZY FACE";
+	case U'\U0001F636':
+		return "FACE WITHOUT MOUTH";
+	case U'\U0001F637':
+		return "FACE WITH MEDICAL MASK";
+	case U'\U0001F641':
+		return "SLIGHTLY FROWNING FACE";
+	case U'\U0001F642':
+		return "SLIGHTLY SMILING FACE";
+	case U'\U0001F643':
+		return "UPSIDE-DOWN FACE";
+	case U'\U0001F644':
+		return "FACE WITH ROLLING EYES";
+	/* ORNAMENTAL DINGBATS: */
+	case U'\U0001F670':
+		return "SCRIPT LIGATURE ET ORNAMENT";
+	case U'\U0001F671':
+		return "HEAVY SCRIPT LIGATURE ET ORNAMENT";
+	case U'\U0001F672':
+		return "LIGATURE OPEN ET ORNAMENT";
+	case U'\U0001F673':
+		return "HEAVY LIGATURE OPEN ET ORNAMENT";
+	case U'\U0001F674':
+		return "HEAVY AMPERSAND ORNAMENT";
+	case U'\U0001F675':
+		return "SWASH AMPERSAND ORNAMENT";
+	case U'\U0001F676':
+		return "SANS-SERIF HEAVY DOUBLE TURNED COMMA QUOTATION MARK ORNAMENT";
+	case U'\U0001F677':
+		return "SANS-SERIF HEAVY DOUBLE COMMA QUOTATION MARK ORNAMENT";
+	case U'\U0001F678':
+		return "SANS-SERIF HEAVY LOW DOUBLE QUOTATION MARK ORNAMENT";
+	case U'\U0001F679':
+		return "HEAVY INTERROBANG ORNAMENT";
+	case U'\U0001F67A':
+		return "SANS-SERIF INTERROBANG ORNAMENT";
+	case U'\U0001F67B':
+		return "HEAVY SANS-SERIF INTERROBANG ORNAMENT";
+	case U'\U0001F67C':
+		return "VERY HEAVY SOLIDUS";
+	case U'\U0001F67D':
+		return "VERY HEAVY REVERSE SOLIDUS";
+	case U'\U0001F67E':
+		return "CHECKER BOARD";
+	case U'\U0001F67F':
+		return "REVERSE CHECKER BOARD";
+	/* CJK UNIFIED IDEOGRAPHS EXTENSION G: */
+	case U'\U0003106C':
+		return "CJK UNIFIED IDEOGRAPH-3106C";
+	/* TAGS: */
+	case U'\U000E0001':
+		return "LANGUAGE TAG";
+	case U'\U000E0020':
+		return "TAG SPACE";
+	case U'\U000E0021':
+		return "TAG EXCLAMATION MARK";
+	case U'\U000E0022':
+		return "TAG QUOTATION MARK";
+	case U'\U000E0023':
+		return "TAG NUMBER SIGN";
+	case U'\U000E0024':
+		return "TAG DOLLAR SIGN";
+	case U'\U000E0025':
+		return "TAG PERCENT SIGN";
+	case U'\U000E0026':
+		return "TAG AMPERSAND";
+	case U'\U000E0027':
+		return "TAG APOSTROPHE";
+	case U'\U000E0028':
+		return "TAG LEFT PARANTHESIS";
+	case U'\U000E0029':
+		return "TAG RIGHT PARANTHESIS";
+	case U'\U000E002A':
+		return "TAG ASTERISK";
+	case U'\U000E002B':
+		return "TAG PLUS SIGN";
+	case U'\U000E002C':
+		return "TAG COMMA";
+	case U'\U000E002D':
+		return "TAG HYPHEN-MINUS";
+	case U'\U000E002E':
+		return "TAG FULL STOP";
+	case U'\U000E002F':
+		return "TAG SOLIDUS";
+	case U'\U000E0030':
+		return "TAG DIGIT ZERO";
+	case U'\U000E0031':
+		return "TAG DIGIT ONE";
+	case U'\U000E0032':
+		return "TAG DIGIT TWO";
+	case U'\U000E0033':
+		return "TAG DIGIT THREE";
+	case U'\U000E0034':
+		return "TAG DIGIT FOUR";
+	case U'\U000E0035':
+		return "TAG DIGIT FIVE";
+	case U'\U000E0036':
+		return "TAG DIGIT SIX";
+	case U'\U000E0037':
+		return "TAG DIGIT SEVEN";
+	case U'\U000E0038':
+		return "TAG DIGIT EIGHT";
+	case U'\U000E0039':
+		return "TAG DIGIT NINE";
+	case U'\U000E003A':
+		return "TAG COLON";
+	case U'\U000E003B':
+		return "TAG SEMICOLON";
+	case U'\U000E003C':
+		return "TAG LESS-THAN SIGN";
+	case U'\U000E003D':
+		return "TAG EQUALS SIGN";
+	case U'\U000E003E':
+		return "TAG GREATER-THAN SIGN";
+	case U'\U000E003F':
+		return "TAG QUESTION MARK";
+	case U'\U000E0040':
+		return "TAG COMMERCIAL AT";
+	case U'\U000E0041':
+		return "TAG LATIN CAPITAL LETTER A";
+	case U'\U000E0042':
+		return "TAG LATIN CAPITAL LETTER B";
+	case U'\U000E0043':
+		return "TAG LATIN CAPITAL LETTER C";
+	case U'\U000E0044':
+		return "TAG LATIN CAPITAL LETTER D";
+	case U'\U000E0045':
+		return "TAG LATIN CAPITAL LETTER E";
+	case U'\U000E0046':
+		return "TAG LATIN CAPITAL LETTER F";
+	case U'\U000E0047':
+		return "TAG LATIN CAPITAL LETTER G";
+	case U'\U000E0048':
+		return "TAG LATIN CAPITAL LETTER H";
+	case U'\U000E0049':
+		return "TAG LATIN CAPITAL LETTER I";
+	case U'\U000E004A':
+		return "TAG LATIN CAPITAL LETTER J";
+	case U'\U000E004B':
+		return "TAG LATIN CAPITAL LETTER K";
+	case U'\U000E004C':
+		return "TAG LATIN CAPITAL LETTER L";
+	case U'\U000E004D':
+		return "TAG LATIN CAPITAL LETTER M";
+	case U'\U000E004E':
+		return "TAG LATIN CAPITAL LETTER N";
+	case U'\U000E004F':
+		return "TAG LATIN CAPITAL LETTER O";
+	case U'\U000E0050':
+		return "TAG LATIN CAPITAL LETTER P";
+	case U'\U000E0051':
+		return "TAG LATIN CAPITAL LETTER Q";
+	case U'\U000E0052':
+		return "TAG LATIN CAPITAL LETTER R";
+	case U'\U000E0053':
+		return "TAG LATIN CAPITAL LETTER S";
+	case U'\U000E0054':
+		return "TAG LATIN CAPITAL LETTER T";
+	case U'\U000E0055':
+		return "TAG LATIN CAPITAL LETTER ";
+	case U'\U000E0056':
+		return "TAG LATIN CAPITAL LETTER V";
+	case U'\U000E0057':
+		return "TAG LATIN CAPITAL LETTER W";
+	case U'\U000E0058':
+		return "TAG LATIN CAPITAL LETTER X";
+	case U'\U000E0059':
+		return "TAG LATIN CAPITAL LETTER Y";
+	case U'\U000E005A':
+		return "TAG LATIN CAPITAL LETTER Z";
+	case U'\U000E005B':
+		return "TAG LEFT SQUARE BRACKET";
+	case U'\U000E005C':
+		return "TAG REVERSE SOLIDUS";
+	case U'\U000E005D':
+		return "TAG RIGHT SQUARE BRACKET";
+	case U'\U000E005E':
+		return "TAG CIRCUMFLEX ACCENT";
+	case U'\U000E005F':
+		return "TAG LOW LINE";
+	case U'\U000E0060':
+		return "TAG GRAVE ACCENT";
+	case U'\U000E0061':
+		return "TAG LATIN SMALL LETTER A";
+	case U'\U000E0062':
+		return "TAG LATIN SMALL LETTER B";
+	case U'\U000E0063':
+		return "TAG LATIN SMALL LETTER C";
+	case U'\U000E0064':
+		return "TAG LATIN SMALL LETTER D";
+	case U'\U000E0065':
+		return "TAG LATIN SMALL LETTER E";
+	case U'\U000E0066':
+		return "TAG LATIN SMALL LETTER F";
+	case U'\U000E0067':
+		return "TAG LATIN SMALL LETTER G";
+	case U'\U000E0068':
+		return "TAG LATIN SMALL LETTER H";
+	case U'\U000E0069':
+		return "TAG LATIN SMALL LETTER I";
+	case U'\U000E006A':
+		return "TAG LATIN SMALL LETTER J";
+	case U'\U000E006B':
+		return "TAG LATIN SMALL LETTER K";
+	case U'\U000E006C':
+		return "TAG LATIN SMALL LETTER L";
+	case U'\U000E006D':
+		return "TAG LATIN SMALL LETTER M";
+	case U'\U000E006E':
+		return "TAG LATIN SMALL LETTER N";
+	case U'\U000E006F':
+		return "TAG LATIN SMALL LETTER O";
+	case U'\U000E0070':
+		return "TAG LATIN SMALL LETTER P";
+	case U'\U000E0071':
+		return "TAG LATIN SMALL LETTER Q";
+	case U'\U000E0072':
+		return "TAG LATIN SMALL LETTER R";
+	case U'\U000E0073':
+		return "TAG LATIN SMALL LETTER S";
+	case U'\U000E0074':
+		return "TAG LATIN SMALL LETTER T";
+	case U'\U000E0075':
+		return "TAG LATIN SMALL LETTER ";
+	case U'\U000E0076':
+		return "TAG LATIN SMALL LETTER V";
+	case U'\U000E0077':
+		return "TAG LATIN SMALL LETTER W";
+	case U'\U000E0078':
+		return "TAG LATIN SMALL LETTER X";
+	case U'\U000E0079':
+		return "TAG LATIN SMALL LETTER Y";
+	case U'\U000E007A':
+		return "TAG LATIN SMALL LETTER Z";
+	case U'\U000E007B':
+		return "TAG LEFT CURLY BRACKET";
+	case U'\U000E007C':
+		return "TAG VERTICAL LINE";
+	case U'\U000E007D':
+		return "TAG RIGHT CURLY BRACKET";
+	case U'\U000E007E':
+		return "TAG TILDE";
+	case U'\U000E007F':
+		return "CANCEL TAG";
+	}
+}
