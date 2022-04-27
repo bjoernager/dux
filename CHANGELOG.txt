@@ -1,3 +1,8 @@
+| 28
+
+- Add module dux.ismainthrd;
+- Make more compile-time objects be internally-linked;
+
 | 27
 
 - Correct comment in "/dux/src/exit.cc";

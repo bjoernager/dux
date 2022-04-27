@@ -11,7 +11,7 @@ project(
 # Constants:
 set(
 	DUX_VERSION
-	31.0
+	32.0
 )
 
 # Subdirectories

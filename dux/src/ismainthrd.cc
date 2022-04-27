@@ -17,4 +17,17 @@
 	along with dux. If not, see <https://www.gnu.org/licenses/>.
 */
 
-dux_attr_useret bool dux_ismainthrd(void);
+# include <dux/priv>
+
+# include <dux/thrd>
+
+auto ::dux::ismainthrd() noexcept -> bool {
+# if defined(dux_os_linux)
+	if (::dux_priv_posix_getpid() != static_cast<::pid_t>(::dux::syscall(__NR_gettid))) {return true;} /* Check if calling thread is also the main thread. Only thread exit and quick exit are allowed outside the main thread. */
+# endif
+	return false; /* I don't know how to check for this on other platforms. */
+}
+
+# pragma GCC diagnostic ignored "-Wmissing-declarations"
+
+extern "C" auto dux_ismainthrd() -> bool {return ::dux::ismainthrd();}

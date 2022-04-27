@@ -66,7 +66,7 @@
 # endif
 # endif
 
-# define dux_priv_ver 0x1F
+# define dux_priv_ver 0x20
 
 # if !defined(dux_dbg)
 # if defined(_DEBUG) || !defined(NDEBUG)

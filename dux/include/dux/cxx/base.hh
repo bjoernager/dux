@@ -18,8 +18,8 @@
 */
 
 namespace dux {
-	constexpr auto dbg {dux_dbg};
-	constexpr auto ver {dux_priv_ver};
+	constexpr static auto dbg {dux_dbg};
+	constexpr static auto ver {dux_priv_ver};
 }
 
 namespace dux {
@@ -65,7 +65,7 @@ namespace dux::priv {
 	template<typename T>             struct issame<T,T> {constexpr static auto val {true};};
 }
 namespace dux {
-	template<typename T,typename T0> constexpr auto issame {::dux::priv::issame<T,T0>::val};
+	template<typename T,typename T0> constexpr static auto issame {::dux::priv::issame<T,T0>::val};
 }
 # if defined(dux_lang_cxx23)
 static_assert(::dux::issame<decltype(0x0uz),::dux::uwrd>);
@@ -76,19 +76,19 @@ namespace dux::priv {
 	template<typename T> struct isptrtyp<T *> {constexpr static auto val {true};};
 }
 namespace dux {
-	template<typename T> constexpr auto isptrtyp {::dux::priv::isptrtyp<T>::val};
+	template<typename T> constexpr static auto isptrtyp {::dux::priv::isptrtyp<T>::val};
 }
 
 namespace dux {
-	template<typename T>             constexpr auto ischrtyp   {::dux::issame<T,char> || ::dux::issame<T,char16_t> || ::dux::issame<T,char32_t> || ::dux::issame<T,char8_t> || ::dux::issame<T,wchar_t>};
-	template<typename T,typename T0> constexpr auto iscnvto    {requires {static_cast<T0>(T {});}};
-	template<typename T>             constexpr auto isflttyp   {::dux::issame<T,double> || ::dux::issame<T,float> || ::dux::issame<T,long double>};
-	template<typename T>             constexpr auto issinttyp  {::dux::issame<T,int> || ::dux::issame<T,long> || ::dux::issame<T,long long> || ::dux::issame<T,short> || ::dux::issame<T,signed char>};
-	template<typename T>             constexpr auto isuinttyp  {::dux::issame<T,unsigned char> || ::dux::issame<T,unsigned int> || ::dux::issame<T,unsigned long> || ::dux::issame<T,unsigned long long> || ::dux::issame<T,unsigned short>};
+	template<typename T>             constexpr static auto ischrtyp   {::dux::issame<T,char> || ::dux::issame<T,char16_t> || ::dux::issame<T,char32_t> || ::dux::issame<T,char8_t> || ::dux::issame<T,wchar_t>};
+	template<typename T,typename T0> constexpr static auto iscnvto    {requires {static_cast<T0>(T {});}};
+	template<typename T>             constexpr static auto isflttyp   {::dux::issame<T,double> || ::dux::issame<T,float> || ::dux::issame<T,long double>};
+	template<typename T>             constexpr static auto issinttyp  {::dux::issame<T,int> || ::dux::issame<T,long> || ::dux::issame<T,long long> || ::dux::issame<T,short> || ::dux::issame<T,signed char>};
+	template<typename T>             constexpr static auto isuinttyp  {::dux::issame<T,unsigned char> || ::dux::issame<T,unsigned int> || ::dux::issame<T,unsigned long> || ::dux::issame<T,unsigned long long> || ::dux::issame<T,unsigned short>};
 
-	template<typename T>             constexpr auto isinttyp   {::dux::issinttyp<T> || ::dux::isuinttyp<T>};
+	template<typename T>             constexpr static auto isinttyp   {::dux::issinttyp<T> || ::dux::isuinttyp<T>};
 
-	template<typename T>             constexpr auto isarithtyp {::dux::isflttyp<T> || ::dux::isinttyp<T>};
+	template<typename T>             constexpr static auto isarithtyp {::dux::isflttyp<T> || ::dux::isinttyp<T>};
 }
 
 namespace dux {

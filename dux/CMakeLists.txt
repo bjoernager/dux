@@ -75,6 +75,7 @@ add_library(
 	"src/getmainparam.cc"
 	"src/getnummainparams.cc"
 	"src/gettime.cc"
+	"src/ismainthrd.cc"
 	"src/mainparams.cc"
 	"src/onexit.cc"
 	"src/raise.cc"
