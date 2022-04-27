@@ -1,3 +1,8 @@
+| 29
+
+- Add homepage-URL to CMake;
+- Add an update checklist ("/update-checklist.txt");
+
 | 28
 
 - Add module dux.ismainthrd;

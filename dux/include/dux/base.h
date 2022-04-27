@@ -59,14 +59,16 @@
 
 # if defined(dux_lang_cxx)
 # undef restrict
-# if defined(dux_priv_gnuc) || defined(dux_cmpl_msvc)
+# if defined(dux_priv_gnuc)
+# define restrict __restrict__
+# elif defined(dux_cmpl_msvc)
 # define restrict __restrict
 # else
 # define restrict
 # endif
 # endif
 
-# define dux_priv_ver 0x20
+# define dux_priv_ver 0x21
 
 # if !defined(dux_dbg)
 # if defined(_DEBUG) || !defined(NDEBUG)

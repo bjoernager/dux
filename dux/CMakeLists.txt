@@ -24,14 +24,16 @@ set(
 # Project:
 project(
 	dux
+	DESCRIPTION
+	"General purpose library."
+	HOMEPAGE_URL
+	"https://mandelbrot.dk/dux"
 	LANGUAGES
 	C
 	CXX
 	ASM # CMake recommends placing assembly as the last entry in the list of languages.
 	VERSION
 	${DUX_VERSION}
-	DESCRIPTION
-	"General purpose library."
 )
 
 # Target:
