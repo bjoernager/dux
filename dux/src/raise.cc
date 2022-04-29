@@ -25,13 +25,13 @@
 
 auto ::dux::raise(::dux::sig const _sig) noexcept -> void {
 	auto const syssig = static_cast<int>(_sig);
-	::dux::dbglog("dux :: raise :: Raising signal #%i!\n",syssig);
+	::dux::dbglog("dux.raise       :: Raise #%i\n",syssig);
 # if defined(dux_priv_nosigtrap)
 	switch (_sig) {
 	[[likely]] default:
 		break;
 	case ::dux::sig::term:
-		::dux_priv_dbglog("dux :: raise :: Terminated!\n");
+		::dux_priv_dbglog("dux.raise       :: Terminated!\n");
 		::dux::exit(::dux::stat::err);
 	case ::dux::sig::trap:
 		::dux::trap();

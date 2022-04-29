@@ -30,7 +30,7 @@
 
 auto ::dux::exit(::dux::stat const _stat) noexcept -> void {
 	if (::dux::ismainthrd()) [[unlikely]] { /* Check if the calling thread is also the main thread. Only thread exit and quick exit may be invoked outside the main thread. */
-		::dux::dbglog("dux :: \x1B[91mexit\x1B[0m :: Standard exit invoked outside main thread!\n");
+		::dux::dbglog("dux.\x1B[91mexit\x1B[0m        :: Standard exit invoked outside main thread!\n");
 		::dux::abrt();
 	}
 	::dux::priv::exitlock.store(true);

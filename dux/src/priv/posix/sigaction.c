@@ -19,8 +19,6 @@
 
 # include <dux/priv>
 
-# include <dux/seq>
-
 # include <signal.h>
 # if defined(dux_os_freebsd)
 # include <sys/syscall.h>

@@ -27,7 +27,7 @@
 
 auto ::dux::priv::realloc(void * const restrict _ptr,::dux::uwrd const _newsz) noexcept -> void * {
 	if (reinterpret_cast<::dux::uwrd>(_ptr) % alignof (::std::max_align_t) != dux_uwrdl(0x0)) [[unlikely]] {
-		::dux::dbglog("dux :: realloc :: Address %p is not default-aligned and cannot be reallocated in the current version of dux!\n",_ptr);
+		::dux::dbglog("dux.realloc :: Address %p is not default-aligned and cannot be reallocated in the current version of dux!\n",_ptr);
 		::dux::raise(::dux::sig::segv);
 	}
 	auto const newptr {::std::realloc(const_cast<void *>(_ptr),_newsz)};

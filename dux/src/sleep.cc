@@ -34,14 +34,14 @@ auto ::dux::sleep(::dux::uint64 const _sec) noexcept -> void {
 	struct timespec timespec {};
 	timespec.tv_sec  = static_cast<::time_t>(_sec);
 	timespec.tv_nsec = 0x0l;
-	::dux::dbglog("dux :: sleep :: Initiating sleep for (" dux_printfuint64 ") %s!\n",_sec,timespec.tv_sec == ::time_t {0x1} ? "second" : "seconds");
+	::dux::dbglog("dux.sleep       :: Sleep " dux_printfuint64 "s\n",_sec);
 	while (timespec.tv_sec > static_cast<::time_t>(0x0)) { /* In case the sleep was interrupted, we must sleep the remaining time away. */
 		if (::dux_priv_posix_nanosleep(&timespec,&timespec) == -0x1) [[unlikely]] {
 			if (dux_priv_errno == EINTR) {
-				::dux::dbglog("dux :: sleep :: Sleep was interrupted! Slept for " dux_printfuint64 " %s.\n",static_cast<::dux::uint64>(timespec.tv_sec),timespec.tv_sec == ::time_t {0x1} ? "second" : "seconds");
+				::dux::dbglog("dux.sleep       :: Sleep was interrupted! Slept for " dux_printfuint64 " %s.\n",static_cast<::dux::uint64>(timespec.tv_sec),timespec.tv_sec == ::time_t {0x1} ? "second" : "seconds");
 				continue;
 			}
-			::dux::dbglog("dux :: \x1B[91msleep\x1B[0m :: Sleep failed!\n");
+			::dux::dbglog("dux.\x1B[91msleep\x1B[0m       :: Sleep failed!\n");
 			::dux::seterr(::dux::errcd::runerr);
 			return;
 		}

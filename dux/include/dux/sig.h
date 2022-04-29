@@ -61,7 +61,7 @@ enum dux_priv_sig { /* Refer to `man 7 signal` for values. */
 	dux_priv_sig_iot    = 0x6,
 	dux_priv_sig_intr   = 0x2,
 	dux_priv_sig_kill   = 0x9,
-	dux_priv_sig_pipe   = 0xD,
+	dux_priv_sig_file   = 0xD,
 # if defined(dux_os_linux)
 	dux_priv_sig_poll   = 0x1D,
 # else

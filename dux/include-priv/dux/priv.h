@@ -17,6 +17,7 @@
 	along with dux. If not, see <https://www.gnu.org/licenses/>.
 */
 
+# include <fcntl.h>
 # include <signal.h>
 # include <sys/mman.h>
 # include <sys/types.h>
@@ -32,9 +33,10 @@ int    dux_priv_posix_clock_gettime(clockid_t               clockid,struct times
 pid_t  dux_priv_posix_getpid(       void);
 pid_t  dux_priv_posix_gettid(       void);
 int    dux_priv_posix_kill(         pid_t                   pid,    int                      sig);
-void * dux_priv_posix_mmap(         void *                  addr,   dux_priv_uwrd            length,int                prot,  int flags,int fd,off_t offset);
+void * dux_priv_posix_mmap(         void *                  addr,   dux_priv_uwrd            length,  int                prot,  int    flags,int fd,off_t offset);
 int    dux_priv_posix_nanosleep(    struct timespec const * req,    struct timespec *        rem);
-int    dux_priv_posix_sigaction(    int                     signum, struct sigaction const * act,   struct sigaction * oldact);
+int    dux_priv_posix_openat(       int                     fd,     char const *             pathname,int                flags, mode_t mode);
+int    dux_priv_posix_sigaction(    int                     signum, struct sigaction const * act,     struct sigaction * oldact);
 
 int dux_priv_start(int argc,char const * const * argv);
 

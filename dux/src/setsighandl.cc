@@ -42,7 +42,7 @@ auto ::dux::setsighandl(::dux::sig const _sig,::dux::sighandl const _handl) noex
 		[[fallthrough]];
 	case ::dux::sig::trap:
 		if (!_handl._isdfl) [[unlikely]] {
-			::dux::dbglog("dux :: \x1B[91msetsighandl\x1B[0m :: Attempted setting custom signal handler for SIGABRT, SIGKILL or SIGTRAP (not allowed)!\n");
+			::dux::dbglog("dux.\x1B[91msetsighandl\x1B[0m :: Attempted setting custom signal handler for SIGABRT, SIGKILL or SIGTRAP (not allowed)!\n");
 			::dux::seterr(::dux::errcd::badperms);
 			return;
 		}
@@ -50,7 +50,7 @@ auto ::dux::setsighandl(::dux::sig const _sig,::dux::sighandl const _handl) noex
 	if constexpr (::dux::dbg) {
 		if (!_handl._isdfl) {
 			if (_handl.handl == nullptr) [[unlikely]] {
-				::dux::dbglog("dux :: \x1B[91msetsighandl\x1B[0m :: Handler invalid (address is null)!\n");
+				::dux::dbglog("dux.\x1B[91msetsighandl\x1B[0m :: Handler invalid (address is null)!\n");
 				::dux::seterr(::dux::errcd::illparam);
 				return;
 			}
@@ -64,7 +64,7 @@ auto ::dux::setsighandl(::dux::sig const _sig,::dux::sighandl const _handl) noex
 			auto const   handlret {handl.handl(static_cast<::dux::sig>(_sig))};
 			auto const   handlptr {reinterpret_cast<void *>(handl.handl)};
 			if (handlret) [[unlikely]] {
-				::dux::dbglog("dux :: \x1B[91mraise\x1B[0m :: Signal handler for #%i (at %p) indicated error!\n",_sig,handlptr);
+				::dux::dbglog("dux.\x1B[91mraise\x1B[0m :: Signal handler for #%i (at %p) indicated error!\n",_sig,handlptr);
 				::dux::abrt();
 			}
 			switch (_sig) {
@@ -75,17 +75,17 @@ auto ::dux::setsighandl(::dux::sig const _sig,::dux::sighandl const _handl) noex
 			case SIGILL:
 				[[fallthrough]];
 			case SIGSEGV:
-				::dux::dbglog("dux :: \x1B[91mraise\x1B[0m :: Signal handler for SIGFPE, SIGILL or SIGSEGV (at %p) returned and did not indicate error (not allowed)!\n",handlptr);
+				::dux::dbglog("dux.\x1B[91mraise\x1B[0m :: Signal handler for SIGFPE, SIGILL or SIGSEGV (at %p) returned and did not indicate error (not allowed)!\n",handlptr);
 				::dux::abrt();
 			}
 		}};
 		struct ::sigaction sigact {};
 		if (_handl == ::dux::sighandl::dfl()) {
-			::dux::dbglog("dux :: setsighandl :: Setting default signal handler for signal #%i!\n",sig);
+			::dux::dbglog("dux.setsighandl :: Set (default) -> #%i\n",sig);
 			sigact.sa_handler = SIG_DFL;
 		}
 		else {
-			::dux::dbglog("dux :: setsighandl :: Setting signal handler (at %p) for signal #%i!\n",_handl.handl,sig);
+			::dux::dbglog("dux.setsighandl :: Set %p -> #%i\n",_handl.handl,sig);
 			sigact.sa_handler = handlwrap;
 		}
 		::sigemptyset(&sigact.sa_mask);

@@ -19,17 +19,18 @@
 
 # include <dux/priv>
 
-# include <fcntl.h>
-# if defined(dux_os_freebsd)
-# include <sys/syscall.h>
-# elif defined(dux_os_linux)
-# include <linux/unistd.h>
-# endif
+# include <dux/mem>
 
-int dux_priv_posix_openat(int const fd,char const * const pathname,int const flags,mode_t const mode) {
-# if defined(dux_os_freebsd)
-	return (int)dux_syscall(SYS_open,fd,pathname,flags,mode);
-# elif defined(dux_os_linux)
-	return (int)dux_syscall(__NR_openat,fd,pathname,flags,mode);
-# endif
+# include <dux/sig>
+
+auto ::dux::memeq(void const * const restrict _lptr,::dux::uwrd const _num,void const * const restrict _rptr) noexcept -> bool {
+	auto       lptr    {static_cast<::dux::uint8 const *>(_lptr)};
+	auto       rptr    {static_cast<::dux::uint8 const *>(_rptr)};
+	auto const maxlptr {lptr + _num - dux_uwrdl(0x1)};
+	for (;lptr <= maxlptr;++lptr,++rptr) {if (*lptr != *rptr) [[unlikely]] {return false;}}
+	return true;
 }
+
+# pragma GCC diagnostic ignored "-Wmissing-declarations"
+
+extern "C" auto dux_memeq(void const * const restrict _lptr,::dux::uwrd const _num,void const * const restrict _rptr) noexcept -> bool {return ::dux::memeq(_lptr,_num,_rptr);}

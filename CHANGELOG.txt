@@ -1,3 +1,19 @@
+| 2↊
+
+- Update the homepage-URL in CMake and the homepage link in the readme;
+- Add I/O modules for file manipulation;
+- Simplify debug logs and align them;
+- Remove error code noimpl;
+- Revert "Make more compile-time objects be internally-linked" from dux-28 as now GCC complains;
+- Split module group arr into C and C++ sections like the others;
+- Add module memeq for comparing memory regions;
+- Implement POSIX functions dux.priv.posix.fsync, dux.priv.posix.read;
+- Update gitignore;
+- Update update-checklist;
+- Rename error code badio to ioerr;
+
+NOTE: dux.pipe.read currently fails on FreeBSD
+
 | 29
 
 - Add homepage-URL to CMake;

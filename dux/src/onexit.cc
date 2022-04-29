@@ -23,7 +23,7 @@
 
 auto ::dux::onexit(::dux::priv::onexitfn const _fn) noexcept -> void {
 	if (::dux::priv::exitlock.load()) [[unlikely]] {
-		::dux::dbglog("dux :: \x1B[91monexit\x1B[0m :: Invoked after exit!\n");
+		::dux::dbglog("dux.\x1B[91monexit\x1B[0m      :: Invoked after exit!\n");
 		::dux::seterr(::dux::errcd::illcallseq);
 		return;
 	}
@@ -34,15 +34,15 @@ auto ::dux::onexit(::dux::priv::onexitfn const _fn) noexcept -> void {
 		using ::dux::priv::onexitfns;
 		using ::dux::priv::numonexitfns;
 		for (auto n {dux_uwrdl(0x0)};n < numonexitfns;++n) {if (onexitfns[n] == _fn) [[unlikely]] {
-			::dux::dbglog("dux :: onexit :: Function at %p has already been registered!\n",reinterpret_cast<void *>(_fn));
+			::dux::dbglog("dux.onexit      :: Function at %p has already been registered!\n",reinterpret_cast<void *>(_fn));
 			goto ret;
 		}}
 		if (numonexitfns == ::dux::priv::maxnumonexitfns) [[unlikely]] {
-			::dux::dbglog("dux :: \x1B[91monexit\x1B[0m :: Function at %p cannot be registered as limit (%zu) has been reached!\n",reinterpret_cast<void *>(_fn),::dux::priv::maxnumonexitfns);
+			::dux::dbglog("dux.\x1B[91monexit\x1B[0m      :: Function at %p cannot be registered as limit (%zu) has been reached!\n",reinterpret_cast<void *>(_fn),::dux::priv::maxnumonexitfns);
 			::dux::seterr(::dux::errcd::nospc);
 			goto ret;
 		}
-		::dux::dbglog("dux :: onexit :: Registering function at %p!\n",reinterpret_cast<void *>(_fn));
+		::dux::dbglog("dux.onexit      :: Register %p!\n",reinterpret_cast<void *>(_fn));
 		++numonexitfns;
 		onexitfns[numonexitfns - 0x1] = _fn;
 	}

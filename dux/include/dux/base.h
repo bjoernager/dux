@@ -68,7 +68,7 @@
 # endif
 # endif
 
-# define dux_priv_ver 0x21
+# define dux_priv_ver 0x22
 
 # if !defined(dux_dbg)
 # if defined(_DEBUG) || !defined(NDEBUG)
@@ -463,9 +463,8 @@ enum dux_priv_errcd {
 	dux_priv_errcd_badacs,            /* Bad access:            Access denied */
 	dux_priv_errcd_badaddr,           /* Bad address:           Addres was out of bounds or invalid */
 	dux_priv_errcd_badalloc,          /* Bad allocation:        Memory allocation failed */
-	dux_priv_errcd_badio,             /* Bad input/output:      Unable to read or write to pipe */
 	dux_priv_errcd_badperms,          /* Bad permissions:       Operation was not permitted */
-	dux_priv_errcd_badpipe,           /* Bad pipe:              Pipe was not valid */
+	dux_priv_errcd_badfile,           /* Bad file:              Pipe was not valid */
 	dux_priv_errcd_badseq,            /* Bad sequence:          Memory sequence is illegal */
 	dux_priv_errcd_badstr,            /* Bad string:            String was invalid */
 	dux_priv_errcd_badutf,            /* Bad UTF:               UTF codepoint was illegal */
@@ -473,10 +472,10 @@ enum dux_priv_errcd {
 	dux_priv_errcd_illcallseq,        /* Illegal call sequence: Function was called in an illegal order */
 	dux_priv_errcd_illparam,          /* Illegal parameter:     Provided parameter was not valid */
 	dux_priv_errcd_illsz,             /* Illegal size:          Size was illegal */
+	dux_priv_errcd_ioerr,             /* Bad input/output:      Unable to read or write to file */
 	dux_priv_errcd_matherr,           /* Mathematical error:    Mathematical operation(s) could not be performed */
 	dux_priv_errcd_nodir,             /* No directory:          Directory does not exist */
 	dux_priv_errcd_nofile,            /* No file:               File does not exist */
-	dux_priv_errcd_noimpl,            /* No implementaton:      The function is not implemented on the target platform */
 	dux_priv_errcd_nospc,             /* No space:              Destination is out of available space */
 	dux_priv_errcd_outofrange,        /* Out of range:          Provided value is out of range */
 	dux_priv_errcd_runerr,            /* Runtime error:         An unpredictable error occured */
@@ -501,9 +500,10 @@ dux_attr_hot dux_priv_uwrd dux_priv_syscall(dux_priv_uwrd syscallid,...);
 
 /* POSIX functions we implement ourselves. If the function uses a non-fundamental type, we put it in the private header. */
 int           dux_priv_posix_close(    int    fildes);
-dux_priv_swrd dux_priv_posix_write(    int    fildes, void const *  buf,     dux_priv_uwrd nbyte);
-dux_priv_swrd dux_priv_posix_getrandom(void * buf,    dux_priv_uwrd buflen,  unsigned int  flags);
-int           dux_priv_posix_openat(   int    fd,     char const *  pathname,int           flags);
+int           dux_priv_posix_fsync(    int    fd);
+dux_priv_swrd dux_priv_posix_write(    int    fildes, void const *  buf,   dux_priv_uwrd nbyte);
+dux_priv_swrd dux_priv_posix_getrandom(void * buf,    dux_priv_uwrd buflen,unsigned int  flags);
+dux_priv_swrd dux_priv_posix_read(     int    fd,     void *        buf,   dux_priv_uwrd count);
 
 dux_priv_endcdecls
 

@@ -24,7 +24,7 @@
 # include <dux/sig>
 
 auto ::dux::free(::dux::nullptrtyp) noexcept -> void {
-	::dux::dbglog("dux :: free :: Address 0x0 is not freeable!\n");
+	::dux::dbglog("dux.free :: Address 0x0 is not freeable!\n");
 	::dux::raise(::dux::sig::segv);
 	::dux::unreach(); /* SIGSEGV handlers may not return, so we can guarantee that this function also never returns. */
 }

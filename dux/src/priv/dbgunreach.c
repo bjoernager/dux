@@ -22,7 +22,7 @@
 # include <dux/str>
 
 void dux_priv_dbgunreach(char const * const restrict _file,long const _line) {
-	dux_dbglog("dux :: Unreachable point reached");
+	dux_dbglog("dux.Unreachable point reached");
 	if (!dux_streq(_file,"") && _line != 0x0l) {
 		dux_dbglog(" at \"%s\":%li",_file,_line);
 	}

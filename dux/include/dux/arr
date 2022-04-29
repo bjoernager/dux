@@ -22,3 +22,9 @@
 # include <dux/mem>
 
 # include <dux/arr.h>
+
+# if defined(dux_lang_c)
+# include <dux/c/arr.h>
+# elif defined(dux_lang_cxx)
+# include <dux/cxx/arr.hh>
+# endif

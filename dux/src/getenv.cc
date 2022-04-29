@@ -40,13 +40,13 @@ auto ::dux::getenv(char const * const restrict _envvarname) noexcept -> ::dux::s
 		if (::dux::streq(envvarname,_envvarname)) [[unlikely]] {
 			str.ptr = envvar + eqpos + dux_uwrdl(0x1);
 			str.sz  = eqpos;
-			::dux::dbglog("dux :: getenv :: Got value of environment variable %s: \"%s\"\n",_envvarname,str.ptr);
+			::dux::dbglog("dux.getenv :: Got value of environment variable %s: \"%s\"\n",_envvarname,str.ptr);
 			return str;
 		}
 	}
 	str.ptr = "";
 	str.sz  = dux_uwrdl(0x0);
-	::dux::dbglog("dux :: getenv :: Environment variable %s did not exist!\n",_envvarname);
+	::dux::dbglog("dux.getenv :: Environment variable %s did not exist!\n",_envvarname);
 	return str;
 }
 

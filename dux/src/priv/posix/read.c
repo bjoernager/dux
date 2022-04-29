@@ -19,17 +19,16 @@
 
 # include <dux/priv>
 
-# include <fcntl.h>
 # if defined(dux_os_freebsd)
 # include <sys/syscall.h>
 # elif defined(dux_os_linux)
 # include <linux/unistd.h>
 # endif
 
-int dux_priv_posix_openat(int const fd,char const * const pathname,int const flags,mode_t const mode) {
+dux_swrd dux_priv_posix_read(int const fd,void * const buf,dux_uwrd const count) {
 # if defined(dux_os_freebsd)
-	return (int)dux_syscall(SYS_open,fd,pathname,flags,mode);
+	return (dux_swrd)dux_syscall(SYS_read,fd,buf,count);
 # elif defined(dux_os_linux)
-	return (int)dux_syscall(__NR_openat,fd,pathname,flags,mode);
+	return (dux_swrd)dux_syscall(__NR_read,fd,buf,count);
 # endif
 }

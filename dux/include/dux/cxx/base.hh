@@ -18,8 +18,8 @@
 */
 
 namespace dux {
-	constexpr static auto dbg {dux_dbg};
-	constexpr static auto ver {dux_priv_ver};
+	constexpr auto dbg {dux_dbg};
+	constexpr auto ver {dux_priv_ver};
 }
 
 namespace dux {
@@ -37,27 +37,27 @@ namespace dux {
 	using nullptrtyp = decltype (nullptr);
 }
 
-namespace dux { /* Clang may not be retarted. */
-	template<typename T> constexpr auto static maxval                     {T {0x0}};
-	template<>           constexpr auto static maxval<bool>               {static_cast<bool>(              true)};
-	template<>           constexpr auto static maxval<char>               {static_cast<char>(              dux_chrmax)};
-	template<>           constexpr auto static maxval<char16_t>           {static_cast<char16_t>(          dux_chr16max)};
-	template<>           constexpr auto static maxval<char32_t>           {static_cast<char32_t>(          dux_chr32max)};
-	template<>           constexpr auto static maxval<char8_t>            {static_cast<char8_t>(           dux_chr8max)};
-	template<>           constexpr auto static maxval<double>             {static_cast<double>(            dux_dblmax)};
-	template<>           constexpr auto static maxval<int>                {static_cast<int>(               dux_intmax)};
-	template<>           constexpr auto static maxval<long>               {static_cast<long>(              dux_lngmax)};
-	template<>           constexpr auto static maxval<long double>        {static_cast<long double>(       dux_ldblmax)};
-	template<>           constexpr auto static maxval<long long>          {static_cast<long long>(         dux_llngmax)};
-	template<>           constexpr auto static maxval<::dux::nullptrtyp>  {                                nullptr};
-	template<>           constexpr auto static maxval<short>              {static_cast<short>(             dux_shrtmax)};
-	template<>           constexpr auto static maxval<signed char>        {static_cast<signed char>(       dux_schrmax)};
-	template<>           constexpr auto static maxval<unsigned char>      {static_cast<unsigned char>(     dux_uchrmax)};
-	template<>           constexpr auto static maxval<unsigned int>       {static_cast<unsigned int>(      dux_uintmax)};
-	template<>           constexpr auto static maxval<unsigned long>      {static_cast<unsigned long>(     dux_ulngmax)};
-	template<>           constexpr auto static maxval<unsigned long long> {static_cast<unsigned long long>(dux_ullngmax)};
-	template<>           constexpr auto static maxval<unsigned short>     {static_cast<unsigned short>(    dux_ushrtmax)};
-	template<>           constexpr auto static maxval<wchar_t>            {static_cast<wchar_t>(           dux_wchrmax)};
+namespace dux { /* Clang (13.0.1) complains about multiple definitions here. Clang is retarded. */
+	template<typename T> constexpr auto maxval                     {T {0x0}};
+	template<>           constexpr auto maxval<bool>               {static_cast<bool>(              true)};
+	template<>           constexpr auto maxval<char>               {static_cast<char>(              dux_chrmax)};
+	template<>           constexpr auto maxval<char16_t>           {static_cast<char16_t>(          dux_chr16max)};
+	template<>           constexpr auto maxval<char32_t>           {static_cast<char32_t>(          dux_chr32max)};
+	template<>           constexpr auto maxval<char8_t>            {static_cast<char8_t>(           dux_chr8max)};
+	template<>           constexpr auto maxval<double>             {static_cast<double>(            dux_dblmax)};
+	template<>           constexpr auto maxval<int>                {static_cast<int>(               dux_intmax)};
+	template<>           constexpr auto maxval<long>               {static_cast<long>(              dux_lngmax)};
+	template<>           constexpr auto maxval<long double>        {static_cast<long double>(       dux_ldblmax)};
+	template<>           constexpr auto maxval<long long>          {static_cast<long long>(         dux_llngmax)};
+	template<>           constexpr auto maxval<::dux::nullptrtyp>  {                                nullptr};
+	template<>           constexpr auto maxval<short>              {static_cast<short>(             dux_shrtmax)};
+	template<>           constexpr auto maxval<signed char>        {static_cast<signed char>(       dux_schrmax)};
+	template<>           constexpr auto maxval<unsigned char>      {static_cast<unsigned char>(     dux_uchrmax)};
+	template<>           constexpr auto maxval<unsigned int>       {static_cast<unsigned int>(      dux_uintmax)};
+	template<>           constexpr auto maxval<unsigned long>      {static_cast<unsigned long>(     dux_ulngmax)};
+	template<>           constexpr auto maxval<unsigned long long> {static_cast<unsigned long long>(dux_ullngmax)};
+	template<>           constexpr auto maxval<unsigned short>     {static_cast<unsigned short>(    dux_ushrtmax)};
+	template<>           constexpr auto maxval<wchar_t>            {static_cast<wchar_t>(           dux_wchrmax)};
 }
 
 namespace dux::priv {
@@ -76,19 +76,19 @@ namespace dux::priv {
 	template<typename T> struct isptrtyp<T *> {constexpr static auto val {true};};
 }
 namespace dux {
-	template<typename T> constexpr static auto isptrtyp {::dux::priv::isptrtyp<T>::val};
+	template<typename T> constexpr auto isptrtyp {::dux::priv::isptrtyp<T>::val};
 }
 
 namespace dux {
-	template<typename T>             constexpr static auto ischrtyp   {::dux::issame<T,char> || ::dux::issame<T,char16_t> || ::dux::issame<T,char32_t> || ::dux::issame<T,char8_t> || ::dux::issame<T,wchar_t>};
-	template<typename T,typename T0> constexpr static auto iscnvto    {requires {static_cast<T0>(T {});}};
-	template<typename T>             constexpr static auto isflttyp   {::dux::issame<T,double> || ::dux::issame<T,float> || ::dux::issame<T,long double>};
-	template<typename T>             constexpr static auto issinttyp  {::dux::issame<T,int> || ::dux::issame<T,long> || ::dux::issame<T,long long> || ::dux::issame<T,short> || ::dux::issame<T,signed char>};
-	template<typename T>             constexpr static auto isuinttyp  {::dux::issame<T,unsigned char> || ::dux::issame<T,unsigned int> || ::dux::issame<T,unsigned long> || ::dux::issame<T,unsigned long long> || ::dux::issame<T,unsigned short>};
+	template<typename T>             constexpr auto ischrtyp   {::dux::issame<T,char> || ::dux::issame<T,char16_t> || ::dux::issame<T,char32_t> || ::dux::issame<T,char8_t> || ::dux::issame<T,wchar_t>};
+	template<typename T,typename T0> constexpr auto iscnvto    {requires {static_cast<T0>(T {});}};
+	template<typename T>             constexpr auto isflttyp   {::dux::issame<T,double> || ::dux::issame<T,float> || ::dux::issame<T,long double>};
+	template<typename T>             constexpr auto issinttyp  {::dux::issame<T,int> || ::dux::issame<T,long> || ::dux::issame<T,long long> || ::dux::issame<T,short> || ::dux::issame<T,signed char>};
+	template<typename T>             constexpr auto isuinttyp  {::dux::issame<T,unsigned char> || ::dux::issame<T,unsigned int> || ::dux::issame<T,unsigned long> || ::dux::issame<T,unsigned long long> || ::dux::issame<T,unsigned short>};
 
-	template<typename T>             constexpr static auto isinttyp   {::dux::issinttyp<T> || ::dux::isuinttyp<T>};
+	template<typename T>             constexpr auto isinttyp   {::dux::issinttyp<T> || ::dux::isuinttyp<T>};
 
-	template<typename T>             constexpr static auto isarithtyp {::dux::isflttyp<T> || ::dux::isinttyp<T>};
+	template<typename T>             constexpr auto isarithtyp {::dux::isflttyp<T> || ::dux::isinttyp<T>};
 }
 
 namespace dux {
@@ -178,9 +178,8 @@ namespace dux {
 		badacs     = ::dux_priv_errcd_badacs,
 		badaddr    = ::dux_priv_errcd_badaddr,
 		badalloc   = ::dux_priv_errcd_badalloc,
-		badio      = ::dux_priv_errcd_badio,
 		badperms   = ::dux_priv_errcd_badperms,
-		badpipe    = ::dux_priv_errcd_badpipe,
+		badfile    = ::dux_priv_errcd_badfile,
 		badseq     = ::dux_priv_errcd_badseq,
 		badstr     = ::dux_priv_errcd_badstr,
 		badutf     = ::dux_priv_errcd_badutf,
@@ -188,10 +187,10 @@ namespace dux {
 		illcallseq = ::dux_priv_errcd_illcallseq,
 		illparam   = ::dux_priv_errcd_illparam,
 		illsz      = ::dux_priv_errcd_illsz,
+		ioerr      = ::dux_priv_errcd_ioerr,
 		matherr    = ::dux_priv_errcd_matherr,
 		nodir      = ::dux_priv_errcd_nodir,
 		nofile     = ::dux_priv_errcd_nofile,
-		noimpl     = ::dux_priv_errcd_noimpl,
 		nospc      = ::dux_priv_errcd_nospc,
 		outofrange = ::dux_priv_errcd_outofrange,
 		runerr     = ::dux_priv_errcd_runerr,
@@ -351,11 +350,11 @@ constexpr auto ::dux::errcdnm(::dux::errcd const _cd) noexcept -> ::dux::str {
 		return ::dux::priv::strlittoduxstr("BADADDR");
 	case ::dux::errcd::badalloc:
 		return ::dux::priv::strlittoduxstr("BADALLOC");
-	case ::dux::errcd::badio:
+	case ::dux::errcd::ioerr:
 		return ::dux::priv::strlittoduxstr("BADIO");
 	case ::dux::errcd::badperms:
 		return ::dux::priv::strlittoduxstr("BADPERMS");
-	case ::dux::errcd::badpipe:
+	case ::dux::errcd::badfile:
 		return ::dux::priv::strlittoduxstr("BADPIPE");
 	case ::dux::errcd::badseq:
 		return ::dux::priv::strlittoduxstr("BADSEQ");
@@ -379,8 +378,6 @@ constexpr auto ::dux::errcdnm(::dux::errcd const _cd) noexcept -> ::dux::str {
 		return ::dux::priv::strlittoduxstr("NOERR");
 	case ::dux::errcd::nofile:
 		return ::dux::priv::strlittoduxstr("NOFILE");
-	case ::dux::errcd::noimpl:
-		return ::dux::priv::strlittoduxstr("NOIMPL");
 	case ::dux::errcd::nospc:
 		return ::dux::priv::strlittoduxstr("NOSPC");
 	case ::dux::errcd::outofrange:

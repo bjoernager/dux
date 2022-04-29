@@ -27,7 +27,7 @@ project(
 	DESCRIPTION
 	"General purpose library."
 	HOMEPAGE_URL
-	"https://mandelbrot.dk/dux"
+	"https://mandelbrot.dk/dux/about/"
 	LANGUAGES
 	C
 	CXX
@@ -42,12 +42,14 @@ add_library(
 	SHARED
 	"src/priv/posix/clock_gettime.c"
 	"src/priv/posix/close.c"
+	"src/priv/posix/fsync.c"
 	"src/priv/posix/getpid.c"
 	"src/priv/posix/getrandom.c"
 	"src/priv/posix/kill.c"
 	"src/priv/posix/mmap.c"
 	"src/priv/posix/nanosleep.c"
 	"src/priv/posix/openat.c"
+	"src/priv/posix/read.c"
 	"src/priv/posix/sigaction.c"
 	"src/priv/posix/write.c"
 	"src/priv/alloc.cc"
@@ -67,8 +69,10 @@ add_library(
 	"src/priv/syscall.S"
 	"src/abrt.cc"
 	"src/alloc.cc"
+	"src/crtfile.cc"
 	"src/errcdnm.cc"
 	"src/exit.cc"
+	"src/file.cc"
 	"src/fndchr.cc"
 	"src/free.cc"
 	"src/freernd.cc"
@@ -79,6 +83,7 @@ add_library(
 	"src/gettime.cc"
 	"src/ismainthrd.cc"
 	"src/mainparams.cc"
+	"src/memeq.cc"
 	"src/onexit.cc"
 	"src/raise.cc"
 	"src/realloc.cc"

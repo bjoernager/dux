@@ -26,8 +26,8 @@
 auto ::dux::abrt() noexcept -> void {
 	static ::std::atomic_flag lock;
 	while (lock.test_and_set()) {} /* We make sure we don't abort from multiple threads. */
-	::dux::dbglog("dux :: abrt :: Aborting!\n");
-	if (::dux::haserr()) {::dux::dbglog("dux :: abrt :: Last error: %s\n",::dux::errcdnm(::dux::geterr()));}
+	::dux::dbglog("dux.abrt        :: Abort\n");
+	if (::dux::haserr()) {::dux::dbglog("dux.abrt        :: Last error: %s\n",::dux::errcdnm(::dux::geterr()));}
 	::dux::setsighandl(::dux::sig::abrt,::dux::sighandl::dfl());
 	::dux::raise(::dux::sig::abrt); /* Raise SIGABRT to call the default signal handler. */
 	::dux::trap(); /* The default signal handler returned, so we will trap as we can't return. */

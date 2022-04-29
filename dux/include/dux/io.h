@@ -22,3 +22,16 @@ enum dux_priv_iotyp {
 	dux_priv_iotyp_rw,
 	dux_priv_iotyp_w,
 };
+
+# define dux_priv_ioacs_uid  (dux_uint16l(04000))
+# define dux_priv_ioacs_gid  (dux_uint16l(02000))
+# define dux_priv_ioacs_stck (dux_uint16l(01000))
+# define dux_priv_ioacs_usrr (dux_uint16l(0400))
+# define dux_priv_ioacs_usrw (dux_uint16l(0200))
+# define dux_priv_ioacs_usrx (dux_uint16l(0100))
+# define dux_priv_ioacs_grpr (dux_uint16l(040))
+# define dux_priv_ioacs_grpw (dux_uint16l(020))
+# define dux_priv_ioacs_grpx (dux_uint16l(010))
+# define dux_priv_ioacs_othr (dux_uint16l(04))
+# define dux_priv_ioacs_othw (dux_uint16l(02))
+# define dux_priv_ioacs_othx (dux_uint16l(01))

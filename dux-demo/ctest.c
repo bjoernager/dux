@@ -19,9 +19,9 @@ static bool dux_local_sighandl(enum dux_sig const _sig) {
 }
 
 void ctest(void const * const restrict _params) {
-	dux_dbglog("dux :: demo :: Performing C-tests!\n");
-	if (dux_getnummainparams(_params) == dux_uwrdl(0x0)) {dux_dbglog("dux :: demo :: No parameters!\n");}
-	else {for (dux_uwrd n = dux_uwrdl(0x0);n < dux_getnummainparams(_params);++n) {dux_dbglog("dux :: demo :: Parameter %zu: %s\n",n + dux_uwrdl(0x1),dux_getmainparam(_params,n));}}
+	dux_dbglog("dux.demo        :: Performing C-tests!\n");
+	if (dux_getnummainparams(_params) == dux_uwrdl(0x0)) {dux_dbglog("dux.demo        :: No parameters!\n");}
+	else {for (dux_uwrd n = dux_uwrdl(0x0);n < dux_getnummainparams(_params);++n) {dux_dbglog("dux.demo        :: Parameter %zu: %s\n",n + dux_uwrdl(0x1),dux_getmainparam(_params,n));}}
 	{
 		dux_setsighandl(dux_sig_intr,dux_local_sighandl);
 		dux_raise(dux_sig_intr);

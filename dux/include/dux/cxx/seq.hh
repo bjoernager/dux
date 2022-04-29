@@ -18,6 +18,8 @@
 */
 
 namespace dux {
+	[[nodiscard]] auto memeq(void const * lptr,::dux::uwrd const num,void const * rptr) noexcept -> bool;
+
 	template<typename T> inline auto bytefill(T * const _in,::dux::uwrd const _num,::dux::uint8 const _val) noexcept -> void {
 		static_assert(!::dux::issame<T,void>);
 		dux_priv_ifconsteval {

@@ -47,7 +47,7 @@ static_assert([] {
 	static_assert(chk(::dux::sig::io,    SIGIO));
 	static_assert(chk(::dux::sig::intr,  SIGINT));
 	static_assert(chk(::dux::sig::kill,  SIGKILL));
-	static_assert(chk(::dux::sig::pipe,  SIGPIPE));
+	static_assert(chk(::dux::sig::file,  SIGPIPE));
 	static_assert(chk(::dux::sig::prof,  SIGPROF));
 	static_assert(chk(::dux::sig::quit,  SIGQUIT));
 	static_assert(chk(::dux::sig::segv,  SIGSEGV));
@@ -77,20 +77,20 @@ static_assert([] {
 extern "C" auto ctest(void const * params) -> void;
 
 extern "C" auto dux_main(::dux::mainparams const * const restrict _params) -> ::dux::stat {
-	if (_params->num() == dux_uwrdl(0x0)) {::dux::dbglog("dux :: demo :: No parameters!\n");}
-	else {for (auto n {dux_uwrdl(0x0)};n < _params->num();++n) {::dux::dbglog("dux :: demo :: Parameter #%zu: %s\n",n + dux_uwrdl(0x1),_params->param(n).ptr);}}
+	if (_params->num() == dux_uwrdl(0x0)) {::dux::dbglog("dux.demo        :: No parameters!\n");}
+	else {for (auto n {dux_uwrdl(0x0)};n < _params->num();++n) {::dux::dbglog("dux.demo        :: Parameter #%zu: %s\n",n + dux_uwrdl(0x1),_params->param(n).ptr);}}
 	{
 		constexpr auto estim {dux_uint64l(0x100)};
-		::dux::dbglog("Trying to roll two identical 8-bit numbers in a row. Estimated number of tries: " dux_printfuint64 ".\n",estim);
+		::dux::dbglog("dux.demo        :: Trying to roll two identical 8-bit numbers in a row. Estimated number of tries: " dux_printfuint64 ".\n",estim);
 		auto num0 {::dux::rnd<::dux::uint8>()};
 		auto num1 {::dux::rnd<::dux::uint8>()};
 		for (auto n = dux_uint64l(0x1);;++n) {
 			if (num0 == num1) [[unlikely]] {
-				::dux::dbglog("Done! Took " dux_printfuint64 " attempts (estimated: " dux_printfuint64 ") to roll the same 8-bit number (" dux_printfuint8 ") two times in a row.\n",n,estim,num0);
-				::dux::dbglog("Odds: %f%%",((double)n / (double)estim) * (double)100.0);
+				::dux::dbglog("dux.demo        :: Done! Took " dux_printfuint64 " attempts (estimated: " dux_printfuint64 ") to roll the same 8-bit number (" dux_printfuint8 ") two times in a row.\n",n,estim,num0);
+				::dux::dbglog("dux.demo        :: Odds: %f%%",((double)n / (double)estim) * (double)100.0);
 				if (n == dux_uint64l(0x45)) {::dux::dbglog(" - Nice!");} /* 69 */
 				else if (n == dux_uint64l(0x1)) {::dux::dbglog(" - bruh");}
-				::dux::dbglog("\n\nContinuing to the testing stage...\n\n");
+				::dux::dbglog("\n");
 				goto test;
 			}
 			num0 = ::dux::rnd<::dux::uint8>();
@@ -99,7 +99,7 @@ extern "C" auto dux_main(::dux::mainparams const * const restrict _params) -> ::
 	}
 test:;
 	auto const time = ::dux::gettime();
-	::dux::dbglog("Current time: " dux_printfsint64 "\n",time);
+	::dux::dbglog("dux.demo        :: Current time: " dux_printfsint64 "\n",time);
 	dux_ass("",time >= dux_sint64l(0x5C10DFA4));
 	{
 		::dux::reseterr();
@@ -156,7 +156,7 @@ test:;
 	}
 	{
 		::dux::seterr(::dux::errcd::test);
-		dux_ass("Testing if the test error was set",::dux::geterr() >::dux::errcd::noerr);
+		dux_ass("Error setter didn't work!",::dux::geterr() >::dux::errcd::noerr);
 		::dux::reseterr();
 	}
 	{
@@ -205,15 +205,25 @@ test:;
 		dux_ass("",arr[dux_uwrdl(0x6)] == false);
 		dux_ass("",arr[dux_uwrdl(0x7)] == true);
 	}
+	{
+		dux_ass("",::dux::memeq("ABC",dux_uwrdl(0x3),"ABC"));
+		auto file {::dux::crtfile("dux-io-demo")};
+		file.write("Hello there!");
+		file.open("dux-io-demo",::dux::iotyp::r);
+		auto const dat {file.read(dux_uwrdl(0xC))};
+		dux_ass("",dat.sz() == dux_uwrdl(0xC));
+		dux_ass("",::dux::memeq(dat.craw(),dat.sz(),"Hello there!"));
+		file.close();
+	}
 	if (::dux::haserr()) [[unlikely]] {
-		::dux::dbglog("dux :: \x1B[91mdemo\x1B[0m :: Got error %S!\n",::dux::errcdnm(::dux::geterr()));
+		::dux::dbglog("dux.\x1B[91mdemo\x1B[0m        :: Got error %S!\n",::dux::errcdnm(::dux::geterr()));
 		::dux::exit(::dux::stat::err);
 	}
 	::ctest(_params);
 	::dux::onexit([](::dux::stat) {
 		::dux::onexit([](::dux::stat) {});
 		dux_ass("",::dux::haserr());
-		::dux::dbglog("dux :: demo :: All tests passed!\n");
+		::dux::dbglog("dux.demo        :: All tests passed!\n");
 	});
 	::dux::exit(::dux::stat::ok);
 }

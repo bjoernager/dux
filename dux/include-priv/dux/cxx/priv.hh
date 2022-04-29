@@ -21,6 +21,15 @@
 # include <csetjmp>
 
 namespace dux::priv {
+	class filesysdat {
+	public:
+# if defined(dux_os_posix)
+		int fd;
+# endif
+	};
+}
+
+namespace dux::priv {
 	inline ::std::jmp_buf       exitjmp;
 	inline ::dux::stat volatile exitstat;
 
