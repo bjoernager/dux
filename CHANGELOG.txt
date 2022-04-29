@@ -1,3 +1,7 @@
+| 2↋
+
+- Fix signal pipe being renamed to file;
+
 | 2↊
 
 - Update the homepage-URL in CMake and the homepage link in the readme;

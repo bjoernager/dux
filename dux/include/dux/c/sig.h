@@ -30,7 +30,7 @@ enum dux_sig {
 	dux_sig_iot    = dux_priv_sig_iot,
 	dux_sig_intr   = dux_priv_sig_intr,
 	dux_sig_kill   = dux_priv_sig_kill,
-	dux_sig_file   = dux_priv_sig_file,
+	dux_sig_pipe   = dux_priv_sig_pipe,
 	dux_sig_poll   = dux_priv_sig_poll,
 	dux_sig_prof   = dux_priv_sig_prof,
 	dux_sig_pwr    = dux_priv_sig_pwr,

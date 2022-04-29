@@ -31,7 +31,7 @@ namespace dux {
 		iot    = static_cast<::dux::uint8>(dux_priv_sig_iot),
 		intr   = static_cast<::dux::uint8>(dux_priv_sig_intr),
 		kill   = static_cast<::dux::uint8>(dux_priv_sig_kill),
-		file   = static_cast<::dux::uint8>(dux_priv_sig_file),
+		pipe   = static_cast<::dux::uint8>(dux_priv_sig_pipe),
 		poll   = static_cast<::dux::uint8>(dux_priv_sig_poll),
 		prof   = static_cast<::dux::uint8>(dux_priv_sig_prof),
 		pwr    = static_cast<::dux::uint8>(dux_priv_sig_pwr),

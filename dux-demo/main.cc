@@ -47,7 +47,7 @@ static_assert([] {
 	static_assert(chk(::dux::sig::io,    SIGIO));
 	static_assert(chk(::dux::sig::intr,  SIGINT));
 	static_assert(chk(::dux::sig::kill,  SIGKILL));
-	static_assert(chk(::dux::sig::file,  SIGPIPE));
+	static_assert(chk(::dux::sig::pipe,  SIGPIPE));
 	static_assert(chk(::dux::sig::prof,  SIGPROF));
 	static_assert(chk(::dux::sig::quit,  SIGQUIT));
 	static_assert(chk(::dux::sig::segv,  SIGSEGV));
