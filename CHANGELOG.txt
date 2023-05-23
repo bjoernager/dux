@@ -46,6 +46,8 @@
 - Adjust copyright years for oldest versions;
 - Note: Currently, only errmsg is implemented;
 
+- Fix installation target;
+
 | 2↋
 
 - Fix signal pipe being renamed to file;

@@ -43,10 +43,9 @@ $(LIB): $(OBJS)
 $(OBJS): $(HDRS)
 
 install: $(LIB)
-	mkdir -pvm755 "$(HDRDIR)/dux/imp"
+	mkdir -pvm755 "$(HDRDIR)/dux"
 	mkdir -pvm755 "$(LIBDIR)"
-	install -vm644 "include/dux/"{"bs","fs","io"}{"",".h"} "$(HDRDIR)/dux"
-	install -vm644 "include/dux/imp/"{"bs","fs","io"}".ii" "$(HDRDIR)/dux/imp"
+	install -vm644 "include/dux/"{"dux","io","thr"}".h" "$(HDRDIR)/dux"
 	install -vm755 "$(LIB)" "$(LIBDIR)"
 
 clean:
