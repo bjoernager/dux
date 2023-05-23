@@ -48,6 +48,24 @@
 
 - Fix installation target;
 
+- Support Linux AMD64;
+- Implement crtfil;
+- Add private header for I/O;
+- Implement abr;
+- Remove parameters from abr;
+- Update demo;
+- Implement crtdir;
+- Implement wrt;
+- Rename badprm value to noprv;
+- Update gitignore;
+- Add function for opening files:
+- Remove iomod type;
+- Rename crtfil to crt;
+- Implement wrtstr;
+- Add function for opening files in read-write mode: opnwr;
+- Add function for opening files in read-only mode: opn;
+- Add function for closing files: cls;
+
 | 2↋
 
 - Fix signal pipe being renamed to file;

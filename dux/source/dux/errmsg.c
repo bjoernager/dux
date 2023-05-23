@@ -21,8 +21,8 @@ char const * dux_errmsg(dux_err const err) {
 		return "bad file";
 	case dux_err_badfmt:
 		return "bad format specifier";
-	case dux_err_badprm:
-		return "bad permissions";
+	case dux_err_badprv:
+		return "bad privileges";
 	case dux_err_badval:
 		return "bad value";
 	case dux_err_eof:

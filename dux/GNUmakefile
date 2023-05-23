@@ -3,7 +3,14 @@ dbg := false
 endif
 
 OBJS := \
-	source/dux/errmsg.o
+	source/dux/abr.o    \
+	source/dux/errmsg.o \
+	                    \
+	source/io/cls.o     \
+	source/io/crtdir.o  \
+	source/io/crt.o     \
+	source/io/wrt.o     \
+	source/io/wrtstr.o
 
 HDRS := \
 	include/dux/dux.h             \

@@ -16,12 +16,6 @@ dux_prv_cdec
 
 typedef zp_i01 dux_prm;
 
-typedef enum {
-	dux_iomod_red,
-	dux_iomod_redwrt,
-	dux_iomod_wrt,
-} dux_iomod;
-
 struct dux_prv_dsc {
 	bool _dsc;
 };
@@ -56,13 +50,17 @@ dux_err dux_chgdir(char const * pth);
 dux_err dux_sttpth(char const * pth);
 dux_err dux_setprm(char const * pth,dux_prm prm);
 
-dux_err dux_crtdir(char const * pth,dux_prm prm);
-
-dux_err dux_crtfil(dux_fil * * fil,char const * pth,dux_prm prm);
-
 dux_err dux_cpy(char const * newpth,char const * pth,dux_prm prm);
 dux_err dux_mov(char const * newpth,char const * pth);
 dux_err dux_rem(char const * pth);
+
+dux_err dux_crtdir(char const * pth,dux_prm prm);
+
+dux_err dux_crt(  dux_fil * * fil,char const * pth,dux_prm prm);
+dux_err dux_opn(  dux_fil * * fil,char const * pth);
+dux_err dux_opnwr(dux_fil * * fil,char const * pth,struct dux_prv_dsc);
+
+dux_err dux_cls(dux_fil * fil);
 
 dux_err dux_wrt(   dux_fil * fil,void const * dat,zp_siz num);
 dux_err dux_wrtstr(dux_fil * fil,char const * str);
