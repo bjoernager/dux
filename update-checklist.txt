@@ -1,9 +1,0 @@
-- Update the version number in:
-	- "/dux/include/dux/base.h"
-	- "/CMakeLists.txt"
-
-- Add a new version entry in the changelog
-
-- Check all TO-DOs and complete any that can quickly be completed
-
-- Make sure the new changelog entry reflects the new changes;

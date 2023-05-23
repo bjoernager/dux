@@ -1,37 +1,73 @@
 /*
-	Copyright 2021, 2022 Gabriel Jensen.
+	Copyright 2019-2023 Gabriel Jensen.
 
 	This file is part of dux.
-
-	dux is free software: you can redistribute it and/or modify it under the
-	terms of the GNU Affero General Public License as published by the Free
-	Software Foundation, either version 3 of the License, or (at your
-	option) any later version.
-
-	dux is distributed in the hope that it will be useful, but WITHOUT ANY
-	WARRANTY; without even the implied warranty of MERCHANTABILITY or
-	FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
-	License for more details.
-
-	You should have received a copy of the GNU Affero General Public License
-	along with dux. If not, see <https://www.gnu.org/licenses/>.
+	dux is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+	dux is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+	You should have received a copy of the GNU Lesser General Public License along with dux. If not, see <https://www.gnu.org/licenses>.
 */
 
-enum dux_priv_iotyp {
-	dux_priv_iotyp_r,
-	dux_priv_iotyp_rw,
-	dux_priv_iotyp_w,
+#if !defined(dux_hdr_io)
+#define dux_hdr_io
+
+#include <dux/dux.h>
+
+dux_prv_cdec
+
+typedef zp_i01 dux_prm;
+
+typedef enum {
+	dux_iomod_red,
+	dux_iomod_redwrt,
+	dux_iomod_wrt,
+} dux_iomod;
+
+struct dux_prv_dsc {
+	bool _dsc;
 };
 
-# define dux_priv_ioacs_uid  (dux_uint16l(04000))
-# define dux_priv_ioacs_gid  (dux_uint16l(02000))
-# define dux_priv_ioacs_stck (dux_uint16l(01000))
-# define dux_priv_ioacs_usrr (dux_uint16l(0400))
-# define dux_priv_ioacs_usrw (dux_uint16l(0200))
-# define dux_priv_ioacs_usrx (dux_uint16l(0100))
-# define dux_priv_ioacs_grpr (dux_uint16l(040))
-# define dux_priv_ioacs_grpw (dux_uint16l(020))
-# define dux_priv_ioacs_grpx (dux_uint16l(010))
-# define dux_priv_ioacs_othr (dux_uint16l(04))
-# define dux_priv_ioacs_othw (dux_uint16l(02))
-# define dux_priv_ioacs_othx (dux_uint16l(01))
+#if zp_std_cxx
+#define dux_kep (::dux_prv_dsc {false,})
+#define dux_dsc (::dux_prv_dsc {true,})
+#else
+#define dux_kep ((struct dux_prv_dsc) {._dsc = false,})
+#define dux_dsc ((struct dux_prv_dsc) {._dsc = true,})
+#endif
+
+typedef struct {
+	zp_siz  siz;
+	dux_prm prm;
+	bool    isdir : 0x1;
+	bool    isreg : 0x1;
+} zp_pthinf;
+
+struct dux_prv_fil;
+typedef struct dux_prv_fil dux_fil;
+
+extern dux_fil * dux_dfli;
+extern dux_fil * dux_dflo;
+extern dux_fil * dux_log;
+
+char const * dux_curdir(void);
+char const * dux_homdir(void);
+
+dux_err dux_chgdir(char const * pth);
+
+dux_err dux_sttpth(char const * pth);
+dux_err dux_setprm(char const * pth,dux_prm prm);
+
+dux_err dux_crtdir(char const * pth,dux_prm prm);
+
+dux_err dux_crtfil(dux_fil * * fil,char const * pth,dux_prm prm);
+
+dux_err dux_cpy(char const * newpth,char const * pth,dux_prm prm);
+dux_err dux_mov(char const * newpth,char const * pth);
+dux_err dux_rem(char const * pth);
+
+dux_err dux_wrt(   dux_fil * fil,void const * dat,zp_siz num);
+dux_err dux_wrtstr(dux_fil * fil,char const * str);
+dux_err dux_red(   void *    buf,dux_fil *    fil,zp_siz num,zp_siz * numrd);
+
+dux_prv_cdecend
+
+#endif

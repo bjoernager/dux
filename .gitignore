@@ -1,3 +1,5 @@
-/build
-/dux-io-demo
-vgcore.*
+*.a
+*.o
+*.so
+/demo
+/tmp

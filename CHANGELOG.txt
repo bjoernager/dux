@@ -1,3 +1,51 @@
+| 0.0.0
+
+- Revive and rewrite project (current features will be listed);
+- Merge with Flux and Burst;
+- Use zp versioning: api.ext.pat;
+- Use GNU Make;
+- Depend on zp;
+- Use Git tagging for versioning;
+- Add input/output header: io;
+- Add function for creating files: crtfil;
+- License under LGPL3 or later;
+- Add enumerations for errors;
+- Add function for aborting: abr;
+- Add function for getting error mesasges: errmsg;
+- Update gitignore;
+- Add structure for files;
+- Add integral type for file permissions;
+- Add multithreading header: thr;
+- Add function for creating threads: crtthr;
+- Add private header;
+- Add base header: dux;
+- Add API and extension version constants: api, ext;
+- Add structure for threads: thr;
+- Add function for joining threads: joithr;
+- Add global file for default input: dfli;
+- Add global file for default output: dflo;
+- Add global file for default logging: log;
+- Add function for exiting the current thread: exi;
+- Add function for sleeping: slp;
+- Add demo;
+- Add structure for storing path information: pthinf;
+- Add function for getting the current directory: curdir;
+- Add function for getting the home directory: homdir;
+- Add function for changing the current directory: chgdir;
+- Add function for statting paths: sttpth;
+- Add function for setting the permissions of a path: setprm;
+- Add function for creating directories: crtdir;
+- Add function for copying files: cpy;
+- Add function for moving files/directories: mov;
+- Add function for removing files: rem;
+- Add function for writing to files: wrt;
+- Add function for reading from files: red;
+- Add function for writing strings to files: wrtstr;
+- Rewrite readme and in plain text;
+- Add function for starting threads: srtthr;
+- Adjust copyright years for oldest versions;
+- Note: Currently, only errmsg is implemented;
+
 | 2↋
 
 - Fix signal pipe being renamed to file;
