@@ -75,6 +75,9 @@
 - Implement sttpth;
 - Update parameters to sttpth;
 
+- Fix installation target;
+- Update gitignore;
+
 | 2↋
 
 - Fix signal pipe being renamed to file;
