@@ -22,7 +22,7 @@ dux_err dux_wrt(dux_fil * const restrict fil,void const * const restrict voiddat
 
 	for (size_t rem = num;rem != 0x0u;) {
 		ssize_t const cod = (ssize_t)zp_syscal(__NR_write,fil->fd,dat,rem);
-		if (cod == -0x1) {
+		zp_unlik (cod == -0x1) {
 			switch (*__errno_location()) {
 			default:
 				return dux_err_err;

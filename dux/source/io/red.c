@@ -11,25 +11,41 @@
 
 #include <errno.h>
 #include <linux/unistd.h>
-#include <stdlib.h>
+#include <sys/types.h>
 
 extern int * __errno_location(void);
 
-dux_err dux_cls(dux_fil * const restrict fil) {
-	cls:;
+dux_err dux_red(void * const restrict voidbuf,dux_fil * const restrict fil,zp_siz const num,zp_siz * numred) {
+	zp_unlik (num == 0x0u) {return dux_err_oky;}
 
-	int const cd = (int)zp_syscal(__NR_close,fil->fd);
-	zp_unlik (cd == -0x1) {
-		switch (*__errno_location()) {
-		default:
-			goto fre;
-		case EINTR:
-			goto cls;
+	unsigned char const * buf = voidbuf;
+
+	for (size_t rem = num;rem != 0x0u;) {
+		ssize_t const cod = (ssize_t)zp_syscal(__NR_read,fil->fd,buf,rem);
+
+		zp_unlik (cod == 0x0) {
+			zp_lik (numred != zp_nulptr) {*numred = num-rem;}
+			return dux_err_oky;
 		}
+
+		zp_unlik (cod == -0x1) {
+			int const err = *__errno_location();
+
+			zp_lik (err == EINTR) {continue;}
+
+			switch (err) {
+			default:
+				return dux_err_err;
+			case EISDIR:
+				return dux_err_isdir;
+			}
+		}
+
+		buf += (size_t)cod;
+		rem -= (size_t)cod;
 	}
 
-fre:;
-	free(fil);
+	if (numred != zp_nulptr) {*numred = num;}
 
 	return dux_err_oky;
 }

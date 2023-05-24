@@ -16,16 +16,16 @@
 
 extern int * __errno_location(void);
 
-dux_err dux_crt(dux_fil * * const filptr,char const * const pth,zp_i01 const prm) {
+dux_err dux_crt(dux_fil * * const filptr,char const * const pth,dux_prm const prm) {
 	dux_fil * fil = malloc(sizeof (struct dux_prv_fil));
 	if (fil == zp_nulptr) {return dux_err_badalc;}
 
-retry:;
-	int const fd = (int)zp_syscal(__NR_openat,AT_FDCWD,pth,O_CREAT | O_TRUNC | O_WRONLY,(mode_t)prm);
-	if (fd == -0x1) {
+opn:;
+	int const fd = (int)zp_syscal(__NR_openat,AT_FDCWD,pth,O_CREAT|O_TRUNC|O_WRONLY,(mode_t)prm);
+	zp_unlik (fd == -0x1) {
 		int const err = *__errno_location();
 
-		if (err == EINTR) {goto retry;}
+		zp_lik (err == EINTR) {goto opn;}
 
 		free(fil);
 		switch (err) {

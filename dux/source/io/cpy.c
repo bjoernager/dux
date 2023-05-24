@@ -9,27 +9,30 @@
 
 #include <dux/prv/io.h>
 
-#include <errno.h>
+#include <fcntl.h>
+#include <linux/errno.h>
 #include <linux/unistd.h>
-#include <stdlib.h>
+#include <sys/sendfile.h>
+#include <sys/types.h>
 
 extern int * __errno_location(void);
 
-dux_err dux_cls(dux_fil * const restrict fil) {
-	cls:;
+dux_err dux_cpy(char const * const newpth,char const * const pth,dux_prm const prm) {
+	dux_pthinf inf;
+	dux_err const err = dux_sttpth(&inf,pth);
+	zp_unlik (err != dux_err_oky) {return err;}
 
-	int const cd = (int)zp_syscal(__NR_close,fil->fd);
-	zp_unlik (cd == -0x1) {
+	int const fd = (int)zp_syscal(__NR_openat,AT_FDCWD,pth,O_RDONLY,(mode_t)0x0);
+
+	int const newfd = (int)zp_syscal(__NR_openat,AT_FDCWD,newpth,O_CREAT|O_TRUNC|O_WRONLY,(mode_t)prm);
+
+	ssize_t const numcpy = (ssize_t)zp_syscal(__NR_sendfile,newfd,fd,(off_t *)zp_nulptr,inf.siz);
+	zp_unlik (numcpy == -0x1) {
 		switch (*__errno_location()) {
 		default:
-			goto fre;
-		case EINTR:
-			goto cls;
+			return dux_err_err;
 		}
 	}
-
-fre:;
-	free(fil);
 
 	return dux_err_oky;
 }

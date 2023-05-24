@@ -16,9 +16,9 @@
 
 extern int * __errno_location(void);
 
-dux_err dux_crtdir(char const * const pth,zp_i01 const prm) {
+dux_err dux_crtdir(char const * const pth,dux_prm const prm) {
 	int const cod = (int)zp_syscal(__NR_mkdir,pth,(mode_t)prm);
-	if (cod == -0x1) {
+	zp_unlik (cod == -0x1) {
 		switch (*__errno_location()) {
 		default:
 			return dux_err_err;

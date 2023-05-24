@@ -8,14 +8,17 @@ OBJS := \
 	                    \
 	source/io/cls.o     \
 	source/io/crtdir.o  \
+	source/io/cpy.o     \
 	source/io/crt.o     \
+	source/io/opn.o     \
+	source/io/red.o     \
+	source/io/sttpth.o  \
 	source/io/wrt.o     \
 	source/io/wrtstr.o
 
 HDRS := \
 	include/dux/dux.h             \
 	include/dux/io.h              \
-	include/dux/thr.h             \
 	include-private/dux/prv/dux.h
 
 CFLAGS := \

@@ -66,6 +66,15 @@
 - Add function for opening files in read-only mode: opn;
 - Add function for closing files: cls;
 
+- Implement opn;
+- Update demo;
+- Implement red;
+- Fix zp prefix on pthinf;
+- Remove thr module;
+- Implement cpy;
+- Implement sttpth;
+- Update parameters to sttpth;
+
 | 2↋
 
 - Fix signal pipe being renamed to file;

@@ -33,7 +33,7 @@ typedef struct {
 	dux_prm prm;
 	bool    isdir : 0x1;
 	bool    isreg : 0x1;
-} zp_pthinf;
+} dux_pthinf;
 
 struct dux_prv_fil;
 typedef struct dux_prv_fil dux_fil;
@@ -47,8 +47,8 @@ char const * dux_homdir(void);
 
 dux_err dux_chgdir(char const * pth);
 
-dux_err dux_sttpth(char const * pth);
-dux_err dux_setprm(char const * pth,dux_prm prm);
+dux_err dux_setprm(char const * pth,dux_prm      prm);
+dux_err dux_sttpth(dux_pthinf * inf,char const * pth);
 
 dux_err dux_cpy(char const * newpth,char const * pth,dux_prm prm);
 dux_err dux_mov(char const * newpth,char const * pth);
@@ -64,7 +64,7 @@ dux_err dux_cls(dux_fil * fil);
 
 dux_err dux_wrt(   dux_fil * fil,void const * dat,zp_siz num);
 dux_err dux_wrtstr(dux_fil * fil,char const * str);
-dux_err dux_red(   void *    buf,dux_fil *    fil,zp_siz num,zp_siz * numrd);
+dux_err dux_red(   void *    buf,dux_fil *    fil,zp_siz num,zp_siz * numred);
 
 dux_prv_cdecend
 

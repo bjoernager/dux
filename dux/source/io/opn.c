@@ -9,27 +9,41 @@
 
 #include <dux/prv/io.h>
 
-#include <errno.h>
+#include <fcntl.h>
+#include <linux/errno.h>
 #include <linux/unistd.h>
 #include <stdlib.h>
 
 extern int * __errno_location(void);
 
-dux_err dux_cls(dux_fil * const restrict fil) {
-	cls:;
+dux_err dux_opn(dux_fil * * const filptr,char const * const pth) {
+	dux_fil * fil = malloc(sizeof (struct dux_prv_fil));
+	if (fil == zp_nulptr) {return dux_err_badalc;}
 
-	int const cd = (int)zp_syscal(__NR_close,fil->fd);
-	zp_unlik (cd == -0x1) {
-		switch (*__errno_location()) {
+opn:;
+	int const fd = (int)zp_syscal(__NR_openat,AT_FDCWD,pth,O_RDONLY,(mode_t)0x0);
+	zp_unlik (fd == -0x1) {
+		int const err = *__errno_location();
+
+		zp_lik (err == EINTR) {goto opn;}
+
+		free(fil);
+		switch (err) {
 		default:
-			goto fre;
-		case EINTR:
-			goto cls;
+			return dux_err_err;
+		case EACCES:
+			return dux_err_badprv;
+		case EISDIR:
+			return dux_err_isdir;
+		case ENOSPC:
+			return dux_err_spclim;
+		case ENOTDIR:
+			return dux_err_nodir;
 		}
 	}
 
-fre:;
-	free(fil);
+	fil->fd = fd;
+	*filptr = fil;
 
 	return dux_err_oky;
 }
