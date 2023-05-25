@@ -16,12 +16,16 @@
 
 extern int * __errno_location(void);
 
-dux_err dux_opn(dux_fil * * const filptr,char const* const pth) {
+static dux_err dux_det_opn(dux_fil * * const filptr,char const* const pth,bool const wrt,struct dux_prv_dsc const dsc) {
 	dux_fil * fil = malloc(sizeof (struct dux_prv_fil));
 	if (fil == zp_nulptr) {return dux_err_badalc;}
 
 opn:;
-	int const fd = (int)zp_syscal(__NR_openat,AT_FDCWD,pth,O_RDONLY,(mode_t)0x0);
+	int flg = 0x0;
+	flg |= wrt      ? O_RDWR  : O_RDONLY;
+	flg |= dsc._dsc ? O_TRUNC : 0x0;
+
+	int const fd = (int)zp_syscal(__NR_openat,AT_FDCWD,pth,flg,(mode_t)0x0);
 	zp_unlik (fd == -0x1) {
 		int const err = *__errno_location();
 
@@ -46,4 +50,12 @@ opn:;
 	*filptr = fil;
 
 	return dux_err_oky;
+}
+
+dux_err dux_opn(dux_fil * * const fil,char const* const pth) {
+	return dux_det_opn(fil,pth,false,dux_kep);
+}
+
+dux_err dux_opnrw(dux_fil * * const fil,char const* const pth,struct dux_prv_dsc const dsc) {
+	return dux_det_opn(fil,pth,true,dsc);
 }

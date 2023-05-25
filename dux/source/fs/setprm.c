@@ -9,42 +9,26 @@
 
 #include <dux/prv/io.h>
 
-#include <errno.h>
+#include <fcntl.h>
+#include <linux/errno.h>
 #include <linux/unistd.h>
-#include <sys/types.h>
-#include <zp/str.h>
+#include <stdlib.h>
 
 extern int * __errno_location(void);
 
-dux_err dux_wrt(dux_fil * const restrict fil,void const* const restrict voiddat,zp_siz const num) {
-	zp_unlik (num == 0x0u) {return dux_err_oky;}
-	
-	unsigned char const* dat = voiddat;
+dux_err dux_setprm(char const* const pth,dux_prm const prm) {
+set:;
+	int const cod = (int)zp_syscal(__NR_chmod,pth,(mode_t)prm);
+	zp_unlik (cod == -0x1) {
+		int const err = *__errno_location();
 
-	for (size_t rem = num;rem != 0x0u;) {
-		ssize_t const cod = (ssize_t)zp_syscal(__NR_write,fil->fd,dat,rem);
-		zp_unlik (cod == -0x1) {
-			switch (*__errno_location()) {
-			default:
-				return dux_err_err;
-			case EBADF:
-				return dux_err_badfil;
-			case EFBIG:
-				return dux_err_spclim;
-			case EINTR:
-				continue;
-			case ENOSPC:
-				return dux_err_spclim;
-			}
+		zp_lik (err == EINTR) {goto set;}
+
+		switch (err) {
+		default:
+			return dux_err_err;
 		}
-
-		dat += (size_t)cod;
-		rem -= (size_t)cod;
 	}
 
 	return dux_err_oky;
-}
-
-dux_err dux_wrtstr(dux_fil * const restrict fil,char const* const restrict str) {
-	return dux_wrt(fil,str,zp_strlen(str));
 }

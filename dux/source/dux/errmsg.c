@@ -9,40 +9,65 @@
 
 #include <dux/prv/dux.h>
 
-char const* dux_errmsg(dux_err const err) {
+#include <zp/mem.h>
+
+#define set(_msg) (msg = (_msg),len = sizeof ((_msg))-0x1u)
+
+zp_sizerr dux_errmsg(char * const restrict buf,dux_err const err) {
+	char const* msg;
+	zp_siz      len;
+
 	switch (err) {
 	case dux_err_oky:
-		return "okay";
+		set("okay");
+		break;
 	case dux_err_err:
-		return "generic error";
+		set("generic error");
+		break;
 	case dux_err_badalc:
-		return "bad memory allocation";
+		set("bad memory allocation");
+		break;
 	case dux_err_badfil:
-		return "bad file";
+		set("bad file");
+		break;
 	case dux_err_badfmt:
-		return "bad format specifier";
+		set("bad format specifier");
+		break;
 	case dux_err_badprv:
-		return "bad privileges";
+		set("bad privileges");
+		break;
 	case dux_err_badval:
-		return "bad value";
+		set("bad value");
+		break;
 	case dux_err_eof:
-		return "end of file";
+		set("end of file");
+		break;
 	case dux_err_exs:
-		return "file already exists";
+		set("file already exists");
+		break;
 	case dux_err_io:
-		return "input/output error";
+		set("input/output error");
+		break;
 	case dux_err_isdir:
-		return "is directory";
+		set("is directory");
+		break;
 	case dux_err_memlim:
-		return "memory limit reached";
+		set("memory limit reached");
+		break;
 	case dux_err_nodir:
-		return "no such directory";
+		set("no such directory");
+		break;
 	case dux_err_nofil:
-		return "no such file or directory";
+		set("no such file or directory");
+		break;
 	case dux_err_redonl:
-		return "file is read only";
+		set("file is read only");
+		break;
 	case dux_err_spclim:
-		return "space limit reached";
+		set("space limit reached");
+		break;
 	}
-	zp_unrch();
+
+	if (buf != zp_nulptr) {zp_memcpy(buf,msg,len);}
+	return len;
 }

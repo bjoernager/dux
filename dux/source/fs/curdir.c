@@ -9,8 +9,6 @@
 
 #include <dux/prv/io.h>
 
-#include <zp/str.h>
-
-dux_err dux_wrtstr(dux_fil * const restrict fil,char const* const restrict str) {
-	return dux_wrt(fil,str,zp_strlen(str));
+zp_sizerr dux_curdir(char * const restrict buf) {
+	return dux_getenv(buf,"PWD"); // This is only temporary and may not always work.
 }

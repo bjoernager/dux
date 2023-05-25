@@ -3,3 +3,4 @@
 *.so
 /demo
 /testdir
+vgcore.*

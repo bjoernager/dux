@@ -7,6 +7,12 @@
 	You should have received a copy of the GNU Lesser General Public License along with dux. If not, see <https://www.gnu.org/licenses>.
 */
 
+/*
+	Header dependencies:
+
+	zp/zp.h > dux/dux.h > dux/fs.h > dux/io.h
+*/
+
 #if !defined(dux_hdr_dux)
 #define dux_hdr_dux
 
@@ -44,11 +50,11 @@ typedef enum {
 	dux_err_spclim,
 } dux_err;
 
-zp_noret void dux_abr(void);
+zp_noret void dux_abr(char const* msg);
 
-zp_unseq char const* dux_errmsg(dux_err err);
+zp_sizerr dux_errmsg(char * buf,dux_err err);
 
-zp_sizerr dux_envvar(char * buf,char const* nam);
+zp_sizerr dux_getenv(char * buf,char const* nam);
 
 dux_prv_cdecend
 

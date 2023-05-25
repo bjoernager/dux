@@ -62,13 +62,25 @@ int main() {
 
 	auto const chkerr = [&err](char const* const msg) noexcept {
 		if (err != ::dux_err_oky) {
-			::std::cout << msg << ": " << ::dux_errmsg(err) << ::std::endl;
+			::zp::siz const errmsglen = ::dux_errmsg(nullptr,err);
+			char *    const errmsg    = new char[errmsglen+0x1u];
+			
+			::dux_errmsg(errmsg,err);
+			errmsg[errmsglen] = '\x00';
+
+			::std::cout << msg << ": " << errmsg << ::std::endl;
+			delete[] errmsg;
+
 			::std::exit(EXIT_FAILURE);
 		}
 	};
 
-	char * const homdir = new char[::dux_homdir(nullptr)];
+	::zp::siz const homdirlen = ::dux_homdir(nullptr);
+	char * const    homdir    = new char[homdirlen+0x1u];
+
 	::dux_homdir(homdir);
+	homdir[homdirlen] = '\x00';
+
 	::std::cout << "Home directory: " << homdir << ::std::endl;
 	delete[] homdir;
 

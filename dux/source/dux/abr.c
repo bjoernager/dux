@@ -12,8 +12,12 @@
 #include <linux/unistd.h>
 #include <signal.h>
 #include <sys/types.h>
+#include <unistd.h>
+#include <zp/str.h>
 
-void dux_abr(void) {
+void dux_abr(char const * const restrict msg) {
+	zp_syscal(__NR_write,STDERR_FILENO,msg,zp_strlen(msg));
+
 	zp_syscal(__NR_kill,(pid_t)zp_syscal(__NR_getpid),SIGABRT);
 	zp_unrch();
 }

@@ -7,8 +7,35 @@
 	You should have received a copy of the GNU Lesser General Public License along with dux. If not, see <https://www.gnu.org/licenses>.
 */
 
-#include <dux/prv/io.h>
+#include <dux/prv/dux.h>
 
-zp_sizerr dux_homdir(char * const restrict buf) {
-	return dux_envvar(buf,"HOME");
+#include <zp/mem.h>
+#include <zp/str.h>
+
+extern char * * __environ;
+
+zp_sizerr dux_getenv(char * const restrict buf,char const* const restrict nam) {
+	zp_unlik (*nam == '\x00') {return -0x1;}
+
+	char * * env = __environ;
+	for (char * var = *env++;var != zp_nulptr;var = *env++) {
+		char * const equpos = zp_strsrh(var,'=');
+
+		char *      pos    = var;
+		char const* nampos = nam;
+		for (;pos != equpos;) {
+			zp_lik (*pos++ != *nampos++) {goto nxt;}
+		}
+
+		char * const val    = equpos+0x1u;
+		zp_siz const vallen = zp_strlen(val);
+
+		if (buf != zp_nulptr) {zp_memcpy(buf,val,vallen);}
+		
+		return vallen;
+
+	nxt:;
+	}
+
+	return -0x1;
 }

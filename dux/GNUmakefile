@@ -4,20 +4,22 @@ endif
 
 OBJS := \
 	source/dux/abr.o    \
-	source/dux/envvar.o \
 	source/dux/errmsg.o \
+	source/dux/getenv.o \
+	                    \
+	source/fs/crtdir.o  \
+	source/fs/cpy.o     \
+	source/fs/curdir.o  \
+	source/fs/homdir.o  \
+	source/fs/mov.o     \
+	source/fs/setprm.o  \
+	source/fs/sttpth.o  \
 	                    \
 	source/io/cls.o     \
 	source/io/crt.o     \
-	source/io/crtdir.o  \
-	source/io/cpy.o     \
-	source/io/curdir.o  \
-	source/io/homdir.o  \
 	source/io/opn.o     \
 	source/io/red.o     \
-	source/io/sttpth.o  \
-	source/io/wrt.o     \
-	source/io/wrtstr.o
+	source/io/wrt.o
 
 HDRS := \
 	include/dux/dux.h             \

@@ -89,6 +89,18 @@
 - Implement curdir;
 - Update coding style with regards to pointers and references;
 
+- Implement opnrw;
+- Implement setprm;
+- Add new module 'fs';
+- Move to fs: chgdir, crtdir, cpy, curdir, homdir, mov, rem, setprm, and sttpth;
+- Rename envvar to getenv;
+- Bring back message to abr;
+- Make errmsg write message to caller-provided buffer;
+- Make getenv, homdir, and curdir not include null-terminator in output;
+- Update gitignore;
+- Implement wrtstr in the same file as wrt;
+- Implement mov;
+
 | 2↋
 
 - Fix signal pipe being renamed to file;
