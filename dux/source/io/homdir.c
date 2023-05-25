@@ -9,27 +9,6 @@
 
 #include <dux/prv/io.h>
 
-#include <errno.h>
-#include <linux/unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-
-extern int * __errno_location(void);
-
-dux_err dux_crtdir(char const* const pth,dux_prm const prm) {
-	int const cod = (int)zp_syscal(__NR_mkdir,pth,(mode_t)prm);
-	zp_unlik (cod == -0x1) {
-		switch (*__errno_location()) {
-		default:
-			return dux_err_err;
-		case EACCES:
-			return dux_err_badprv;
-		case EEXIST:
-			break;
-		case EROFS:
-			return dux_err_redonl;
-		}
-	}
-	
-	return dux_err_oky;
+zp_sizerr dux_homdir(char * const restrict buf) {
+	return dux_envvar(buf,"HOME");
 }

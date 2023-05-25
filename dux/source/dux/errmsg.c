@@ -9,12 +9,12 @@
 
 #include <dux/prv/dux.h>
 
-char const * dux_errmsg(dux_err const err) {
+char const* dux_errmsg(dux_err const err) {
 	switch (err) {
 	case dux_err_oky:
 		return "okay";
 	case dux_err_err:
-		return "error";
+		return "generic error";
 	case dux_err_badalc:
 		return "bad memory allocation";
 	case dux_err_badfil:
@@ -29,8 +29,12 @@ char const * dux_errmsg(dux_err const err) {
 		return "end of file";
 	case dux_err_exs:
 		return "file already exists";
+	case dux_err_io:
+		return "input/output error";
 	case dux_err_isdir:
 		return "is directory";
+	case dux_err_memlim:
+		return "memory limit reached";
 	case dux_err_nodir:
 		return "no such directory";
 	case dux_err_nofil:

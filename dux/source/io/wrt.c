@@ -15,10 +15,10 @@
 
 extern int * __errno_location(void);
 
-dux_err dux_wrt(dux_fil * const restrict fil,void const * const restrict voiddat,zp_siz const num) {
+dux_err dux_wrt(dux_fil * const restrict fil,void const* const restrict voiddat,zp_siz const num) {
 	zp_unlik (num == 0x0u) {return dux_err_oky;}
 	
-	unsigned char const * dat = voiddat;
+	unsigned char const* dat = voiddat;
 
 	for (size_t rem = num;rem != 0x0u;) {
 		ssize_t const cod = (ssize_t)zp_syscal(__NR_write,fil->fd,dat,rem);

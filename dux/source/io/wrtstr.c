@@ -11,6 +11,6 @@
 
 #include <zp/str.h>
 
-dux_err dux_wrtstr(dux_fil * const restrict fil,char const * const restrict str) {
+dux_err dux_wrtstr(dux_fil * const restrict fil,char const* const restrict str) {
 	return dux_wrt(fil,str,zp_strlen(str));
 }

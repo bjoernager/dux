@@ -78,6 +78,17 @@
 - Fix installation target;
 - Update gitignore;
 
+- Perform better error handling in cpy;
+- Add new error 'memlim';
+- Add new error 'io';
+- Implement homdir;
+- Rename opnwr to opnrw;
+- Add function for getting environment variables: envvar;
+- Make homdir and curdir write to user-provided buffers;
+- Update demo;
+- Implement curdir;
+- Update coding style with regards to pointers and references;
+
 | 2↋
 
 - Fix signal pipe being renamed to file;

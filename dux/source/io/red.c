@@ -18,7 +18,7 @@ extern int * __errno_location(void);
 dux_err dux_red(void * const restrict voidbuf,dux_fil * const restrict fil,zp_siz const num,zp_siz * numred) {
 	zp_unlik (num == 0x0u) {return dux_err_oky;}
 
-	unsigned char const * buf = voidbuf;
+	unsigned char const* buf = voidbuf;
 
 	for (size_t rem = num;rem != 0x0u;) {
 		ssize_t const cod = (ssize_t)zp_syscal(__NR_read,fil->fd,buf,rem);

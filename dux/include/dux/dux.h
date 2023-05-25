@@ -35,7 +35,9 @@ typedef enum {
 	dux_err_badval,
 	dux_err_eof,
 	dux_err_exs,
+	dux_err_io,
 	dux_err_isdir,
+	dux_err_memlim,
 	dux_err_nodir,
 	dux_err_nofil,
 	dux_err_redonl,
@@ -44,7 +46,9 @@ typedef enum {
 
 zp_noret void dux_abr(void);
 
-zp_unseq char const * dux_errmsg(dux_err err);
+zp_unseq char const* dux_errmsg(dux_err err);
+
+zp_sizerr dux_envvar(char * buf,char const* nam);
 
 dux_prv_cdecend
 

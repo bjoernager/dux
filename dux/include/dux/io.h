@@ -42,28 +42,28 @@ extern dux_fil * dux_dfli;
 extern dux_fil * dux_dflo;
 extern dux_fil * dux_log;
 
-char const * dux_curdir(void);
-char const * dux_homdir(void);
+zp_sizerr dux_curdir(char * buf);
+zp_sizerr dux_homdir(char * buf);
 
-dux_err dux_chgdir(char const * pth);
+dux_err dux_chgdir(char const* pth);
 
-dux_err dux_setprm(char const * pth,dux_prm      prm);
-dux_err dux_sttpth(dux_pthinf * inf,char const * pth);
+dux_err dux_setprm(char const* pth,dux_prm      prm);
+dux_err dux_sttpth(dux_pthinf * inf,char const* pth);
 
-dux_err dux_cpy(char const * newpth,char const * pth,dux_prm prm);
-dux_err dux_mov(char const * newpth,char const * pth);
-dux_err dux_rem(char const * pth);
+dux_err dux_cpy(char const* newpth,char const* pth,dux_prm prm);
+dux_err dux_mov(char const* newpth,char const* pth);
+dux_err dux_rem(char const* pth);
 
-dux_err dux_crtdir(char const * pth,dux_prm prm);
+dux_err dux_crtdir(char const* pth,dux_prm prm);
 
-dux_err dux_crt(  dux_fil * * fil,char const * pth,dux_prm prm);
-dux_err dux_opn(  dux_fil * * fil,char const * pth);
-dux_err dux_opnwr(dux_fil * * fil,char const * pth,struct dux_prv_dsc);
+dux_err dux_crt(  dux_fil * * fil,char const* pth,dux_prm prm);
+dux_err dux_opn(  dux_fil * * fil,char const* pth);
+dux_err dux_opnrw(dux_fil * * fil,char const* pth,struct dux_prv_dsc);
 
 dux_err dux_cls(dux_fil * fil);
 
-dux_err dux_wrt(   dux_fil * fil,void const * dat,zp_siz num);
-dux_err dux_wrtstr(dux_fil * fil,char const * str);
+dux_err dux_wrt(   dux_fil * fil,void const* dat,zp_siz num);
+dux_err dux_wrtstr(dux_fil * fil,char const* str);
 dux_err dux_red(   void *    buf,dux_fil *    fil,zp_siz num,zp_siz * numred);
 
 dux_prv_cdecend

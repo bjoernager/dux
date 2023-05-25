@@ -16,7 +16,7 @@
 
 extern int * __errno_location(void);
 
-dux_err dux_sttpth(dux_pthinf * const infptr,char const * const pth) {
+dux_err dux_sttpth(dux_pthinf * const infptr,char const* const pth) {
 	dux_pthinf inf;
 	struct stat sysinf;
 

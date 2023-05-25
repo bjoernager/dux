@@ -16,7 +16,7 @@
 
 extern int * __errno_location(void);
 
-dux_err dux_opn(dux_fil * * const filptr,char const * const pth) {
+dux_err dux_opn(dux_fil * * const filptr,char const* const pth) {
 	dux_fil * fil = malloc(sizeof (struct dux_prv_fil));
 	if (fil == zp_nulptr) {return dux_err_badalc;}
 

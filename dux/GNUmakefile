@@ -4,12 +4,15 @@ endif
 
 OBJS := \
 	source/dux/abr.o    \
+	source/dux/envvar.o \
 	source/dux/errmsg.o \
 	                    \
 	source/io/cls.o     \
+	source/io/crt.o     \
 	source/io/crtdir.o  \
 	source/io/cpy.o     \
-	source/io/crt.o     \
+	source/io/curdir.o  \
+	source/io/homdir.o  \
 	source/io/opn.o     \
 	source/io/red.o     \
 	source/io/sttpth.o  \
@@ -55,7 +58,7 @@ $(OBJS): $(HDRS)
 install: $(LIB)
 	mkdir -pvm755 "$(HDRDIR)/dux"
 	mkdir -pvm755 "$(LIBDIR)"
-	install -vm644 "include/dux/"{"dux","io"}".h" "$(HDRDIR)/dux"
+	install -vm644 "include/dux/"{"dux","io","thr"}".h" "$(HDRDIR)/dux"
 	install -vm755 "$(LIB)" "$(LIBDIR)"
 
 clean:

@@ -17,7 +17,7 @@
 
 extern int * __errno_location(void);
 
-dux_err dux_cpy(char const * const newpth,char const * const pth,dux_prm const prm) {
+dux_err dux_cpy(char const* const newpth,char const* const pth,dux_prm const prm) {
 	dux_pthinf inf;
 	dux_err const err = dux_sttpth(&inf,pth);
 	zp_unlik (err != dux_err_oky) {return err;}
@@ -31,6 +31,10 @@ dux_err dux_cpy(char const * const newpth,char const * const pth,dux_prm const p
 		switch (*__errno_location()) {
 		default:
 			return dux_err_err;
+		case EIO:
+			return dux_err_io;
+		case ENOMEM:
+			return dux_err_memlim;
 		}
 	}
 
