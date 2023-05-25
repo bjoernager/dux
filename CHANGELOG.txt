@@ -101,6 +101,8 @@
 - Implement wrtstr in the same file as wrt;
 - Implement mov;
 
+- Fix installation script;
+
 | 2↋
 
 - Fix signal pipe being renamed to file;

@@ -23,6 +23,7 @@ OBJS := \
 
 HDRS := \
 	include/dux/dux.h             \
+	include/dux/fs.h              \
 	include/dux/io.h              \
 	include-private/dux/prv/dux.h
 
@@ -60,7 +61,7 @@ $(OBJS): $(HDRS)
 install: $(LIB)
 	mkdir -pvm755 "$(HDRDIR)/dux"
 	mkdir -pvm755 "$(LIBDIR)"
-	install -vm644 "include/dux/"{"dux","io","thr"}".h" "$(HDRDIR)/dux"
+	install -vm644 "include/dux/"{"dux","fs","io"}".h" "$(HDRDIR)/dux"
 	install -vm755 "$(LIB)" "$(LIBDIR)"
 
 clean:
