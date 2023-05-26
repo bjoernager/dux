@@ -1,4 +1,9 @@
 <svg height="192" width="192" xmlns="http://www.w3.org/2000/svg">
+	<!-- gradients -->
+	<linearGradient id="foregroundColour" x1="0" x2="1" y1="0" y2="1">
+		<stop class="stop1" offset="0%" stop-color="#13e0c0" />
+		<stop class="stop2" offset="100%" stop-color="#92d875" />
+	</linearGradient>
 	<!-- clips -->
 	<clipPath id="semicircle-vertical-left">
 		<polygon points="0,0 96,0 96,192 0,192" />
@@ -12,37 +17,36 @@
 	<clipPath id="semicircle-horizontal-high">
 		<polygon points="0,0 192,0 192,96 0,96" />
 	</clipPath>
-	<mask id="spiral-border-greater">
+	<!-- masks -->
+	<mask id="background">
+		<rect fill="#FFF" height="768" width="768" />
+		<!-- the middle "window" -->
+		<circle cx="96" cy="96" fill="#000" r="72" />
+		<!-- vertical spiral arm border -->
 		<circle clip-path="url(#semicircle-vertical-left)" cx="96" cy="138" fill="none" r="42" stroke="#FFF" stroke-width="24" />
 		<circle clip-path="url(#semicircle-vertical-right)" cx="96" cy="54" fill="none" r="42" stroke="#FFF" stroke-width="24" />
+		<!-- horizontal spiral arm border -->
 		<circle clip-path="url(#semicircle-horizontal-high)" cx="54" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="24" />
 		<circle clip-path="url(#semicircle-horizontal-low)" cx="138" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="24" />
 	</mask>
-	<mask id="spiral-vertical-border-lesser">
-		<circle clip-path="url(#semicircle-vertical-left)" cx="96" cy="138" fill="none" r="42" stroke="#FFF" stroke-width="16" />
-		<circle clip-path="url(#semicircle-vertical-right)" cx="96" cy="54" fill="none" r="42" stroke="#FFF" stroke-width="16" />
-	</mask>
-	<mask id="spiral-horizontal-border-lesser">
-		<circle clip-path="url(#semicircle-horizontal-high)" cx="54" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="16" />
-		<circle clip-path="url(#semicircle-horizontal-low)" cx="138" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="16" />
-	</mask>
-	<mask id="spiral-vertical">
+	<mask id="foreground">
+		<!-- outer ring -->
+		<circle cx="96" cy="96" fill="none" r="84" stroke="#FFF" stroke-width="8" />
+		<!-- vertical spiral arm border -->
+		<circle clip-path="url(#semicircle-vertical-left)" cx="96" cy="138" fill="none" r="42" stroke="#000" stroke-width="16" />
+		<circle clip-path="url(#semicircle-vertical-right)" cx="96" cy="54" fill="none" r="42" stroke="#000" stroke-width="16" />
+		<!-- vertical spiral arm -->
 		<circle clip-path="url(#semicircle-vertical-left)" cx="96" cy="138" fill="none" r="42" stroke="#FFF" stroke-width="8" />
 		<circle clip-path="url(#semicircle-vertical-right)" cx="96" cy="54" fill="none" r="42" stroke="#FFF" stroke-width="8" />
-	</mask>
-	<mask id="spiral-horizontal">
+		<!-- horizontal spiral arm border -->
+		<circle clip-path="url(#semicircle-horizontal-high)" cx="54" cy="96" fill="none" r="42" stroke="#000" stroke-width="16" />
+		<circle clip-path="url(#semicircle-horizontal-low)" cx="138" cy="96" fill="none" r="42" stroke="#000" stroke-width="16" />
+		<!-- horizontal spiral arm border -->
 		<circle clip-path="url(#semicircle-horizontal-high)" cx="54" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="8" />
 		<circle clip-path="url(#semicircle-horizontal-low)" cx="138" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="8" />
 	</mask>
-	<!-- background -->
-	<rect fill="#222222" height="768" width="768" />
-	<circle cx="96" cy="96" fill="#FAFAFA" r="72" />
-	<rect fill="#222222" height="192" mask="url(#spiral-border-greater)" width="192" x="0" y="0" />
-	<!-- outer ring -->
-	<circle cx="96" cy="96" fill="none" r="84" stroke="#00EFB1" stroke-width="8" />
-	<!-- spiral -->
-	<rect fill="#222222" height="192" mask="url(#spiral-vertical-border-lesser)" width="192" x="0" y="0" />
-	<rect fill="#00EFB1" height="192" mask="url(#spiral-vertical)" width="192" x="0" y="0" />
-	<rect fill="#222222" height="192" mask="url(#spiral-horizontal-border-lesser)" width="192" x="0" y="0" />
-	<rect fill="#00EFB1" height="192" mask="url(#spiral-horizontal)" width="192" x="0" y="0" />
+	<!-- fills -->
+	<rect fill="#FAFAFA" height="192" width="192" x="0" y="0" />
+	<rect fill="#222222" height="192" mask="url(#background)" width="192" x="0" y="0" />
+	<rect fill="url(#foregroundColour)" height="192" mask="url(#foreground)" width="192" x="0" y="0" />
 </svg>

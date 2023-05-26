@@ -103,7 +103,9 @@
 
 - Fix installation script;
 
-- Update logo (copy old to "dux_old.svg");
+- Update logo (copy old to 'dux_old.svg');
+
+- Update logo;
 
 | 2↋
 
