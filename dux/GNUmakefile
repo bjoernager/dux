@@ -17,6 +17,7 @@ OBJS := \
 	                    \
 	source/io/cls.o     \
 	source/io/crt.o     \
+	source/io/fil.o     \
 	source/io/opn.o     \
 	source/io/red.o     \
 	source/io/wrt.o

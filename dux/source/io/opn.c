@@ -16,8 +16,8 @@
 
 extern int * __errno_location(void);
 
-static dux_err dux_det_opn(dux_fil * * const filptr,char const* const pth,bool const wrt,struct dux_prv_dsc const dsc) {
-	dux_fil * fil = malloc(sizeof (struct dux_prv_fil));
+static dux_err dux_det_opn(dux_fil * * const filptr,char const* const pth,bool const wrt,struct dux_det_dsc const dsc) {
+	dux_fil * fil = malloc(sizeof (struct dux_det_fil));
 	if (fil == zp_nulptr) {return dux_err_badalc;}
 
 opn:;
@@ -56,6 +56,6 @@ dux_err dux_opn(dux_fil * * const fil,char const* const pth) {
 	return dux_det_opn(fil,pth,false,dux_kep);
 }
 
-dux_err dux_opnrw(dux_fil * * const fil,char const* const pth,struct dux_prv_dsc const dsc) {
+dux_err dux_opnrw(dux_fil * * const fil,char const* const pth,struct dux_det_dsc const dsc) {
 	return dux_det_opn(fil,pth,true,dsc);
 }

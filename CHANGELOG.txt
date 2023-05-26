@@ -110,6 +110,11 @@
 - Move current logo to root directory;
 - Update logo;
 
+- Move all logos to the root directory;
+- Implement dfli, dflo, and log;
+- Rename dfli to idfl;
+- Rename dflo to odfl;
+
 | 2↋
 
 - Fix signal pipe being renamed to file;

@@ -16,16 +16,16 @@ dux_prv_cdec
 
 typedef zp_i01 dux_prm;
 
-struct dux_prv_dsc {
+struct dux_det_dsc {
 	bool _dsc;
 };
 
 #if zp_std_cxx
-#define dux_kep (::dux_prv_dsc {false,})
-#define dux_dsc (::dux_prv_dsc {true,})
+#define dux_kep (::dux_det_dsc {false,})
+#define dux_dsc (::dux_det_dsc {true,})
 #else
-#define dux_kep ((struct dux_prv_dsc) {._dsc = false,})
-#define dux_dsc ((struct dux_prv_dsc) {._dsc = true,})
+#define dux_kep ((struct dux_det_dsc) {._dsc = false,})
+#define dux_dsc ((struct dux_det_dsc) {._dsc = true,})
 #endif
 
 typedef struct {

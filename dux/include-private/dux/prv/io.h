@@ -14,7 +14,7 @@
 
 dux_prv_cdec
 
-struct dux_prv_fil {
+struct dux_det_fil {
 	int fd;
 };
 

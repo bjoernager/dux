@@ -7,30 +7,22 @@
 	You should have received a copy of the GNU Lesser General Public License along with dux. If not, see <https://www.gnu.org/licenses>.
 */
 
-#if !defined(dux_hdr_io)
-#define dux_hdr_io
+#include <dux/prv/io.h>
 
-#include <dux/fs.h>
+#include <unistd.h>
 
-dux_prv_cdec
+static dux_fil dux_det_idfl = {
+	.fd = STDIN_FILENO,
+};
 
-struct dux_det_fil;
-typedef struct dux_det_fil dux_fil;
+static dux_fil dux_det_odfl = {
+	.fd = STDOUT_FILENO,
+};
 
-extern dux_fil * dux_idfl;
-extern dux_fil * dux_odfl;
-extern dux_fil * dux_log;
+static dux_fil dux_det_log = {
+	.fd = STDERR_FILENO,
+};
 
-dux_err dux_crt(  dux_fil * * fil,char const* pth,dux_prm prm);
-dux_err dux_opn(  dux_fil * * fil,char const* pth);
-dux_err dux_opnrw(dux_fil * * fil,char const* pth,struct dux_det_dsc);
-
-dux_err dux_cls(dux_fil * fil);
-
-dux_err dux_wrt(   dux_fil * fil,void const* dat,zp_siz num);
-dux_err dux_wrtstr(dux_fil * fil,char const* str);
-dux_err dux_red(   void *    buf,dux_fil *   fil,zp_siz num,zp_siz * numred);
-
-dux_prv_cdecend
-
-#endif
+dux_fil * dux_idfl = &dux_det_idfl;
+dux_fil * dux_odfl = &dux_det_odfl;
+dux_fil * dux_log  = &dux_det_log;

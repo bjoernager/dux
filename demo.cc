@@ -138,4 +138,7 @@ int main() {
 
 	err = ::dux_cls(fil);
 	chkerr("unable to close file");
+
+	err = ::dux_wrtstr(dux_odfl,"Goodbye!\n");
+	chkerr("unable to say goodbye");
 }
