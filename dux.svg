@@ -1,15 +1,19 @@
 <svg height="192" width="192" xmlns="http://www.w3.org/2000/svg">
 	<!-- gradients -->
+	<linearGradient id="backgroundColour" x1="0" x2="1" y1="0" y2="1">
+		<stop offset="0%" stop-color="#222222" />
+		<stop offset="100%" stop-color="#131313" />
+	</linearGradient>
 	<linearGradient id="foregroundColour" x1="0" x2="1" y1="0" y2="1">
-		<stop class="stop1" offset="0%" stop-color="#13e0c0" />
-		<stop class="stop2" offset="100%" stop-color="#92d875" />
+		<stop offset="0%" stop-color="#13E0C0" />
+		<stop offset="100%" stop-color="#92D875" />
 	</linearGradient>
 	<!-- clips -->
 	<clipPath id="semicircle-vertical-left">
 		<polygon points="0,0 96,0 96,192 0,192" />
 	</clipPath>
 	<clipPath id="semicircle-horizontal-low">
-    	<polygon points="0,96 92,96 96,92 100,96 192,96 192,192 0,192" />
+    	<polygon points="0,96 192,96 192,192 0,192" />
 	</clipPath>
 	<clipPath id="semicircle-vertical-right">
 		<polygon points="96,0 192,0 192,192 96,192" />
@@ -35,18 +39,27 @@
 		<!-- vertical spiral arm border -->
 		<circle clip-path="url(#semicircle-vertical-left)" cx="96" cy="138" fill="none" r="42" stroke="#000" stroke-width="16" />
 		<circle clip-path="url(#semicircle-vertical-right)" cx="96" cy="54" fill="none" r="42" stroke="#000" stroke-width="16" />
+		<circle cx="96" cy="96" fill="#000" r="8" />
 		<!-- vertical spiral arm -->
 		<circle clip-path="url(#semicircle-vertical-left)" cx="96" cy="138" fill="none" r="42" stroke="#FFF" stroke-width="8" />
 		<circle clip-path="url(#semicircle-vertical-right)" cx="96" cy="54" fill="none" r="42" stroke="#FFF" stroke-width="8" />
+		<circle cx="96" cy="96" fill="#FFF" r="4" />
 		<!-- horizontal spiral arm border -->
 		<circle clip-path="url(#semicircle-horizontal-high)" cx="54" cy="96" fill="none" r="42" stroke="#000" stroke-width="16" />
 		<circle clip-path="url(#semicircle-horizontal-low)" cx="138" cy="96" fill="none" r="42" stroke="#000" stroke-width="16" />
-		<!-- horizontal spiral arm border -->
+		<circle cx="96" cy="96" fill="#000" r="8" />
+		<!-- horizontal spiral arm -->
 		<circle clip-path="url(#semicircle-horizontal-high)" cx="54" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="8" />
 		<circle clip-path="url(#semicircle-horizontal-low)" cx="138" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="8" />
+		<circle cx="96" cy="96" fill="#FFF" r="4" />
+		<!-- extra "connectors" -->
+		<circle cx="96" cy="12" fill="#FFF" r="4" />
+		<circle cx="180" cy="96" fill="#FFF" r="4" />
+		<circle cx="12" cy="96" fill="#FFF" r="4" />
+		<circle cx="96" cy="180" fill="#FFF" r="4" />
 	</mask>
 	<!-- fills -->
 	<rect fill="#FAFAFA" height="192" width="192" x="0" y="0" />
-	<rect fill="#222222" height="192" mask="url(#background)" width="192" x="0" y="0" />
+	<rect fill="url(#backgroundColour)" height="192" mask="url(#background)" width="192" x="0" y="0" />
 	<rect fill="url(#foregroundColour)" height="192" mask="url(#foreground)" width="192" x="0" y="0" />
 </svg>

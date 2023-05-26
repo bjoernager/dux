@@ -107,6 +107,9 @@
 
 - Update logo;
 
+- Move current logo to root directory;
+- Update logo;
+
 | 2↋
 
 - Fix signal pipe being renamed to file;
