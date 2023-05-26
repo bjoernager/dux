@@ -1,0 +1,41 @@
+<svg height="768" width="768" xmlns="http://www.w3.org/2000/svg">
+	<clipPath id="clipPath22">
+      <rect height="768" width="384" />
+	</clipPath>
+   <clipPath id="clipPath29">
+      <rect height="384" width="768" />
+	</clipPath>
+   <clipPath id="clipPath40">
+      <rect height="768" width="384" x="384" />
+	</clipPath>
+   <clipPath id="clipPath49">
+      <rect height="384" width="768" y="384" />
+	</clipPath>
+	<clipPath id="clipPath62">
+		<rect height="768" width="768" />
+		<!--<rect height="768" rx="192" width="768" />--> <!-- Comment above line and uncomment this one (before this comment) for a background with rounded corners. -->
+	</clipPath>
+	<clipPath id="clipPath253">
+		<rect height="768" width="384" x="384" />
+	</clipPath>
+	<!-- Background -->
+	<rect clip-path="url(#clipPath62)" fill="#444747" height="768" width="768" />
+	<!--<circle fill="#00000000" cx="384" cy="384" r="336" stroke="#444747" stroke-width="96" />--> <!-- Comment above line and uncomment this one (before this comment) for a transparent background. -->
+	<!-- White Middle Circle -->
+	<circle fill="#F8F8F1" cx="384" cy="384" r="288"/>
+	<!-- Spiral Border -->
+   <circle clip-path="url(#clipPath40)" cx="384" cy="216" fill="#00000000" r="168" stroke="#444747" stroke-width="96" />
+   <circle clip-path="url(#clipPath29)" cx="216" cy="384" fill="#00000000" r="168" stroke="#444747" stroke-width="96" />
+   <circle clip-path="url(#clipPath49)" cx="552" cy="384" fill="#00000000" r="168" stroke="#444747" stroke-width="96" />
+   <circle clip-path="url(#clipPath22)" cx="384" cy="552" fill="#00000000" r="168" stroke="#444747" stroke-width="96" />
+   <!-- Spiral Lower -->
+   <circle clip-path="url(#clipPath40)" cx="384" cy="216" fill="#00000000" r="168" stroke="#3DE1A9" stroke-width="32" />
+   <circle clip-path="url(#clipPath22)" cx="384" cy="552" fill="#00000000" r="168" stroke="#3DE1A9" stroke-width="32" />
+   <!-- Spiral Upper -->
+   <circle clip-path="url(#clipPath49)" cx="552" cy="384" fill="#00000000" r="168" stroke="#444747" stroke-width="64" />
+   <circle clip-path="url(#clipPath29)" cx="216" cy="384" fill="#00000000" r="168" stroke="#444747" stroke-width="64" />
+   <circle clip-path="url(#clipPath29)" cx="216" cy="384" fill="#00000000" r="168" stroke="#3DE1A9" stroke-width="32" />
+   <circle clip-path="url(#clipPath49)" cx="552" cy="384" fill="#00000000" r="168" stroke="#3DE1A9" stroke-width="32" />
+	<!-- Greater Ring -->
+	<circle fill="#00000000" cx="384" cy="384" r="336" stroke="#3DE1A9" stroke-width="32" />
+</svg>

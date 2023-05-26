@@ -103,6 +103,8 @@
 
 - Fix installation script;
 
+- Update logo (copy old to "dux_old.svg");
+
 | 2↋
 
 - Fix signal pipe being renamed to file;

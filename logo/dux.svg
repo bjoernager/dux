@@ -1,41 +1,48 @@
-<svg height="768" width="768" xmlns="http://www.w3.org/2000/svg">
-	<clipPath id="clipPath22">
-      <rect height="768" width="384" />
+<svg height="192" width="192" xmlns="http://www.w3.org/2000/svg">
+	<!-- clips -->
+	<clipPath id="semicircle-vertical-left">
+		<polygon points="0,0 96,0 96,192 0,192" />
 	</clipPath>
-   <clipPath id="clipPath29">
-      <rect height="384" width="768" />
+	<clipPath id="semicircle-horizontal-low">
+    	<polygon points="0,96 92,96 96,92 100,96 192,96 192,192 0,192" />
 	</clipPath>
-   <clipPath id="clipPath40">
-      <rect height="768" width="384" x="384" />
+	<clipPath id="semicircle-vertical-right">
+		<polygon points="96,0 192,0 192,192 96,192" />
 	</clipPath>
-   <clipPath id="clipPath49">
-      <rect height="384" width="768" y="384" />
+	<clipPath id="semicircle-horizontal-high">
+		<polygon points="0,0 192,0 192,96 0,96" />
 	</clipPath>
-	<clipPath id="clipPath62">
-		<rect height="768" width="768" />
-		<!--<rect height="768" rx="192" width="768" />--> <!-- Comment above line and uncomment this one (before this comment) for a background with rounded corners. -->
-	</clipPath>
-	<clipPath id="clipPath253">
-		<rect height="768" width="384" x="384" />
-	</clipPath>
-	<!-- Background -->
-	<rect clip-path="url(#clipPath62)" fill="#444747" height="768" width="768" />
-	<!--<circle fill="#00000000" cx="384" cy="384" r="336" stroke="#444747" stroke-width="96" />--> <!-- Comment above line and uncomment this one (before this comment) for a transparent background. -->
-	<!-- White Middle Circle -->
-	<circle fill="#F8F8F1" cx="384" cy="384" r="288"/>
-	<!-- Spiral Border -->
-   <circle clip-path="url(#clipPath40)" cx="384" cy="216" fill="#00000000" r="168" stroke="#444747" stroke-width="96" />
-   <circle clip-path="url(#clipPath29)" cx="216" cy="384" fill="#00000000" r="168" stroke="#444747" stroke-width="96" />
-   <circle clip-path="url(#clipPath49)" cx="552" cy="384" fill="#00000000" r="168" stroke="#444747" stroke-width="96" />
-   <circle clip-path="url(#clipPath22)" cx="384" cy="552" fill="#00000000" r="168" stroke="#444747" stroke-width="96" />
-   <!-- Spiral Lower -->
-   <circle clip-path="url(#clipPath40)" cx="384" cy="216" fill="#00000000" r="168" stroke="#3DE1A9" stroke-width="32" />
-   <circle clip-path="url(#clipPath22)" cx="384" cy="552" fill="#00000000" r="168" stroke="#3DE1A9" stroke-width="32" />
-   <!-- Spiral Upper -->
-   <circle clip-path="url(#clipPath49)" cx="552" cy="384" fill="#00000000" r="168" stroke="#444747" stroke-width="64" />
-   <circle clip-path="url(#clipPath29)" cx="216" cy="384" fill="#00000000" r="168" stroke="#444747" stroke-width="64" />
-   <circle clip-path="url(#clipPath29)" cx="216" cy="384" fill="#00000000" r="168" stroke="#3DE1A9" stroke-width="32" />
-   <circle clip-path="url(#clipPath49)" cx="552" cy="384" fill="#00000000" r="168" stroke="#3DE1A9" stroke-width="32" />
-	<!-- Greater Ring -->
-	<circle fill="#00000000" cx="384" cy="384" r="336" stroke="#3DE1A9" stroke-width="32" />
+	<mask id="spiral-border-greater">
+		<circle clip-path="url(#semicircle-vertical-left)" cx="96" cy="138" fill="none" r="42" stroke="#FFF" stroke-width="24" />
+		<circle clip-path="url(#semicircle-vertical-right)" cx="96" cy="54" fill="none" r="42" stroke="#FFF" stroke-width="24" />
+		<circle clip-path="url(#semicircle-horizontal-high)" cx="54" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="24" />
+		<circle clip-path="url(#semicircle-horizontal-low)" cx="138" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="24" />
+	</mask>
+	<mask id="spiral-vertical-border-lesser">
+		<circle clip-path="url(#semicircle-vertical-left)" cx="96" cy="138" fill="none" r="42" stroke="#FFF" stroke-width="16" />
+		<circle clip-path="url(#semicircle-vertical-right)" cx="96" cy="54" fill="none" r="42" stroke="#FFF" stroke-width="16" />
+	</mask>
+	<mask id="spiral-horizontal-border-lesser">
+		<circle clip-path="url(#semicircle-horizontal-high)" cx="54" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="16" />
+		<circle clip-path="url(#semicircle-horizontal-low)" cx="138" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="16" />
+	</mask>
+	<mask id="spiral-vertical">
+		<circle clip-path="url(#semicircle-vertical-left)" cx="96" cy="138" fill="none" r="42" stroke="#FFF" stroke-width="8" />
+		<circle clip-path="url(#semicircle-vertical-right)" cx="96" cy="54" fill="none" r="42" stroke="#FFF" stroke-width="8" />
+	</mask>
+	<mask id="spiral-horizontal">
+		<circle clip-path="url(#semicircle-horizontal-high)" cx="54" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="8" />
+		<circle clip-path="url(#semicircle-horizontal-low)" cx="138" cy="96" fill="none" r="42" stroke="#FFF" stroke-width="8" />
+	</mask>
+	<!-- background -->
+	<rect fill="#222222" height="768" width="768" />
+	<circle cx="96" cy="96" fill="#FAFAFA" r="72" />
+	<rect fill="#222222" height="192" mask="url(#spiral-border-greater)" width="192" x="0" y="0" />
+	<!-- outer ring -->
+	<circle cx="96" cy="96" fill="none" r="84" stroke="#00EFB1" stroke-width="8" />
+	<!-- spiral -->
+	<rect fill="#222222" height="192" mask="url(#spiral-vertical-border-lesser)" width="192" x="0" y="0" />
+	<rect fill="#00EFB1" height="192" mask="url(#spiral-vertical)" width="192" x="0" y="0" />
+	<rect fill="#222222" height="192" mask="url(#spiral-horizontal-border-lesser)" width="192" x="0" y="0" />
+	<rect fill="#00EFB1" height="192" mask="url(#spiral-horizontal)" width="192" x="0" y="0" />
 </svg>
