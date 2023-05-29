@@ -25,11 +25,11 @@ dux_err dux_crt(  dux_fil * * fil,char const* pth,dux_prm prm);
 dux_err dux_opn(  dux_fil * * fil,char const* pth);
 dux_err dux_opnrw(dux_fil * * fil,char const* pth,struct dux_det_dsc);
 
-dux_err dux_cls(dux_fil * fil);
+void dux_cls(dux_fil * fil);
 
+dux_err dux_red(   void *    buf,dux_fil *   fil,zp_siz num,zp_siz * numred);
 dux_err dux_wrt(   dux_fil * fil,void const* dat,zp_siz num);
 dux_err dux_wrtstr(dux_fil * fil,char const* str);
-dux_err dux_red(   void *    buf,dux_fil *   fil,zp_siz num,zp_siz * numred);
 
 dux_prv_cdecend
 

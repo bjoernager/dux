@@ -1,3 +1,11 @@
+# 0.1.0
+
+- Add base for C++ API:
+- Install new headers;
+- Bump extension version;
+- Add class fil for file manipulations;
+- Remove return value from cls: Breaks API, but the function wasn't able to fail previously, so there wasn't any need to do error checking;
+
 | 0.0.0
 
 - Revive and rewrite project (current features will be listed);

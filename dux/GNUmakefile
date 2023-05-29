@@ -20,7 +20,8 @@ OBJS := \
 	source/io/fil.o     \
 	source/io/opn.o     \
 	source/io/red.o     \
-	source/io/wrt.o
+	source/io/wrt.o     \
+	source/io/cxx/fil.o
 
 HDRS := \
 	include/dux/dux.h             \
@@ -43,6 +44,22 @@ CFLAGS := \
 	-g                   \
 	-pipe                \
 	-std=c99
+
+CXXFLAGS := \
+	-D_GNU_SOURCE        \
+	-Ddux_prv_dbg=$(dbg) \
+	-Iinclude            \
+	-Iinclude-private    \
+	-Ofast               \
+	-Wall                \
+	-Wextra              \
+	-Wmissing-prototypes \
+	-Wpedantic           \
+	-fpic                \
+	-fshort-enums        \
+	-g                   \
+	-pipe                \
+	-std=c++11
 
 LDFLAGS := \
 	-shared

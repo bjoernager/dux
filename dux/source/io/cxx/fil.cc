@@ -7,17 +7,18 @@
 	You should have received a copy of the GNU Lesser General Public License along with dux. If not, see <https://www.gnu.org/licenses>.
 */
 
-#if !defined(dux_hdr_prv_dux)
-#define dux_hdr_prv_dux
+#include <dux/prv/io.h>
 
-#include <dux/dux.h>
+dux::fil::fil() noexcept {
+	this->_cfil = nullptr;
+}
 
-#if zp_std_cxx
-#include <dux/dux>
-#endif
+dux::fil::fil(char const* pth) noexcept {this->opn(pth);}
 
-dux_prv_cdec
+dux::fil::~fil() noexcept {this->cls();}
 
-dux_prv_cdecend
+auto dux::fil::opn(char const* pth) noexcept -> ::dux::err {this->_cfil = ::dux_opn(pth);}
 
-#endif
+auto dux::fil::cls() noexcept -> void {::dux_cls(this->_cls);}
+
+auto dux::fil::wrt(void const) noexcept -> void {::dux_cls(this->_cls);}

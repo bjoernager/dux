@@ -1,10 +1,10 @@
 #include <cstdlib>
-#include <dux/io.h>
+#include <dux/io>
 #include <iostream>
 #include <zp/str>
 
-template<typename ltyp,typename rtyp> static auto chk(long const lin,::zp::i8 const mth,ltyp const& lval,rtyp const& rval) {
-	auto const cmp = [](::zp::i8 const mth,auto const& lval,auto const& rval) -> bool {
+template<typename ltyp,typename rtyp> static auto cmp(long const lin,::zp::i8 const mth,ltyp const& lval,rtyp const& rval) -> void {
+	auto const cmp = [&lval,&mth,&rval]() -> bool {
 		switch (mth) {
 		default:
 			::zp::unrch();
@@ -21,9 +21,9 @@ template<typename ltyp,typename rtyp> static auto chk(long const lin,::zp::i8 co
 		case 0x5u:
 			return lval != rval;
 		}
-	};
+	}();
 
-	auto const str = [](::zp::i8 const mth) -> char const * {
+	auto const mthstr = [&mth]() -> char const* {
 		switch (mth) {
 		default:
 			::zp::unrch();
@@ -40,23 +40,23 @@ template<typename ltyp,typename rtyp> static auto chk(long const lin,::zp::i8 co
 		case 0x5u:
 			return "==";
 		}
-	};
+	}();
 
-	if (!cmp(mth,lval,rval)) {
-		::std::cout << lin << ": " << lval << ' ' << str(mth) << ' ' << rval << ::std::endl;
+	if (!cmp) {
+		::std::cout << lin << ": " << lval << ' ' << mthstr << ' ' << rval << ::std::endl;
 		::std::exit(EXIT_SUCCESS);
 	}
 };
-#define chkeq(lval,rval) (::chk(__LINE__,0x0u,(lval),(rval)))
-#define chkge(lval,rval) (::chk(__LINE__,0x1u,(lval),(rval)))
-#define chkgt(lval,rval) (::chk(__LINE__,0x2u,(lval),(rval)))
-#define chkle(lval,rval) (::chk(__LINE__,0x3u,(lval),(rval)))
-#define chklt(lval,rval) (::chk(__LINE__,0x4u,(lval),(rval)))
-#define chkne(lval,rval) (::chk(__LINE__,0x5u,(lval),(rval)))
+#define chkeq(lval,rval) (::cmp(__LINE__,0x0u,(lval),(rval)))
+#define chkge(lval,rval) (::cmp(__LINE__,0x1u,(lval),(rval)))
+#define chkgt(lval,rval) (::cmp(__LINE__,0x2u,(lval),(rval)))
+#define chkle(lval,rval) (::cmp(__LINE__,0x3u,(lval),(rval)))
+#define chklt(lval,rval) (::cmp(__LINE__,0x4u,(lval),(rval)))
+#define chkne(lval,rval) (::cmp(__LINE__,0x5u,(lval),(rval)))
 
 int main() {
 	//::dux_pri("dux {i04}.{i04}, demo\n",dux_api,dux_ext);
-	::std::cout << "dux " << dux_api << '.' << dux_ext << ", demo" << ::std::endl;
+	::std::cout << "dux " << ::dux::ver.api << '.' << ::dux::ver.ext << ", demo" << ::std::endl;
 
 	::dux_err err = ::dux_err_oky;
 
@@ -136,8 +136,7 @@ int main() {
 
 	chkeq(::zp::strequ(buf,src),true);
 
-	err = ::dux_cls(fil);
-	chkerr("unable to close file");
+	::dux_cls(fil);
 
 	err = ::dux_wrtstr(dux_odfl,"Goodbye!\n");
 	chkerr("unable to say goodbye");

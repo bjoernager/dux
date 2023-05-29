@@ -1,0 +1,55 @@
+/*
+	Copyright 2019-2023 Gabriel Jensen.
+
+	This file is part of dux.
+	dux is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+	dux is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+	You should have received a copy of the GNU Lesser General Public License along with dux. If not, see <https://www.gnu.org/licenses>.
+*/
+
+#if !defined(dux_cxxhdr_dux)
+#define dux_cxxhdr_dux
+
+#include <dux/dux.h>
+#include <zp/zp>
+
+namespace dux {
+	namespace det {
+		template<typename typ> struct vertyp {
+			typ api;
+			typ ext;
+		};
+	}
+
+	constexpr ::dux::det::vertyp<::zp::i04> ver = {
+		dux_api,
+		dux_ext,
+	};
+
+	enum struct err {
+		oky    = dux_err_oky,
+		err    = dux_err_err,
+		badalc = dux_err_badalc,
+		badfil = dux_err_badfil,
+		badfmt = dux_err_badfmt,
+		badprv = dux_err_badprv,
+		badval = dux_err_badval,
+		eof    = dux_err_eof,
+		exs    = dux_err_exs,
+		io     = dux_err_io,
+		isdir  = dux_err_isdir,
+		memlim = dux_err_memlim,
+		nodir  = dux_err_nodir,
+		nofil  = dux_err_nofil,
+		redonl = dux_err_redonl,
+		spclim = dux_err_spclim,
+	};
+
+	[[noreturn]] zp_iln inline auto abr(char const* const msg) noexcept -> void {::dux_abr(msg);}
+
+	zp_iln inline auto errmsg(char * buf,::dux::err const err) noexcept -> ::zp::sizerr {return ::dux_errmsg(buf,static_cast<::dux_err>(err));}
+
+	zp_iln inline auto getenv(char * buf,char const* const nam) noexcept -> ::zp::sizerr {return ::dux_getenv(buf,nam);}
+}
+
+#endif

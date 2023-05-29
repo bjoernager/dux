@@ -29,7 +29,7 @@
 dux_prv_cdec
 
 #define dux_api ((zp_i04)+0x0u)
-#define dux_ext ((zp_i04)+0x0u)
+#define dux_ext ((zp_i04)+0x1u)
 
 typedef enum {
 	dux_err_oky    = 0x0u,

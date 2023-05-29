@@ -23,7 +23,7 @@
 	</clipPath>
 	<!-- masks -->
 	<mask id="background">
-		<rect fill="#FFF" height="768" width="768" />
+		<rect fill="#FFF" height="192" width="192" />
 		<!-- the middle "window" -->
 		<circle cx="96" cy="96" fill="#000" r="72" />
 		<!-- vertical spiral arm border -->
@@ -55,8 +55,8 @@
 		<!-- extra "connectors" -->
 		<circle cx="96" cy="12" fill="#FFF" r="4" />
 		<circle cx="180" cy="96" fill="#FFF" r="4" />
-		<circle cx="12" cy="96" fill="#FFF" r="4" />
 		<circle cx="96" cy="180" fill="#FFF" r="4" />
+		<circle cx="12" cy="96" fill="#FFF" r="4" />
 	</mask>
 	<!-- fills -->
 	<rect fill="#FAFAFA" height="192" width="192" x="0" y="0" />

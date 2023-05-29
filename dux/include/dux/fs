@@ -1,0 +1,67 @@
+/*
+	Copyright 2019-2023 Gabriel Jensen.
+
+	This file is part of dux.
+	dux is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+	dux is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+	You should have received a copy of the GNU Lesser General Public License along with dux. If not, see <https://www.gnu.org/licenses>.
+*/
+
+#if !defined(dux_cxxhdr_fs)
+#define dux_cxxhdr_fs
+
+#include <dux/fs.h>
+#include <dux/dux>
+
+namespace dux {
+	using prm = ::dux_prm;
+
+	namespace det {
+		struct dsc {
+			bool _dsc;
+		};
+	}
+
+	constexpr ::dux::det::dsc kep = {false,};
+	constexpr ::dux::det::dsc dsc = {true,};
+
+	struct pthinf {
+		::zp::siz  siz;
+		::dux::prm prm;
+		bool       isdir : 0x1;
+		bool       isreg : 0x1;
+	};
+
+	zp_iln inline auto curdir(char * const buf) noexcept -> ::zp::sizerr {return ::dux_curdir(buf);}
+
+	zp_iln inline auto homdir(char * const buf) noexcept -> ::zp::sizerr {return ::dux_homdir(buf);}
+
+	zp_iln inline auto chgdir(char const* const pth) noexcept -> ::dux::err {return static_cast<::dux::err>(::dux_chgdir(pth));}
+
+	zp_iln inline auto setprm(char const* const pth,::dux::prm const prm) noexcept -> ::dux::err {return static_cast<::dux::err>(::dux_setprm(pth,prm));}
+
+	zp_iln inline auto sttpth(::dux::pthinf & inf,char const* pth) noexcept -> ::dux::err {
+		::dux_pthinf cinf;
+
+		auto const err = static_cast<::dux::err>(::dux_sttpth(&cinf,pth));
+
+		zp_unlik (err != ::dux::err::oky) {return err;}
+
+		inf.siz   = cinf.siz;
+		inf.prm   = cinf.prm;
+		inf.isdir = cinf.isdir;
+		inf.isreg = cinf.isreg;
+
+		return err;
+	}
+
+	zp_iln inline auto crtdir(char const* const pth,::dux::prm const prm) noexcept -> ::dux::err {return static_cast<::dux::err>(::dux_crtdir(pth,prm));}
+
+	zp_iln inline auto cpy(char const* const newpth,char const* pth,::dux::prm const prm) noexcept -> ::dux::err {return static_cast<::dux::err>(::dux_cpy(newpth,pth,prm));}
+
+	zp_iln inline auto mov(char const* const newpth,char const* pth) noexcept -> ::dux::err {return static_cast<::dux::err>(::dux_mov(newpth,pth));}
+
+	zp_iln inline auto rem(char const* const pth) noexcept -> ::dux::err {return static_cast<::dux::err>(::dux_rem(pth));}
+}
+
+#endif

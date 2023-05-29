@@ -1,0 +1,40 @@
+/*
+	Copyright 2019-2023 Gabriel Jensen.
+
+	This file is part of dux.
+	dux is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+	dux is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+	You should have received a copy of the GNU Lesser General Public License along with dux. If not, see <https://www.gnu.org/licenses>.
+*/
+
+#if !defined(dux_cxxhdr_io)
+#define dux_cxxhdr_io
+
+#include <dux/io.h>
+#include <dux/fs>
+
+namespace dux {
+	class fil {
+	public:
+		         fil()                noexcept;
+		explicit fil(char const* pth) noexcept;
+
+		~fil() noexcept;
+
+		auto crt(  char const* pth,::dux::prm)    noexcept -> ::dux::err;
+		auto opn(  char const* pth)               noexcept -> ::dux::err;
+		auto opnrw(char const* pth,::dux_det_dsc) noexcept -> ::dux::err;
+
+		auto cls() noexcept -> void;
+
+		auto red(   void *      buf,::zp::siz num)                    noexcept -> ::dux::err;
+		auto red(   void *      buf,::zp::siz num,::zp::siz & numred) noexcept -> ::dux::err;
+		auto wrt(   void const* dat,::zp::siz num)                    noexcept -> ::dux::err;
+		auto wrtstr(char const* dat)                                  noexcept -> ::dux::err;
+
+	private:
+		::dux_fil * _cfil;
+	};
+}
+
+#endif

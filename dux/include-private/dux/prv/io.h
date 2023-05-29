@@ -12,6 +12,10 @@
 
 #include <dux/io.h>
 
+#if zp_std_cxx
+#include <dux/io>
+#endif
+
 dux_prv_cdec
 
 struct dux_det_fil {
